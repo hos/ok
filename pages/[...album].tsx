@@ -63,7 +63,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
           width="800"
           height="500"
           objectFit="contain"
-          src={`/images/large/${image}`}
+          src={`/images/large/${image + ".jpg"}`}
           alt={t(image)}
         />
       </ImageContainer>

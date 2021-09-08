@@ -28,7 +28,11 @@ export const ImageList: React.FC<ImageListProps> = () => {
     <Container className="image-list">
       {album.images.map((image) => {
         return (
-          <Link href={`/${albumName}/${image}`} key={image} scroll={false}>
+          <Link
+            href={`/${albumName}/${image.replace(".jpg", "")}`}
+            key={image}
+            scroll={false}
+          >
             <a>
               <Image
                 width="70"

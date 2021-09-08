@@ -4,7 +4,5 @@ module.exports = {
     defaultLocale: "en",
     locales: ["en", "hy", "ru"],
     defaultNS: "meta",
-    localePath: "locales",
   },
-  localePath: "locales",
 };
