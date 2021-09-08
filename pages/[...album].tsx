@@ -39,7 +39,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
 
   const karen: Person = {
     "@type": "Person",
-    name: t("Karen Ohanyan") || "",
+    name: t("Karen Ohanyan") || "Karen Ohanyan",
   };
 
   const schema: VisualArtwork = {
