@@ -76,7 +76,7 @@ export const Menu: React.FC<NavProps> = (props) => {
                 return (
                   <Li key={album.name}>
                     <Link
-                      href={`/${album.path}/${
+                      href={`/albums/${album.path}/${
                         album.images[album.default || 0]
                       }`}
                       passHref

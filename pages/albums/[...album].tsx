@@ -6,10 +6,10 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import { Person, VisualArtwork } from "schema-dts";
 
-import { CenterView } from "../components/CenterView";
-import { ImageContainer } from "../components/ImageContainer";
-import { Meta } from "../components/Meta";
-import albums from "../data/albums.json";
+import { CenterView } from "../../components/CenterView";
+import { ImageContainer } from "../../components/ImageContainer";
+import { Meta } from "../../components/Meta";
+import albums from "../../data/albums.json";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
