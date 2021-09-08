@@ -3,6 +3,7 @@
     "name": "2000-2004",
     "path": "2000-2004",
     "default": 3,
+    "artform": "Painting",
     "images": [
       "After-Market.jpg",
       "Cascade.jpg",
@@ -25,6 +26,7 @@
     "name": "2005-2006 (Real Utopias)",
     "path": "2005-2006",
     "default": 0,
+    "artform": "Painting",
     "images": [
       "Real-Utopias-1.jpg",
       "Real-Utopias-2.jpg",
@@ -41,6 +43,7 @@
     "name": "2007",
     "path": "2007",
     "default": 6,
+    "artform": "Painting",
     "images": [
       "Rodin.jpg",
       "Untitled-3.jpg",
@@ -55,6 +58,7 @@
     "name": "2008-2009 (Body Investments)",
     "path": "2008-2009",
     "default": 0,
+    "artform": "Painting",
     "images": [
       "Body-Investments-1.jpg",
       "Body-Investments-2.jpg",
@@ -67,6 +71,7 @@
     "name": "2010-2014",
     "path": "2010-2014",
     "default": 3,
+    "artform": "Painting",
     "images": [
       "Grandmother-Feet.jpg",
       "Self-portrait-2010.jpg",
@@ -78,6 +83,7 @@
     "name": "2016 (From avant-garde To avant-garde)",
     "path": "2016",
     "default": 5,
+    "artform": "Collage",
     "images": [
       "After-death-of-a-dictator.jpg",
       "Case-N.jpg",
@@ -100,6 +106,7 @@
     "name": "2017-2019 (Sevan)",
     "path": "2017-2019",
     "default": 0,
+    "artform": "Painting",
     "images": [
       "Sevan-1.jpg",
       "Sevan-2.jpg",

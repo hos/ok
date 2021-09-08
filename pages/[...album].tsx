@@ -4,10 +4,12 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+import { Person, VisualArtwork } from "schema-dts";
 
 import { CenterView } from "../components/CenterView";
 import { ImageContainer } from "../components/ImageContainer";
 import { Meta } from "../components/Meta";
+import albums from "../data/albums.json";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
@@ -27,18 +29,34 @@ interface ImagePageProps {
 
 export const ImagePage: React.FC<ImagePageProps> = () => {
   const router = useRouter();
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const [_album, image] = Array.isArray(router.query.album)
+  const [albumName, image] = Array.isArray(router.query.album)
     ? router.query.album
     : [];
+
+  const album = albums.find((album) => album.path === albumName);
+
+  const karen: Person = {
+    "@type": "Person",
+    name: t("Karen Ohanyan") || "",
+  };
+
+  const schema: VisualArtwork = {
+    "@type": "VisualArtwork",
+    name: t(`images:${image}`),
+    copyrightHolder: karen,
+    artist: karen,
+    artform: album?.artform,
+  };
 
   return (
     <CenterView>
       <Meta
-        title={`${i18n.t("Karen Ohanyan")} - ${i18n.t(`images:${image}`)}`}
-        description={i18n.t("description")}
+        title={`${t("Karen Ohanyan")} - ${t(`images:${image}`)}`}
+        description={t("description")}
       />
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
       <ImageContainer>
         <Image
           layout="responsive"
@@ -46,7 +64,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
           height="500"
           objectFit="contain"
           src={`/images/large/${image}`}
-          alt={i18n.t(image)}
+          alt={t(image)}
         />
       </ImageContainer>
     </CenterView>
