@@ -7,10 +7,9 @@ interface CenterViewProps {
 
 export const CenterView: React.FC<CenterViewProps> = styled.div<CenterViewProps>`
   display: inline-flex;
-  margin: 50px auto 0 auto;
   width: 100%;
-  min-height: 80vh;
   text-align: center;
+  align-items: center;
 
   & .article {
     text-align: center;

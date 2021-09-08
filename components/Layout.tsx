@@ -15,8 +15,8 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 
 const Main = styled.main`
   width: 75%;
-  min-height: 100vh;
   display: inline-flex;
+  margin-top: 50px;
 
   @media screen and (max-width: 800px) {
     width: 100%;
