@@ -68,9 +68,7 @@ export const Menu: React.FC<NavProps> = (props) => {
             <Link href="/">{t("Home")}</Link>
           </Li>
           <Li id="works-submenu" className={isOpen ? `` : "hidden"}>
-            <a className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-              {t("Works")}
-            </a>
+            <a onClick={() => setIsOpen(!isOpen)}>{t("Works")}</a>
             <Ul className="submenu">
               {albums.map((album) => {
                 return (

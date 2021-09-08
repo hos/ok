@@ -46,6 +46,7 @@ const Container = styled.div`
 
   & a {
     margin: 2px;
+    color: rgb(203, 73, 73);
   }
 
   @media screen and (max-width: 800px) {

@@ -10,6 +10,7 @@ export const Ul = styled.ul`
     padding: 1px;
     color: #000000;
     text-decoration: none;
+    cursor: pointer;
   }
 
   & a:hover {
