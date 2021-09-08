@@ -157,35 +157,6 @@ nav ul {
   font-weight: #444;
 }
 
-.exhibitions {
-  text-align: center;
-  font-size: 12.5px;
-  line-height: 19px;
-}
-
-.exhibitions header:after {
-  content: "";
-  display: block;
-  padding: 20px;
-}
-
-.exhibitions > div {
-  margin: 0 auto;
-  display: inline-block;
-  text-align: left;
-  line-height: 20px;
-}
-
-.exhibitions-text:before {
-  content: " ";
-  display: block;
-  padding: 20px;
-}
-
-.exhibitions img {
-  width: 80%;
-}
-
 .about-text {
   text-align: left;
   max-width: 600px;
