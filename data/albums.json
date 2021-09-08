@@ -1,0 +1,109 @@
+[
+  {
+    "name": "2000-2004",
+    "path": "2000-2004",
+    "default": 3,
+    "images": [
+      "After-Market.jpg",
+      "Cascade.jpg",
+      "Dreaming-Dog.jpg",
+      "Flying-Lovers.jpg",
+      "Hippo.jpg",
+      "Knife-and-Butter.jpg",
+      "Red-Sea-&-Blue-Rope.jpg",
+      "Russian-Breakfast.jpg",
+      "Self-portrait-2003.jpg",
+      "Still-Life.jpg",
+      "Tyres.jpg",
+      "Untitled-1.jpg",
+      "Untitled-2.jpg",
+      "Vardan.jpg",
+      "You.jpg"
+    ]
+  },
+  {
+    "name": "2005-2006 (Real Utopias)",
+    "path": "2005-2006",
+    "default": 0,
+    "images": [
+      "Real-Utopias-1.jpg",
+      "Real-Utopias-2.jpg",
+      "Real-Utopias-3.jpg",
+      "Real-Utopias-4.jpg",
+      "Real-Utopias-5.jpg",
+      "Real-Utopias-6.jpg",
+      "Real-Utopias-7.jpg",
+      "Real-Utopias-8.jpg",
+      "Real-Utopias-9.jpg"
+    ]
+  },
+  {
+    "name": "2007",
+    "path": "2007",
+    "default": 6,
+    "images": [
+      "Rodin.jpg",
+      "Untitled-3.jpg",
+      "Untitled-4.jpg",
+      "Untitled-5.jpg",
+      "Untitled-6.jpg",
+      "Walls-1.jpg",
+      "Walls-2.jpg"
+    ]
+  },
+  {
+    "name": "2008-2009 (Body Investments)",
+    "path": "2008-2009",
+    "default": 0,
+    "images": [
+      "Body-Investments-1.jpg",
+      "Body-Investments-2.jpg",
+      "Body-Investments-3.jpg",
+      "Body-Investments-4.jpg",
+      "Body-Investments-5.jpg"
+    ]
+  },
+  {
+    "name": "2010-2014",
+    "path": "2010-2014",
+    "default": 3,
+    "images": [
+      "Grandmother-Feet.jpg",
+      "Self-portrait-2010.jpg",
+      "The-Origin-of-the-World.jpg",
+      "Untitled-7.jpg"
+    ]
+  },
+  {
+    "name": "2016 (From avant-garde To avant-garde)",
+    "path": "2016",
+    "default": 5,
+    "images": [
+      "After-death-of-a-dictator.jpg",
+      "Case-N.jpg",
+      "Doctor's-final-speech.jpg",
+      "Explosive-on-the-rails-63.jpg",
+      "Flying.jpg",
+      "Form.jpg",
+      "Human-that-rings-(sounds).jpg",
+      "Kilometer.jpg",
+      "Seventh.jpg",
+      "Space-and-Time.jpg",
+      "Statue.jpg",
+      "The-afterword-to-perspective.jpg",
+      "The-Height.jpg",
+      "The-Step.jpg",
+      "To-Fly.jpg"
+    ]
+  },
+  {
+    "name": "2017-2019 (Sevan)",
+    "path": "2017-2019",
+    "default": 0,
+    "images": [
+      "Sevan-1.jpg",
+      "Sevan-2.jpg",
+      "Sevan-3.jpg"
+    ]
+  }
+]
