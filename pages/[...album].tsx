@@ -35,16 +35,21 @@ const useAround = (image: string, album?: typeof albums[0] | null) => {
     if (!album) {
       return [null, null];
     }
-    const idx = album.images.findIndex((img) => img === image + ".jpg");
-    return album.images[idx + 1] || album.images[0];
+    const idx = album.images.findIndex(
+      (img) => img.fileName === image + ".jpg"
+    );
+    return (album.images[idx + 1] || album.images[0]).fileName;
   }, [album, image]);
 
   const previous = useMemo(() => {
     if (!album) {
       return null;
     }
-    const idx = album.images.findIndex((img) => img === image + ".jpg");
-    return album.images[idx - 1] || album.images[album.images.length - 1];
+    const idx = album.images.findIndex(
+      (img) => img.fileName === image + ".jpg"
+    );
+    return (album.images[idx - 1] || album.images[album.images.length - 1])
+      .fileName;
   }, [album, image]);
 
   return [
@@ -57,13 +62,13 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
   const router = useRouter();
   const { t } = useTranslation();
 
-  const [albumName, image] = Array.isArray(router.query.album)
+  const [albumName, imageName] = Array.isArray(router.query.album)
     ? router.query.album
     : [];
 
   const album = albums.find((album) => album.path === albumName);
 
-  const [next, previous] = useAround(image, album);
+  const [next, previous] = useAround(imageName, album);
 
   const karen: Person = {
     "@type": "Person",
@@ -72,13 +77,12 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
 
   const schema: VisualArtwork = {
     "@type": "VisualArtwork",
-    name: t(`images:${image}`),
+    name: t(`images:${imageName}`),
     copyrightHolder: karen,
     artist: karen,
     artform: album?.artform,
   };
 
-  // componentWillMount deprecated in React 16.3
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
@@ -93,11 +97,19 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
     return () => document.removeEventListener("keydown", handle);
   }, [router, previous, next]);
 
+  const image = album?.images.find(
+    (img) => img.fileName === imageName + ".jpg"
+  );
+
+  if (!image) {
+    return null;
+  }
+
   return (
     <CenterView>
       <script type="application/ld+json">{JSON.stringify(schema)}</script>
       <Meta
-        title={`${t("Karen Ohanyan")} - ${t(`images:${image}`)}`}
+        title={`${t("Karen Ohanyan")} - ${t(`images:${image.fileName}`)}`}
         description={t("description")}
       />
       <ImageContainer>
@@ -110,9 +122,11 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
             width="800"
             height="500"
             objectFit="contain"
-            src={`/images/large/${image + ".jpg"}`}
-            alt={t(image)}
+            src={`/images/large/${image.fileName}`}
+            alt={t(image.fileName)}
           />
+          <Title>{t(`images:${image.fileName}`)}</Title>
+          <Desc>{` - ${image.description}`}</Desc>
         </Block>
         <Link href={`${next}`} passHref>
           <Arrow right>{"◁"}</Arrow>
@@ -130,6 +144,15 @@ const Arrow = styled.a<ArrowProps>`
   width: 60px;
   cursor: pointer;
   transform: rotateY(${(props) => (props.right ? "180deg" : "none")});
+`;
+
+const Title = styled.span`
+  font-size: 11px;
+`;
+
+const Desc = styled.span`
+  font-size: 11px;
+  color: #444;
 `;
 
 export default ImagePage;

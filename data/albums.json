@@ -5,21 +5,66 @@
     "default": 3,
     "artform": "Painting",
     "images": [
-      "After-Market.jpg",
-      "Cascade.jpg",
-      "Dreaming-Dog.jpg",
-      "Flying-Lovers.jpg",
-      "Hippo.jpg",
-      "Knife-and-Butter.jpg",
-      "Red-Sea-&-Blue-Rope.jpg",
-      "Russian-Breakfast.jpg",
-      "Self-portrait-2003.jpg",
-      "Still-Life.jpg",
-      "Tyres.jpg",
-      "Untitled-1.jpg",
-      "Untitled-2.jpg",
-      "Vardan.jpg",
-      "You.jpg"
+      {
+        "fileName": "Flying-Lovers.jpg",
+        "description": "184 x 244 cm, oil on canvas"
+      },
+      {
+        "fileName": "Vardan.jpg",
+        "description": "162x200cm acrylic on canvas"
+      },
+      {
+        "fileName": "Still-Life.jpg",
+        "description": "acrylic on canvas, 120x168cm"
+      },
+      {
+        "fileName": "Knife-and-Butter.jpg",
+        "description": "acrylic on canvas, 119x169cm"
+      },
+      {
+        "fileName": "Dreaming-Dog.jpg",
+        "description": "acrylic on canvas, 50x200cm"
+      },
+      {
+        "fileName": "Self-portrait-2003.jpg",
+        "description": "acrylic on canvas, 160x160cm"
+      },
+      {
+        "fileName": "You.jpg",
+        "description": "acrylic on canvas, 150x170cm"
+      },
+      {
+        "fileName": "Cascade.jpg",
+        "description": "acrylic on canvas, 210x175cm"
+      },
+      {
+        "fileName": "After-Market.jpg",
+        "description": "acrylic on canvas, 120x294cm"
+      },
+      {
+        "fileName": "Untitled-1.jpg",
+        "description": "acrylic on canvas, 182x205cm"
+      },
+      {
+        "fileName": "Red-Sea-&-Blue-Rope.jpg",
+        "description": "acrylic on canvas, 142x174cm"
+      },
+      {
+        "fileName": "Tyres.jpg",
+        "description": "acrylic on canvas, 151x176cm"
+      },
+      {
+        "fileName": "Hippo.jpg",
+        "description": "acrylic on canvas, 124x200cm"
+      },
+      {
+        "fileName": "Untitled-2.jpg",
+        "description": "oil on canvas, 180x240cm"
+      },
+      {
+        "fileName": "Russian-Breakfast.jpg",
+        "description": "acrylic on canvas, 140x190cm"
+      }
     ]
   },
   {
@@ -28,15 +73,42 @@
     "default": 0,
     "artform": "Painting",
     "images": [
-      "Real-Utopias-1.jpg",
-      "Real-Utopias-2.jpg",
-      "Real-Utopias-3.jpg",
-      "Real-Utopias-4.jpg",
-      "Real-Utopias-5.jpg",
-      "Real-Utopias-6.jpg",
-      "Real-Utopias-7.jpg",
-      "Real-Utopias-8.jpg",
-      "Real-Utopias-9.jpg"
+      {
+        "fileName": "Real-Utopias-1.jpg",
+        "description": "acrilyc on canvas, 196x245cm"
+      },
+      {
+        "fileName": "Real-Utopias-2.jpg",
+        "description": "acrylic on canvas, 196x296cm"
+      },
+      {
+        "fileName": "Real-Utopias-3.jpg",
+        "description": "acrylic on canvas, 196x296cm"
+      },
+      {
+        "fileName": "Real-Utopias-4.jpg",
+        "description": "acrylic on canvas, 140x340cm"
+      },
+      {
+        "fileName": "Real-Utopias-5.jpg",
+        "description": "acrylic on canvas, 196x296cm"
+      },
+      {
+        "fileName": "Real-Utopias-6.jpg",
+        "description": "acrylic on canvas, 196X245cm"
+      },
+      {
+        "fileName": "Real-Utopias-7.jpg",
+        "description": "acrylic on canvas, 140x340cm"
+      },
+      {
+        "fileName": "Real-Utopias-8.jpg",
+        "description": "acrylic on canvas, 196x296cm"
+      },
+      {
+        "fileName": "Real-Utopias-9.jpg",
+        "description": "acrylic on canvas, 196x296cm"
+      }
     ]
   },
   {
@@ -45,13 +117,34 @@
     "default": 6,
     "artform": "Painting",
     "images": [
-      "Rodin.jpg",
-      "Untitled-3.jpg",
-      "Untitled-4.jpg",
-      "Untitled-5.jpg",
-      "Untitled-6.jpg",
-      "Walls-1.jpg",
-      "Walls-2.jpg"
+      {
+        "fileName": "Walls-1.jpg",
+        "description": "oil on canvas, 196x296cm"
+      },
+      {
+        "fileName": "Walls-2.jpg",
+        "description": "oil on canvas, 296x196cm"
+      },
+      {
+        "fileName": "Rodin.jpg",
+        "description": "oil on canvas, 148x196cm"
+      },
+      {
+        "fileName": "Untitled-3.jpg",
+        "description": "oil on canvas, 148x196cm"
+      },
+      {
+        "fileName": "Untitled-4.jpg",
+        "description": "oil on wood, 160x160cm"
+      },
+      {
+        "fileName": "Untitled-5.jpg",
+        "description": "oil on wood, 160x160cm"
+      },
+      {
+        "fileName": "Untitled-6.jpg",
+        "description": "oil on wood, 160x160cm"
+      }
     ]
   },
   {
@@ -60,11 +153,26 @@
     "default": 0,
     "artform": "Painting",
     "images": [
-      "Body-Investments-1.jpg",
-      "Body-Investments-2.jpg",
-      "Body-Investments-3.jpg",
-      "Body-Investments-4.jpg",
-      "Body-Investments-5.jpg"
+      {
+        "fileName": "Body-Investments-1.jpg",
+        "description": "oil on canvas, 250x200cm"
+      },
+      {
+        "fileName": "Body-Investments-2.jpg",
+        "description": "oil on cavas, 150x200cm"
+      },
+      {
+        "fileName": "Body-Investments-3.jpg",
+        "description": "oil on canvas, 200x300cm"
+      },
+      {
+        "fileName": "Body-Investments-4.jpg",
+        "description": "oil on canvas, 200x300cm"
+      },
+      {
+        "fileName": "Body-Investments-5.jpg",
+        "description": "oil on canvas, 300x200cm"
+      }
     ]
   },
   {
@@ -73,10 +181,22 @@
     "default": 3,
     "artform": "Painting",
     "images": [
-      "Grandmother-Feet.jpg",
-      "Self-portrait-2010.jpg",
-      "The-Origin-of-the-World.jpg",
-      "Untitled-7.jpg"
+      {
+        "fileName": "Untitled-7.jpg",
+        "description": "oil on canvas, 125X80cm"
+      },
+      {
+        "fileName": "Self-portrait-2010.jpg",
+        "description": "oil on canvas, 300x200cm"
+      },
+      {
+        "fileName": "Grandmother-Feet.jpg",
+        "description": "oil on canvas, 200x150cm"
+      },
+      {
+        "fileName": "The-Origin-of-the-World.jpg",
+        "description": "oil on canvas, 125x200cm"
+      }
     ]
   },
   {
@@ -85,21 +205,66 @@
     "default": 5,
     "artform": "Collage",
     "images": [
-      "After-death-of-a-dictator.jpg",
-      "Case-N.jpg",
-      "Doctor's-final-speech.jpg",
-      "Explosive-on-the-rails-63.jpg",
-      "Flying.jpg",
-      "Form.jpg",
-      "Human-that-rings-(sounds).jpg",
-      "Kilometer.jpg",
-      "Seventh.jpg",
-      "Space-and-Time.jpg",
-      "Statue.jpg",
-      "The-afterword-to-perspective.jpg",
-      "The-Height.jpg",
-      "The-Step.jpg",
-      "To-Fly.jpg"
+      {
+        "fileName": "After-death-of-a-dictator.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Case-N.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Doctor's-final-speech.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Explosive-on-the-rails-63.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Flying.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Form.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Human-that-rings-(sounds).jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Kilometer.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Seventh.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Space-and-Time.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "Statue.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "The-afterword-to-perspective.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "The-Height.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "The-Step.jpg",
+        "description": "collage, 50.5x36.5cm"
+      },
+      {
+        "fileName": "To-Fly.jpg",
+        "description": "collage, 50.5x36.5cm"
+      }
     ]
   },
   {
@@ -108,9 +273,18 @@
     "default": 0,
     "artform": "Painting",
     "images": [
-      "Sevan-1.jpg",
-      "Sevan-2.jpg",
-      "Sevan-3.jpg"
+      {
+        "fileName": "Sevan-1.jpg",
+        "description": "oil on canvas, 140x190.5cm"
+      },
+      {
+        "fileName": "Sevan-2.jpg",
+        "description": "oil on canvas, 142x174cm"
+      },
+      {
+        "fileName": "Sevan-3.jpg",
+        "description": "oil on canvas, 146x202cm"
+      }
     ]
   }
 ]
