@@ -12,7 +12,7 @@ interface ImageListProps {
 }
 
 export const ImageList: React.FC<ImageListProps> = () => {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const router = useRouter();
   const [albumName] = Array.isArray(router.query.album)
     ? router.query.album
@@ -35,7 +35,7 @@ export const ImageList: React.FC<ImageListProps> = () => {
                 height="70"
                 objectFit="cover"
                 src={`/images/large/${image}`}
-                alt={i18n.t(image)}
+                alt={t(image)}
               />
             </a>
           </Link>

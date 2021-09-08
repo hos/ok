@@ -16,7 +16,7 @@ interface NavProps {
 }
 
 export const Menu: React.FC<NavProps> = (props) => {
-  const i18n = useTranslation();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const [album, setAlbum] = useState<typeof albums[0]>();
@@ -65,11 +65,11 @@ export const Menu: React.FC<NavProps> = (props) => {
         <br />
         <Ul className="parent-menu">
           <Li>
-            <Link href="/">{i18n.t("Home")}</Link>
+            <Link href="/">{t("Home")}</Link>
           </Li>
           <Li id="works-submenu" className={isOpen ? `` : "hidden"}>
             <a className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-              {i18n.t("Works")}
+              {t("Works")}
             </a>
             <Ul className="submenu">
               {albums.map((album) => {
@@ -81,7 +81,7 @@ export const Menu: React.FC<NavProps> = (props) => {
                       }`}
                       passHref
                     >
-                      <a className={"work"}>{i18n.t(`albums:${album.path}`)}</a>
+                      <a className={"work"}>{t(`albums:${album.path}`)}</a>
                     </Link>
                   </Li>
                 );
@@ -89,16 +89,16 @@ export const Menu: React.FC<NavProps> = (props) => {
             </Ul>
           </Li>
           <Li>
-            <Link href="/articles">{i18n.t("Articles")}</Link>
+            <Link href="/articles">{t("Articles")}</Link>
           </Li>
           <Li>
-            <Link href="/biography">{i18n.t("Biography")}</Link>
+            <Link href="/biography">{t("Biography")}</Link>
           </Li>
           <Li>
-            <Link href="/exhibitions">{i18n.t("Exhibitions")}</Link>
+            <Link href="/exhibitions">{t("Exhibitions")}</Link>
           </Li>
           <Li>
-            <Link href="/contacts">{i18n.t("Contacts")}</Link>
+            <Link href="/contacts">{t("Contacts")}</Link>
           </Li>
         </Ul>
         <ImageList />

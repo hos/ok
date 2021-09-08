@@ -16,13 +16,10 @@ export const getServerSideProps: GetStaticProps = async (ctx) => {
 };
 
 const Home: NextPage = () => {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <CenterView>
-      <Meta
-        title={i18n.t("Karen Ohanyan")}
-        description={i18n.t("description")}
-      />
+      <Meta title={t("Karen Ohanyan")} description={t("description")} />
       <ImageContainer>
         <Image
           layout="responsive"
@@ -30,7 +27,7 @@ const Home: NextPage = () => {
           height="500"
           objectFit="contain"
           src="/images/The-Origin-of-the-World.jpg"
-          alt={i18n.t("The Origin of the World")}
+          alt={t("The Origin of the World")}
         />
       </ImageContainer>
     </CenterView>
