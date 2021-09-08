@@ -38,7 +38,7 @@ export const ImageList: React.FC<ImageListProps> = () => {
                 width="70"
                 height="70"
                 objectFit="cover"
-                src={`/images/large/${image}`}
+                src={`/images/large/${image.fileName}`}
                 alt={t(image.fileName)}
               />
             </a>
