@@ -29,14 +29,14 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
   const router = useRouter();
   const { i18n } = useTranslation();
 
-  const [album, image] = Array.isArray(router.query.album)
+  const [_album, image] = Array.isArray(router.query.album)
     ? router.query.album
     : [];
 
   return (
     <CenterView>
       <Meta
-        title={`${i18n.t("Karen Ohanyan")} - ${i18n.t(album)}`}
+        title={`${i18n.t("Karen Ohanyan")} - ${i18n.t(`images:${image}`)}`}
         description={i18n.t("description")}
       />
       <ImageContainer>

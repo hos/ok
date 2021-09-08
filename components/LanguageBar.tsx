@@ -20,7 +20,12 @@ export const LanguageBar: React.FC<LanguageBarProps> = () => {
     <Container>
       {langs.map((lang) => {
         return (
-          <Link href={`/${lang.path}${router.asPath}`} passHref key={lang.path}>
+          <Link
+            href={router.asPath}
+            locale={lang.path}
+            passHref
+            key={lang.path}
+          >
             <a className="red">{lang.name}</a>
           </Link>
         );
