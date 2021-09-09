@@ -6,6 +6,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Meta } from "../components/Meta";
+import { Title } from "../components/Title";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
@@ -71,11 +72,6 @@ const Text = styled.div`
   padding-top: 40px;
 `;
 
-const Title = styled.p`
-  font-size: 20px;
-  margin-bottom: 40px;
-`;
-
 const Red = styled.span`
   color: rgb(203, 73, 73);
 `;
@@ -89,17 +85,11 @@ const Container = styled.div`
   font-size: 12.5px;
   line-height: 19px;
 
-  > div {
+  & > div {
     margin: 0 auto;
     display: inline-block;
     text-align: left;
     line-height: 20px;
-  }
-
-  -text:before {
-    content: " ";
-    display: block;
-    padding: 20px;
   }
 
   img {
