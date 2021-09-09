@@ -110,6 +110,7 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   text-align: left;
+  min-width: 250px;
   display: inline-block;
   margin-left: 16px;
   z-index: 10;
