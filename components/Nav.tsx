@@ -22,11 +22,21 @@ export const Menu: React.FC<NavProps> = (props) => {
   const [album, setAlbum] = useState<typeof albums[0]>();
   const [isOpen, setIsOpen] = useState(false);
 
-  const openMenu = useCallback(() => {
-    document.querySelector("nav")?.classList.toggle("show-menu");
+  const openMenu = useCallback((value?: boolean) => {
+    if (value !== undefined) {
+      if (value) {
+        document.querySelector("nav")?.classList.add("show-menu");
+      } else {
+        document.querySelector("nav")?.classList.remove("show-menu");
+      }
+    } else {
+      document.querySelector("nav")?.classList.toggle("show-menu");
+    }
   }, []);
 
   useEffect(() => {
+    document.querySelector("nav")?.classList.remove("show-menu");
+
     const matchAlbum = albums.find(
       (album) => album.path === router.query.album?.[0]
     );
@@ -120,28 +130,31 @@ const Nav = styled.nav`
     list-style-type: none;
   }
 
-  .show-menu {
+  &.show-menu {
     background-color: #fff !important;
     left: 0 !important;
     opacity: 1 !important;
   }
 
-  .show-menu:after {
+  &.show-menu:after {
     content: " " !important;
     box-shadow: 0 0 5px #000 !important;
   }
 
   @media screen and (max-width: 800px) {
+    height: 100vh;
     margin-left: 0;
     background-color: transparent;
     transition: all 0.2s;
     position: fixed;
     padding: 30px;
     padding-top: 0;
-    left: -100px;
+    left: -500px;
     bottom: 0;
-    top: 30px;
-    opacity: 0;
+
+    & ${ImageList} {
+      display: none;
+    }
   }
 `;
 

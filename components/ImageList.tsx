@@ -9,9 +9,10 @@ import albums from "../data/albums.json";
 
 interface ImageListProps {
   _?: void;
+  className?: string;
 }
 
-export const ImageList: React.FC<ImageListProps> = () => {
+const _ImageList: React.FC<ImageListProps> = (props) => {
   const { t } = useTranslation();
   const router = useRouter();
   const [albumName] = Array.isArray(router.query.album)
@@ -25,7 +26,7 @@ export const ImageList: React.FC<ImageListProps> = () => {
   }
 
   return (
-    <Container className="image-list">
+    <div className={props.className}>
       {album.images.map((image) => {
         return (
           <Link
@@ -45,11 +46,11 @@ export const ImageList: React.FC<ImageListProps> = () => {
           </Link>
         );
       })}
-    </Container>
+    </div>
   );
 };
 
-const Container = styled.div`
+export const ImageList = styled(_ImageList)`
   display: flex;
   flex-wrap: wrap;
   max-width: 320px;
@@ -62,7 +63,8 @@ const Container = styled.div`
 
   @media screen and (max-width: 800px) {
     max-width: 80%;
-    margin: 0 auto;
+    margin: 20px auto;
     width: 100%;
+    justify-content: center;
   }
 `;

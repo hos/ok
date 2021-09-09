@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { ImageBlock } from "../components/Block";
 import { CenterView } from "../components/CenterView";
 import { ImageContainer } from "../components/ImageContainer";
+import { ImageList } from "../components/ImageList";
 import { Meta } from "../components/Meta";
 import albums from "../data/albums.json";
 
@@ -112,29 +113,40 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
         title={`${t("Karen Ohanyan")} - ${t(`images:${image.fileName}`)}`}
         description={t("description")}
       />
-      <ImageContainer>
-        <Link href={`${previous}`} passHref>
-          <Arrow>{"◁"}</Arrow>
-        </Link>
-        <ImageBlock>
-          <Image
-            layout="responsive"
-            width="800"
-            height="500"
-            objectFit="contain"
-            src={`/images/large/${image.fileName}`}
-            alt={t(image.fileName)}
-          />
-          <Title>{t(`images:${image.fileName}`)}</Title>
-          <Desc>{` - ${image.description}`}</Desc>
-        </ImageBlock>
-        <Link href={`${next}`} passHref>
-          <Arrow right>{"◁"}</Arrow>
-        </Link>
-      </ImageContainer>
+      <Container>
+        <ImageContainer>
+          <Link href={`${previous}`} passHref>
+            <Arrow>{"◁"}</Arrow>
+          </Link>
+          <ImageBlock>
+            <Image
+              layout="responsive"
+              width="800"
+              height="500"
+              objectFit="contain"
+              src={`/images/large/${image.fileName}`}
+              alt={t(image.fileName)}
+            />
+            <Title>{t(`images:${image.fileName}`)}</Title>
+            <Desc>{` - ${image.description}`}</Desc>
+          </ImageBlock>
+          <Link href={`${next}`} passHref>
+            <Arrow right>{"◁"}</Arrow>
+          </Link>
+        </ImageContainer>
+        <ImageList />
+      </Container>
     </CenterView>
   );
 };
+
+const Container = styled.div`
+  @media screen and (min-width: 800px) {
+    & ${ImageList} {
+      display: none;
+    }
+  }
+`;
 
 interface ArrowProps {
   right?: boolean;
@@ -144,6 +156,10 @@ const Arrow = styled.a<ArrowProps>`
   width: 60px;
   cursor: pointer;
   transform: rotateY(${(props) => (props.right ? "180deg" : "none")});
+
+  @media screen and (max-width: 800px) {
+    width: 20px;
+  }
 `;
 
 const Title = styled.span`
