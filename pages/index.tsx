@@ -86,7 +86,11 @@ const Home: NextPage = () => {
 
   return (
     <CenterView>
-      <Meta title={t("Karen Ohanyan")} description={t("description")} />
+      <Meta
+        title={t("Karen Ohanyan")}
+        description={t("description")}
+        imageURL={`/images/The-Origin-of-the-World.jpg`}
+      />
       <ImageContainer>
         <ImageBlock>
           <Image
