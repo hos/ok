@@ -8,13 +8,13 @@ import { CenterView } from "../components/CenterView";
 import { Meta } from "../components/Meta";
 import { Text } from "../components/Text";
 import { Title } from "../components/Title";
-import getMarkdownAsHtml from "../lib/getMarkdown";
+import { getDocument } from "../lib/getDocument";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale || "en", ["meta"])),
-      content: await getMarkdownAsHtml("biography", ctx.locale),
+      content: await getDocument("biography", ctx.locale),
     },
   };
 };
