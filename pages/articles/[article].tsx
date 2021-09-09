@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useMemo } from "react";
+import { Article as ArticleSchema } from "schema-dts";
 import styled from "styled-components";
 
 import { CenterView } from "../../components/CenterView";
@@ -11,7 +12,7 @@ import { PostBody } from "../../components/PostBody";
 import articles from "../../data/articles.json";
 import getDocument from "../../lib/getDocument";
 
-type AlbumName = keyof typeof articles;
+export type AlbumName = keyof typeof articles;
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   // @ts-expect-error
@@ -36,17 +37,29 @@ export const Article: React.FC<ArticleProps> = (props) => {
   const { t } = useTranslation("articles");
   const router = useRouter();
   const article = (router.query.article || "").toString() as AlbumName;
+  const meta = useMemo(() => {
+    return articles[article];
+  }, [article]);
+
   const title = useMemo(() => {
-    const meta = articles[article];
     if (meta.noTitle) {
       return null;
     }
 
     return <RedTitle>{t(`${article}`)}</RedTitle>;
-  }, [t, article]);
+  }, [t, meta, article]);
+
+  const schema: ArticleSchema = {
+    "@type": "NewsArticle",
+    datePublished: `${meta.year}`,
+  };
 
   return (
     <CenterView text>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      ></script>
       <Meta />
       {title}
       <PostBody content={props.content}></PostBody>

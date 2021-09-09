@@ -32,6 +32,7 @@ export const Articles: React.FC<ArticlesProps> = () => {
   return (
     <CenterView text>
       <Meta />
+
       <Container>
         {Object.entries(articles).map(([key, value]) => {
           return (
