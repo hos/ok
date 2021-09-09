@@ -68,7 +68,7 @@ export const Menu: React.FC<NavProps> = (props) => {
 
   return (
     <Container className={props.className}>
-      <Hamburger onClick={openMenu} />
+      <Hamburger onClick={() => openMenu()} />
       <Nav>
         <LanguageBar />
         <Name />
@@ -123,7 +123,7 @@ const Nav = styled.nav`
   min-width: 250px;
   display: inline-block;
   margin-left: 16px;
-  z-index: 10;
+  z-index: 2;
   overflow: visible;
 
   & ul {
@@ -150,6 +150,7 @@ const Nav = styled.nav`
     padding: 30px;
     padding-top: 0;
     left: -500px;
+    top: 30px;
     bottom: 0;
 
     & ${ImageList} {

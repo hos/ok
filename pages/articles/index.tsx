@@ -56,7 +56,7 @@ const RedTitle = styled.h4`
 `;
 
 const Container = styled.div`
-  width: 600px;
+  max-width: 600px;
   padding-bottom: 100px;
   margin: auto;
   ${RedTitle} {
