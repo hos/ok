@@ -110,7 +110,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
       ></script>
       <Meta
         title={`${t("Karen Ohanyan")} - ${t(`images:${image.fileName}`)}`}
-        description={t("description")}
+        description={image.description || t("description")}
         imageURL={`/images/large/${image.fileName}`}
       />
       <Container>
