@@ -10,7 +10,7 @@ export const getMarkdownAsHtml = async (
   let markdown = "";
   const localePath = path.resolve(
     process.cwd(),
-    `./public/locales/${locale || "en"}/${name}.md`
+    `./public/locales/${locale || "en"}/md/${name}.md`
   );
   try {
     markdown = (await fs.readFile(localePath)).toString();
