@@ -15,4 +15,7 @@ As the most influential ideas and sometimes the source of inspiration Karen Ohan
 
 Political Fine art is capable to visualize the uncontrolled and transgressive, the fact, which often remains unseen. Karen Ohanyan explores this distinctive feature of Fine art in his masterly painted canvases.
 
+</br>
+</br>
+
 **Vardan Jaloyan**
