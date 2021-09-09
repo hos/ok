@@ -90,6 +90,7 @@ const Home: NextPage = () => {
         title={t("Karen Ohanyan")}
         description={t("description")}
         imageURL={`/images/The-Origin-of-the-World.jpg`}
+        imageAlt={t(`images:The-Origin-of-the-World.jpg`)}
       />
       <ImageContainer>
         <ImageBlock>

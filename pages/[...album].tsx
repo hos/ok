@@ -112,6 +112,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
         title={`${t("Karen Ohanyan")} - ${t(`images:${image.fileName}`)}`}
         description={image.description || t("description")}
         imageURL={`/images/large/${image.fileName}`}
+        imageAlt={t(`images:${image.fileName}`)}
       />
       <Container>
         <ImageContainer>

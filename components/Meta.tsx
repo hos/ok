@@ -8,6 +8,7 @@ interface MetaProps {
   url?: string;
   type?: "article" | "website";
   imageURL?: string;
+  imageAlt?: string;
 }
 
 export const Meta: React.FC<MetaProps> = (props) => {
@@ -32,6 +33,10 @@ export const Meta: React.FC<MetaProps> = (props) => {
       <meta property="og:description" content={props.description} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={absImage} />
+      <meta
+        property="og:image:alt"
+        content={props.imageAlt || props.description}
+      />
       <meta property="og:type" content={props.type || "website"} />
 
       <link rel="icon" href="/favicon.ico" />
