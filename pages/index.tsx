@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { ImageBlock } from "../components/Block";
 import { CenterView } from "../components/CenterView";
@@ -20,6 +20,7 @@ export const getServerSideProps: GetStaticProps = async (ctx) => {
 const Home: NextPage = () => {
   const { t } = useTranslation();
   const [img, setImg] = useState<HTMLImageElement | null>(null);
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const _img = document.querySelector(
@@ -28,24 +29,38 @@ const Home: NextPage = () => {
     setImg(_img);
   }, [setImg]);
 
-  useEffect(() => {
-    if (!img) {
-      return;
-    }
+  const addFilter = useCallback(
+    (transition: number = 2) => {
+      if (!img) {
+        return null;
+      }
+      img.style.transition = `${transition}s`;
+      img.style.filter = "invert(100%)";
+    },
+    [img]
+  );
 
+  const removeFilter = useCallback(
+    (transition: number = 2) => {
+      if (!img) {
+        return null;
+      }
+      img.style.transition = `${transition}s`;
+      img.style.filter = "none";
+    },
+    [img]
+  );
+
+  useEffect(() => {
     const onDown = (e: KeyboardEvent) => {
       if (e.key.toLowerCase() === "o") {
-        if (!img) {
-          return null;
-        }
-        img.style.transition = "2s";
-        img.style.filter = "invert(100%)";
+        addFilter();
       }
     };
 
     const onUp = (e: KeyboardEvent) => {
       if (e.key.toLowerCase() === "o") {
-        img.style.filter = "none";
+        removeFilter();
       }
     };
 
@@ -56,7 +71,18 @@ const Home: NextPage = () => {
       document.removeEventListener("keydown", onDown);
       document.removeEventListener("keyup", onUp);
     };
-  }, [img]);
+  }, [addFilter, removeFilter]);
+
+  useEffect(() => {
+    if (counter === 10) {
+      addFilter(5);
+    }
+
+    if (counter > 10) {
+      setCounter(0);
+      removeFilter(1);
+    }
+  }, [counter, setCounter, addFilter, removeFilter]);
 
   return (
     <CenterView>
@@ -64,6 +90,7 @@ const Home: NextPage = () => {
       <ImageContainer>
         <ImageBlock>
           <Image
+            onClick={() => setCounter((val) => val + 1)}
             layout="responsive"
             width="800"
             height="500"
