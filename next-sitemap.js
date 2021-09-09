@@ -25,22 +25,22 @@ module.exports = {
           }),
         });
       }
+    }
 
-      for (const [key] of Object.entries(articles)) {
-        result.push({
-          loc: `/articles/${key}`,
-          changefreq: "yearly",
-          priority: 0.7,
-          lastmod: new Date().toISOString(),
-          alternateRefs: i18n.locales.map((locale) => {
-            return {
-              href: `${config.siteUrl}/${locale}`,
-              hreflang: locale,
-              loc: `/articles/${key}`,
-            };
-          }),
-        });
-      }
+    for (const [key] of Object.entries(articles)) {
+      result.push({
+        loc: `/articles/${key}`,
+        changefreq: "yearly",
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+        alternateRefs: i18n.locales.map((locale) => {
+          return {
+            href: `${config.siteUrl}/${locale}`,
+            hreflang: locale,
+            loc: `/articles/${key}`,
+          };
+        }),
+      });
     }
 
     return result;
