@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect, useMemo } from "react";
-import { Person, VisualArtwork } from "schema-dts";
+import { VisualArtwork } from "schema-dts";
 import styled from "styled-components";
 
 import { ImageBlock } from "../components/Block";
@@ -14,6 +14,7 @@ import { ImageContainer } from "../components/ImageContainer";
 import { ImageList } from "../components/ImageList";
 import { Meta } from "../components/Meta";
 import albums from "../data/albums.json";
+import { useLD } from "../lib/ld";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
@@ -62,7 +63,7 @@ const useAround = (image: string, album?: typeof albums[0] | null) => {
 export const ImagePage: React.FC<ImagePageProps> = () => {
   const router = useRouter();
   const { t } = useTranslation();
-
+  const { karen } = useLD();
   const [albumName, imageName] = Array.isArray(router.query.album)
     ? router.query.album
     : [];
@@ -70,11 +71,6 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
   const album = albums.find((album) => album.path === albumName);
 
   const [next, previous] = useAround(imageName, album);
-
-  const karen: Person = {
-    "@type": "Person",
-    name: t("Karen Ohanyan") || "Karen Ohanyan",
-  };
 
   const schema: VisualArtwork = {
     "@type": "VisualArtwork",
