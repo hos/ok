@@ -1,34 +1,47 @@
 import { GetStaticProps } from "next";
+import Image from "next/image";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
-import styled from "styled-components";
 
+import { CenterView } from "../components/CenterView";
 import { Meta } from "../components/Meta";
+import { Text } from "../components/Text";
+import { Title } from "../components/Title";
+import getMarkdownAsHtml from "../lib/getMarkdown";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale || "en", [
-        "images",
-        "meta",
-        "albums",
-      ])),
+      ...(await serverSideTranslations(ctx.locale || "en", ["meta"])),
+      content: await getMarkdownAsHtml("biography", ctx.locale),
     },
   };
 };
 
 interface BiographyProps {
   _?: void;
+  content: string;
 }
 
-export const Biography: React.FC<BiographyProps> = () => {
+export const Biography: React.FC<BiographyProps> = (props) => {
+  const { t } = useTranslation();
   return (
-    <Container>
+    <CenterView text>
       <Meta />
-    </Container>
+      <Title>{t("Biography")}</Title>
+      <Image
+        src="/images/Karen-Ohanyan.jpg"
+        alt="Exhibitions"
+        width="481"
+        height="393"
+        objectFit="contain"
+        objectPosition="left"
+      />
+
+      <Text dangerouslySetInnerHTML={{ __html: props.content }}></Text>
+    </CenterView>
   );
 };
-
-const Container = styled.div``;
 
 export default Biography;

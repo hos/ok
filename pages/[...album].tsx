@@ -8,7 +8,7 @@ import React, { useEffect, useMemo } from "react";
 import { Person, VisualArtwork } from "schema-dts";
 import styled from "styled-components";
 
-import { Block } from "../components/Block";
+import { ImageBlock } from "../components/Block";
 import { CenterView } from "../components/CenterView";
 import { ImageContainer } from "../components/ImageContainer";
 import { Meta } from "../components/Meta";
@@ -116,7 +116,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
         <Link href={`${previous}`} passHref>
           <Arrow>{"◁"}</Arrow>
         </Link>
-        <Block>
+        <ImageBlock>
           <Image
             layout="responsive"
             width="800"
@@ -127,7 +127,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
           />
           <Title>{t(`images:${image.fileName}`)}</Title>
           <Desc>{` - ${image.description}`}</Desc>
-        </Block>
+        </ImageBlock>
         <Link href={`${next}`} passHref>
           <Arrow right>{"◁"}</Arrow>
         </Link>

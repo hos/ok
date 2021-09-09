@@ -3,17 +3,13 @@ import styled from "styled-components";
 
 interface CenterViewProps {
   _?: void;
+  text?: boolean;
 }
 
 export const CenterView: React.FC<CenterViewProps> = styled.div<CenterViewProps>`
-  display: inline-flex;
-  width: 100%;
-  text-align: center;
-  align-items: center;
-
-  & .article {
-    text-align: center;
-    margin: 0 auto;
-    width: 70%;
-  }
+  display: flex;
+  flex-direction: column;
+  width: ${(props) => (props.text ? "800px" : "90%")};
+  margin: 0 auto;
+  justify-content: flex-start;
 `;

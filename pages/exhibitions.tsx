@@ -5,7 +5,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import styled from "styled-components";
 
+import { CenterView } from "../components/CenterView";
 import { Meta } from "../components/Meta";
+import { Text } from "../components/Text";
 import { Title } from "../components/Title";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
@@ -24,10 +26,15 @@ interface ExhibitionsProps {
   _?: void;
 }
 
+const ExText = styled(Text)`
+  font-size: 12.5px;
+  line-height: 19px;
+`;
+
 export const Exhibitions: React.FC<ExhibitionsProps> = () => {
   const { t } = useTranslation();
   return (
-    <Container>
+    <CenterView text>
       <Meta />
       <Title>Solo Exhibitions</Title>
       <Image
@@ -38,7 +45,7 @@ export const Exhibitions: React.FC<ExhibitionsProps> = () => {
         objectFit="contain"
         objectPosition="left"
       />
-      <Text>
+      <ExText>
         <Red> 2021 - </Red>
         <span>
           {t('"Sevan" Cafesjian Center for the Arts (Yerevan, Armenia)')}
@@ -63,38 +70,13 @@ export const Exhibitions: React.FC<ExhibitionsProps> = () => {
             "Karen Ohanyan took part in many collective exhibitions, as well."
           )}
         </span>
-      </Text>
-    </Container>
+      </ExText>
+    </CenterView>
   );
 };
 
-const Text = styled.div`
-  padding-top: 40px;
-`;
-
 const Red = styled.span`
   color: rgb(203, 73, 73);
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: auto;
-  text-align: left;
-  font-size: 12.5px;
-  line-height: 19px;
-
-  & > div {
-    margin: 0 auto;
-    display: inline-block;
-    text-align: left;
-    line-height: 20px;
-  }
-
-  img {
-    width: 80%;
-  }
 `;
 
 export default Exhibitions;
