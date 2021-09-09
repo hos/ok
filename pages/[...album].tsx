@@ -108,7 +108,10 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
 
   return (
     <CenterView>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      ></script>
       <Meta
         title={`${t("Karen Ohanyan")} - ${t(`images:${image.fileName}`)}`}
         description={t("description")}
