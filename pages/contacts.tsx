@@ -46,6 +46,7 @@ const Container = styled.div`
   & a {
     font-size: 16px;
     font-weight: 500;
+    margin: 10px;
   }
 `;
 
