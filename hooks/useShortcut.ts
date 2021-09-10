@@ -5,12 +5,20 @@ interface IUseShortcutProps {
   selector: string;
   styleDown: CSSProperties;
   styleUp: CSSProperties;
+  bodyClass?: string;
   key: string;
   clickCount?: number;
 }
 
 export const useShortcut = (props: IUseShortcutProps) => {
-  const { selector, styleDown, styleUp, key, clickCount = 5 } = props;
+  const {
+    selector,
+    styleDown,
+    styleUp,
+    key,
+    clickCount = 5,
+    bodyClass,
+  } = props;
   const [elements, setElements] = useState<HTMLElement[]>([]);
   const [counter, setCounter] = useState(0);
 
@@ -25,11 +33,13 @@ export const useShortcut = (props: IUseShortcutProps) => {
     if (!elements) {
       return null;
     }
-
     for (const element of elements) {
       Object.assign(element.style, styleDown);
     }
-  }, [elements, styleDown]);
+    if (bodyClass) {
+      document.querySelector("body")?.classList.add(bodyClass);
+    }
+  }, [bodyClass, elements, styleDown]);
 
   const removeFilter = useCallback(() => {
     if (!elements) {
@@ -38,7 +48,10 @@ export const useShortcut = (props: IUseShortcutProps) => {
     for (const element of elements) {
       Object.assign(element.style, styleUp);
     }
-  }, [elements, styleUp]);
+    if (bodyClass) {
+      document.querySelector("body")?.classList.remove(bodyClass);
+    }
+  }, [bodyClass, elements, styleUp]);
 
   useEffect(() => {
     const onDown = (e: KeyboardEvent) => {
