@@ -92,7 +92,8 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
         imageURL={`/images/large/${image.fileName}`}
         imageAlt={t(`images:${image.fileName}`)}
       />
-      <Container>
+      {/* className "album" can be used with shortcuts */}
+      <Container className="album">
         <ImageContainer>
           <Link href={`${previous}`} passHref>
             <Arrow>{"◁"}</Arrow>
