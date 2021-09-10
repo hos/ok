@@ -1,2 +1,2 @@
-release: yarn build && yarn postbuild
+release: yarn postbuild
 web: yarn start
