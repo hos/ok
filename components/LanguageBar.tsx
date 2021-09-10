@@ -50,6 +50,6 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 800px) {
-    margin: 20px;
+    margin: 20px 0;
   }
 `;

@@ -34,7 +34,7 @@ const Container = styled.div`
 
   @media screen and (max-width: 800px) {
     & h1 {
-      margin: 20px;
+      margin: 20px 0;
     }
   }
 `;

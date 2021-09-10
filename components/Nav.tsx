@@ -28,12 +28,12 @@ export const Menu: React.FC<NavProps> = (props) => {
   const openMenu = useCallback((value?: boolean) => {
     if (value !== undefined) {
       if (value) {
-        document.querySelector("nav")?.classList.add("show-menu");
+        document.querySelector("body")?.classList.add("show-menu");
       } else {
-        document.querySelector("nav")?.classList.remove("show-menu");
+        document.querySelector("body")?.classList.remove("show-menu");
       }
     } else {
-      document.querySelector("nav")?.classList.toggle("show-menu");
+      document.querySelector("body")?.classList.toggle("show-menu");
     }
   }, []);
 
@@ -52,7 +52,7 @@ export const Menu: React.FC<NavProps> = (props) => {
   }, [router, previous, next]);
 
   useEffect(() => {
-    document.querySelector("nav")?.classList.remove("show-menu");
+    document.querySelector("body")?.classList.remove("show-menu");
 
     const matchAlbum = albums.find(
       (album) => album.path === router.query.album?.[0]
@@ -87,6 +87,9 @@ export const Menu: React.FC<NavProps> = (props) => {
     <Container className={props.className}>
       <Hamburger onClick={() => openMenu()} />
       <Nav>
+        <div>
+          <Hamburger onClick={() => openMenu()} />
+        </div>
         <LanguageBar />
         <Name />
         <br />
@@ -133,6 +136,14 @@ export const Menu: React.FC<NavProps> = (props) => {
   );
 };
 
+const Container = styled.div`
+  flex-grow: 1;
+
+  @media screen and (max-width: 800px) {
+    position: absolute;
+  }
+`;
+
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
@@ -147,13 +158,13 @@ const Nav = styled.nav`
     list-style-type: none;
   }
 
-  &.show-menu {
-    background-color: #fff !important;
-    left: 0 !important;
-    opacity: 1 !important;
+  .show-menu & {
+    background-color: #fff;
+    left: 0;
+    border-right: 0.5px solid #eee;
   }
 
-  &.show-menu:after {
+  .show-menu &:after {
     content: " " !important;
     box-shadow: 0 0 5px #000 !important;
   }
@@ -167,20 +178,15 @@ const Nav = styled.nav`
     padding: 30px;
     padding-top: 0;
     left: -500px;
-    top: 30px;
     bottom: 0;
 
     & ${ImageList} {
       display: none;
       position: absolute;
     }
-  }
-`;
 
-const Container = styled.div`
-  flex-grow: 1;
-
-  @media screen and (max-width: 800px) {
-    position: absolute;
+    ${Hamburger} {
+      margin-left: 0;
+    }
   }
 `;

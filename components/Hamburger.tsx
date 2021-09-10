@@ -2,28 +2,25 @@ import React from "react";
 import styled from "styled-components";
 
 interface HamburgerProps {
+  className?: string;
   onClick?: (_val: any) => void;
 }
 
-export const Hamburger: React.FC<HamburgerProps> = (props) => {
+export const _Hamburger: React.FC<HamburgerProps> = (props) => {
   return (
-    <Span onClick={props.onClick}>
+    <span className={props.className} onClick={props.onClick}>
       <hr />
       <hr />
       <hr />
-    </Span>
+    </span>
   );
 };
 
-const Span = styled.span`
-  & {
-    background-color: #fff;
-    width: 30px;
-    height: 30px;
-    float: right;
-    margin: 15px;
-    display: none;
-  }
+export const Hamburger = styled(_Hamburger)`
+  background-color: #fff;
+  width: 30px;
+  margin: 30px;
+  display: none;
 
   & > hr {
     margin-top: 2px;
@@ -34,6 +31,5 @@ const Span = styled.span`
 
   @media screen and (max-width: 800px) {
     display: inline-block;
-    float: left;
   }
 `;
