@@ -172,6 +172,7 @@ const Nav = styled.nav`
 
     & ${ImageList} {
       display: none;
+      position: absolute;
     }
   }
 `;
