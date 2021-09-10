@@ -3,8 +3,8 @@ import { CSSProperties } from "styled-components";
 
 interface IUseShortcutProps {
   selector: string;
-  styleDown: CSSProperties;
-  styleUp: CSSProperties;
+  styleDown?: CSSProperties;
+  styleUp?: CSSProperties;
   bodyClass?: string;
   key: string;
   clickCount?: number;
@@ -112,5 +112,12 @@ export const Shortcuts: IUseShortcutProps[] = [
       transform: `none`,
     },
     key: "r",
+  },
+  {
+    selector: `body`,
+    styleDown: {},
+    styleUp: {},
+    bodyClass: "focus",
+    key: "z",
   },
 ];
