@@ -45,7 +45,6 @@ export const Menu: React.FC<NavProps> = (props) => {
 
   return (
     <Container className={props.className}>
-      <Hamburger onClick={() => toggleMenu()} />
       <Nav>
         <div>
           <Hamburger onClick={() => toggleMenu()} />
@@ -119,9 +118,11 @@ const Nav = styled.nav`
   }
 
   .show-menu & {
-    background-color: #fff;
     left: 0;
+    max-width: 400px;
+    background-color: #fff;
     border-right: 0.5px solid #eee;
+    box-shadow: 10px 10px 200px #333;
   }
 
   .show-menu &:after {
@@ -143,10 +144,6 @@ const Nav = styled.nav`
     & ${ImageList} {
       display: none;
       position: absolute;
-    }
-
-    ${Hamburger} {
-      margin-left: 0;
     }
   }
 `;
