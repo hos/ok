@@ -112,6 +112,7 @@ export const Shortcuts: IUseShortcutProps[] = [
       transform: `none`,
     },
     key: "r",
+    clickCount: 10,
   },
   {
     selector: `body`,
