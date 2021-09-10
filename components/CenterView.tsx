@@ -9,7 +9,7 @@ interface CenterViewProps {
 export const CenterView: React.FC<CenterViewProps> = styled.div<CenterViewProps>`
   display: flex;
   flex-direction: column;
-  width: ${(props) => (props.text ? "90%" : "100%")};
+  width: 100%;
   max-width: ${(props) => (props.text ? "800px" : "100%")};
   margin: 0 auto;
   justify-content: flex-start;
