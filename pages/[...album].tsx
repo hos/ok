@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { VisualArtwork } from "schema-dts";
 import styled from "styled-components";
 
@@ -14,6 +14,7 @@ import { ImageContainer } from "../components/ImageContainer";
 import { ImageList } from "../components/ImageList";
 import { Meta } from "../components/Meta";
 import albums from "../data/albums.json";
+import { useAlbumNav } from "../hooks/useAlbumNav";
 import { useLD } from "../lib/ld";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
@@ -32,34 +33,6 @@ interface ImagePageProps {
   _?: void;
 }
 
-const useAround = (image: string, album?: typeof albums[0] | null) => {
-  const next = useMemo(() => {
-    if (!album) {
-      return [null, null];
-    }
-    const idx = album.images.findIndex(
-      (img) => img.fileName === image + ".jpg"
-    );
-    return (album.images[idx + 1] || album.images[0]).fileName;
-  }, [album, image]);
-
-  const previous = useMemo(() => {
-    if (!album) {
-      return null;
-    }
-    const idx = album.images.findIndex(
-      (img) => img.fileName === image + ".jpg"
-    );
-    return (album.images[idx - 1] || album.images[album.images.length - 1])
-      .fileName;
-  }, [album, image]);
-
-  return [
-    `/${album?.path}/${(next + "").replace(".jpg", "")}`,
-    `/${album?.path}/${(previous + "").replace(".jpg", "")}`,
-  ];
-};
-
 export const ImagePage: React.FC<ImagePageProps> = () => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -70,7 +43,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
 
   const album = albums.find((album) => album.path === albumName);
 
-  const [next, previous] = useAround(imageName, album);
+  const [next, previous] = useAlbumNav(imageName, album);
 
   const schema: VisualArtwork = {
     "@type": "VisualArtwork",
