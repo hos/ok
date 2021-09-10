@@ -137,10 +137,10 @@ const Nav = styled.nav`
     transition: all 0.2s;
     position: fixed;
     padding: 30px;
-    padding-top: 0;
+    padding-top: 20px;
     left: -500px;
     bottom: 0;
-
+    top: 0;
     & ${ImageList} {
       display: none;
       position: absolute;
