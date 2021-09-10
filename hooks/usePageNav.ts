@@ -60,7 +60,7 @@ export const usePageNav = () => {
   }, [routes, current, normalize]);
 
   const previous = useMemo(() => {
-    return normalize(routes[current - 1] || routes.at(-1) || "/");
+    return normalize(routes[current - 1] || routes[routes.length - 1] || "/");
   }, [routes, current, normalize]);
 
   return [next, previous];
