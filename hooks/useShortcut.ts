@@ -19,18 +19,13 @@ export const useShortcut = (props: IUseShortcutProps) => {
     clickCount = 5,
     bodyClass,
   } = props;
-  const [elements, setElements] = useState<HTMLElement[]>([]);
   const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-    const _elements = Array.from(
+  const addFilter = useCallback(() => {
+    const elements = Array.from(
       document.querySelectorAll(selector)
     ) as HTMLElement[];
-    setElements(_elements);
-  }, [setElements, selector]);
-
-  const addFilter = useCallback(() => {
-    if (!elements) {
+    if (!elements?.length) {
       return null;
     }
     for (const element of elements) {
@@ -39,9 +34,12 @@ export const useShortcut = (props: IUseShortcutProps) => {
     if (bodyClass) {
       document.querySelector("body")?.classList.add(bodyClass);
     }
-  }, [bodyClass, elements, styleDown]);
+  }, [bodyClass, selector, styleDown]);
 
   const removeFilter = useCallback(() => {
+    const elements = Array.from(
+      document.querySelectorAll(selector)
+    ) as HTMLElement[];
     if (!elements) {
       return null;
     }
@@ -51,16 +49,22 @@ export const useShortcut = (props: IUseShortcutProps) => {
     if (bodyClass) {
       document.querySelector("body")?.classList.remove(bodyClass);
     }
-  }, [bodyClass, elements, styleUp]);
+  }, [bodyClass, selector, styleUp]);
 
   useEffect(() => {
     const onDown = (e: KeyboardEvent) => {
+      if (e.repeat) {
+        return;
+      }
       if (e.key === key) {
         addFilter();
       }
     };
 
     const onUp = (e: KeyboardEvent) => {
+      if (e.repeat) {
+        return;
+      }
       if (e.key === key) {
         removeFilter();
       }
@@ -87,6 +91,10 @@ export const useShortcut = (props: IUseShortcutProps) => {
   }, [counter, setCounter, addFilter, removeFilter, clickCount]);
 
   useEffect(() => {
+    const elements = Array.from(
+      document.querySelectorAll(selector)
+    ) as HTMLElement[];
+
     const add = () => setCounter((c) => c + 1);
 
     for (const element of elements) {
@@ -98,12 +106,12 @@ export const useShortcut = (props: IUseShortcutProps) => {
         element?.removeEventListener("click", add);
       }
     };
-  }, [elements]);
+  }, [selector]);
 };
 
 export const Shortcuts: IUseShortcutProps[] = [
   {
-    selector: `img[alt^="Sevan"]`,
+    selector: `.album img[alt^="Sevan"]`,
     styleDown: {
       transition: "0.3s",
       transform: `rotateZ(180deg)`,

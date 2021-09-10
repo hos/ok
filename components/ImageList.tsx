@@ -26,7 +26,7 @@ const _ImageList: React.FC<ImageListProps> = (props) => {
   }
 
   return (
-    <div className={props.className}>
+    <div className={`list ${props.className}`}>
       {album.images.map((image) => {
         return (
           <Link
