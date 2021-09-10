@@ -18,8 +18,6 @@ import { useAlbumNav } from "../hooks/useAlbumNav";
 import { Shortcuts, useShortcut } from "../hooks/useShortcut";
 import { useLD } from "../lib/ld";
 
-export const config = { amp: "hybrid" };
-
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
     props: {
