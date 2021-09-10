@@ -14,6 +14,7 @@ export const getServerSideProps: GetStaticProps = async (ctx) => {
     props: {
       ...(await serverSideTranslations(ctx.locale || "en", [
         "meta",
+        "albums",
         "articles",
         "articles-desc",
       ])),

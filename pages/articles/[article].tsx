@@ -22,6 +22,7 @@ export const getServerSideProps: GetStaticProps = async (ctx) => {
       ...(await serverSideTranslations(ctx.locale || "en", [
         "meta",
         "articles",
+        "albums",
       ])),
       content: await getDocument(article, ctx.locale),
     },
