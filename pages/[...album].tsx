@@ -61,10 +61,10 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
-        router.push(previous);
+        router.push(previous, undefined, { shallow: true });
       }
       if (e.key === "ArrowRight") {
-        router.push(next);
+        router.push(next, undefined, { shallow: true });
       }
     };
     document.addEventListener("keydown", handle);
@@ -95,7 +95,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
       {/* className "album" can be used with shortcuts */}
       <Container className="album">
         <ImageContainer>
-          <Link href={`${previous}`} passHref>
+          <Link href={`${previous}`} passHref shallow>
             <Arrow>{"◁"}</Arrow>
           </Link>
           <ImageBlock>
@@ -110,7 +110,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
             <Title>{t(`images:${image.fileName}`)}</Title>
             <Desc>{` - ${image.description}`}</Desc>
           </ImageBlock>
-          <Link href={`${next}`} passHref>
+          <Link href={`${next}`} passHref shallow>
             <Arrow right>{"◁"}</Arrow>
           </Link>
         </ImageContainer>
