@@ -92,7 +92,8 @@ export const Shortcuts: IUseShortcutProps[] = [
   {
     selector: `img[alt^="Sevan"]`,
     styleDown: {
-      transform: `rotateX(180deg)`,
+      transition: "0.3s",
+      transform: `rotateZ(180deg)`,
     },
     styleUp: {
       transform: `none`,
