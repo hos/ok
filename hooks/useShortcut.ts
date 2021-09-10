@@ -6,31 +6,39 @@ interface IUseShortcutProps {
   styleDown: CSSProperties;
   styleUp: CSSProperties;
   key: string;
+  clickCount?: number;
 }
 
 export const useShortcut = (props: IUseShortcutProps) => {
-  const { selector, styleDown, styleUp, key } = props;
-  const [element, setElement] = useState<HTMLImageElement | null>(null);
+  const { selector, styleDown, styleUp, key, clickCount = 5 } = props;
+  const [elements, setElements] = useState<HTMLElement[]>([]);
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    const _element = document.querySelector(selector) as HTMLImageElement;
-    setElement(_element);
-  }, [setElement, selector]);
+    const _elements = Array.from(
+      document.querySelectorAll(selector)
+    ) as HTMLElement[];
+    setElements(_elements);
+  }, [setElements, selector]);
 
   const addFilter = useCallback(() => {
-    if (!element) {
+    if (!elements) {
       return null;
     }
-    Object.assign(element.style, styleDown);
-  }, [element, styleDown]);
+
+    for (const element of elements) {
+      Object.assign(element.style, styleDown);
+    }
+  }, [elements, styleDown]);
 
   const removeFilter = useCallback(() => {
-    if (!element) {
+    if (!elements) {
       return null;
     }
-    Object.assign(element.style, styleUp);
-  }, [element, styleUp]);
+    for (const element of elements) {
+      Object.assign(element.style, styleUp);
+    }
+  }, [elements, styleUp]);
 
   useEffect(() => {
     const onDown = (e: KeyboardEvent) => {
@@ -55,20 +63,40 @@ export const useShortcut = (props: IUseShortcutProps) => {
   }, [addFilter, removeFilter, key]);
 
   useEffect(() => {
-    if (counter === 10) {
+    if (counter === clickCount) {
       addFilter();
     }
 
-    if (counter > 10) {
+    if (counter > clickCount) {
       setCounter(0);
       removeFilter();
     }
-  }, [counter, setCounter, addFilter, removeFilter]);
+  }, [counter, setCounter, addFilter, removeFilter, clickCount]);
 
   useEffect(() => {
     const add = () => setCounter((c) => c + 1);
-    element?.addEventListener("click", add);
 
-    return () => element?.removeEventListener("click", add);
-  }, [element]);
+    for (const element of elements) {
+      element?.addEventListener("click", add);
+    }
+
+    return () => {
+      for (const element of elements) {
+        element?.removeEventListener("click", add);
+      }
+    };
+  }, [elements]);
 };
+
+export const Shortcuts: IUseShortcutProps[] = [
+  {
+    selector: `img[alt^="Sevan"]`,
+    styleDown: {
+      transform: `rotateX(180deg)`,
+    },
+    styleUp: {
+      transform: `none`,
+    },
+    key: "r",
+  },
+];
