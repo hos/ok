@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import albums from "../data/albums.json";
+import { usePageNav } from "../hooks/usePageNav";
 import { Hamburger } from "./Hamburger";
 import { ImageList } from "./ImageList";
 import { LanguageBar } from "./LanguageBar";
@@ -22,6 +23,8 @@ export const Menu: React.FC<NavProps> = (props) => {
   const [album, setAlbum] = useState<typeof albums[0]>();
   const [isOpen, setIsOpen] = useState(false);
 
+  const [next, previous] = usePageNav();
+
   const openMenu = useCallback((value?: boolean) => {
     if (value !== undefined) {
       if (value) {
@@ -33,6 +36,20 @@ export const Menu: React.FC<NavProps> = (props) => {
       document.querySelector("nav")?.classList.toggle("show-menu");
     }
   }, []);
+
+  useEffect(() => {
+    const handle = (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp") {
+        router.push(previous);
+      }
+      if (e.key === "ArrowDown") {
+        router.push(next);
+      }
+    };
+    document.addEventListener("keydown", handle);
+
+    return () => document.removeEventListener("keydown", handle);
+  }, [router, previous, next]);
 
   useEffect(() => {
     document.querySelector("nav")?.classList.remove("show-menu");
