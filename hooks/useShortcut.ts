@@ -10,7 +10,13 @@ interface IUseShortcutProps {
   clickCount?: number;
 }
 
-export const useShortcut = (props: IUseShortcutProps) => {
+export const useShortcut = () => {
+  for (const short of Shortcuts) {
+    useShortcutSingle(short); // eslint-disable-line
+  }
+};
+
+export const useShortcutSingle = (props: IUseShortcutProps) => {
   const {
     selector,
     styleDown,
@@ -121,6 +127,18 @@ export const Shortcuts: IUseShortcutProps[] = [
     },
     key: "r",
     clickCount: 10,
+  },
+  {
+    selector: 'img[alt="The Origin of the World"]',
+    key: "o",
+    styleDown: {
+      transition: `2s`,
+      filter: "invert(100%)",
+    },
+    styleUp: {
+      transition: `2s`,
+      filter: "none",
+    },
   },
   {
     selector: `body`,

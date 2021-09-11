@@ -15,7 +15,7 @@ import { ImageList } from "../components/ImageList";
 import { Meta } from "../components/Meta";
 import albums from "../data/albums.json";
 import { useAlbumNav } from "../hooks/useAlbumNav";
-import { Shortcuts, useShortcut } from "../hooks/useShortcut";
+import { useShortcut } from "../hooks/useShortcut";
 import { useLD } from "../lib/ld";
 
 export const getServerSideProps: GetStaticProps = async (ctx) => {
@@ -54,9 +54,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
     artform: album?.artform,
   };
 
-  for (const short of Shortcuts) {
-    useShortcut(short); // eslint-disable-line
-  }
+  useShortcut();
 
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
@@ -105,7 +103,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
               height="500"
               objectFit="contain"
               src={`/images/large/${image.fileName}`}
-              alt={t(image.fileName)}
+              alt={t(`images:${image.fileName}`)}
             />
             <Title>{t(`images:${image.fileName}`)}</Title>
             <Desc>{` - ${image.description}`}</Desc>

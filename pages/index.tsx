@@ -20,18 +20,7 @@ export const getServerSideProps: GetStaticProps = async (ctx) => {
 const Home: NextPage = () => {
   const { t } = useTranslation();
 
-  useShortcut({
-    selector: 'img[alt="The Origin of the World"]',
-    key: "o",
-    styleDown: {
-      transition: `2s`,
-      filter: "invert(100%)",
-    },
-    styleUp: {
-      transition: `2s`,
-      filter: "none",
-    },
-  });
+  useShortcut();
 
   return (
     <CenterView>
