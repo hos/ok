@@ -13,7 +13,11 @@ import { getDocument } from "../lib/getDocument";
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale || "en", ["meta"])),
+      ...(await serverSideTranslations(ctx.locale || "en", [
+        "meta",
+        "albums",
+        "images",
+      ])),
       content: await getDocument("biography", ctx.locale),
     },
   };
