@@ -50,7 +50,7 @@ export default class MyDocument extends Document {
           />
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${"GTM-54H7TP7"}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${"GTM-PXMSHCX"}`}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -58,7 +58,7 @@ export default class MyDocument extends Document {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', '${"GTM-54H7TP7"}', {
+        gtag('config', '${"GTM-PXMSHCX"}', {
           page_path: window.location.pathname,
         });
       `,
@@ -68,7 +68,7 @@ export default class MyDocument extends Document {
         <body>
           <noscript>
             <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-54H7TP7"
+              src="https://www.googletagmanager.com/ns.html?id=GTM-PXMSHCX"
               height="0"
               width="0"
               style={{ display: "none", visibility: "hidden" }}
