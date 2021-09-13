@@ -12,7 +12,11 @@ import { useShortcut } from "../hooks/useShortcut";
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale || "en", ["meta", "albums"])),
+      ...(await serverSideTranslations(ctx.locale || "en", [
+        "meta",
+        "albums",
+        "images",
+      ])),
     },
   };
 };
@@ -38,7 +42,7 @@ const Home: NextPage = () => {
             height="500"
             objectFit="contain"
             src="/images/The-Origin-of-the-World.jpg"
-            alt={t("The Origin of the World")}
+            alt={t("images:The-Origin-of-the-World.jpg")}
           />
         </ImageBlock>
       </ImageContainer>
