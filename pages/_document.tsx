@@ -48,6 +48,22 @@ export default class MyDocument extends Document {
       `,
             }}
           />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${"GTM-NV7B3T3"}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${"GTM-NV7B3T3"}', {
+          page_path: window.location.pathname,
+        });
+      `,
+            }}
+          />
         </Head>
         <body>
           <Main />
