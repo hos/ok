@@ -32,24 +32,9 @@ export default class MyDocument extends Document {
     return (
       <Html lang={this.props.locale}>
         <Head>
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${"G-M4FQ2QFSPN"}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${"G-M4FQ2QFSPN"}', {
-          page_path: window.location.pathname,
-        });
-      `,
-            }}
-          />
           {/* eslint-disable-next-line */}
           <script
+            async
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
