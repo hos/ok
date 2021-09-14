@@ -10,7 +10,7 @@ import { Meta } from "../components/Meta";
 import { Text } from "../components/Text";
 import { Title } from "../components/Title";
 
-export const getServerSideProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale || "en", [

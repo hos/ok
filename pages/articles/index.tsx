@@ -9,7 +9,7 @@ import { CenterView } from "../../components/CenterView";
 import { Meta } from "../../components/Meta";
 import articles from "../../data/articles.json";
 
-export const getServerSideProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale || "en", [

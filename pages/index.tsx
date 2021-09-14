@@ -9,7 +9,7 @@ import { ImageContainer } from "../components/ImageContainer";
 import { Meta } from "../components/Meta";
 import { useShortcut } from "../hooks/useShortcut";
 
-export const getServerSideProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale || "en", [

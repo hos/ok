@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -11,12 +11,30 @@ import { Meta } from "../../components/Meta";
 import { PostBody } from "../../components/PostBody";
 import articles from "../../data/articles.json";
 import getDocument from "../../lib/getDocument";
+import { i18n } from "../../next-i18next.config";
 
 export type AlbumName = keyof typeof articles;
 
-export const getServerSideProps: GetStaticProps = async (ctx) => {
-  // @ts-expect-error
-  const { article } = ctx.query;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths: string[] = [];
+
+  for (const [key] of Object.entries(articles)) {
+    paths.push(`/articles/${key}`);
+    for (const locale of i18n?.locales || []) {
+      paths.push(`/${locale}/articles/${key}`);
+    }
+  }
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<{}, { article: string }> = async (
+  ctx
+) => {
+  const article = ctx.params?.article;
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale || "en", [
@@ -24,7 +42,7 @@ export const getServerSideProps: GetStaticProps = async (ctx) => {
         "articles",
         "albums",
       ])),
-      content: await getDocument(article, ctx.locale),
+      content: article ? await getDocument(article, ctx.locale) : "",
     },
   };
 };

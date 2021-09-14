@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { Meta } from "../components/Meta";
 
-export const getServerSideProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale || "en", [

@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -17,8 +17,29 @@ import albums from "../data/albums.json";
 import { useAlbumNav } from "../hooks/useAlbumNav";
 import { useShortcut } from "../hooks/useShortcut";
 import { useLD } from "../lib/ld";
+import { i18n } from "../next-i18next.config";
 
-export const getServerSideProps: GetStaticProps = async (ctx) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths: string[] = [];
+
+  for (const album of albums) {
+    for (const img of album.images) {
+      paths.push(`/${album.path}/${img.fileName.replace(".jpg", "")}`);
+      for (const locale of i18n?.locales || []) {
+        paths.push(
+          `/${locale}/${album.path}/${img.fileName.replace(".jpg", "")}`
+        );
+      }
+    }
+  }
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale || "en", [
