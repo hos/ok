@@ -37,6 +37,7 @@ const Home: NextPage = () => {
       <ImageContainer>
         <ImageBlock>
           <Image
+            priority
             layout="responsive"
             width="800"
             height="500"

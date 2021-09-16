@@ -119,6 +119,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
           </Link>
           <ImageBlock>
             <Image
+              priority
               layout="responsive"
               width="800"
               height="500"
