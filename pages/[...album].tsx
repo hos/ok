@@ -123,9 +123,6 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
           <ImageBlock>
             <Image
               priority
-              layout="responsive"
-              width="800"
-              height="500"
               objectFit="contain"
               src={Images[image.fileName as ImageName]}
               alt={t(`images:${image.fileName}`)}
