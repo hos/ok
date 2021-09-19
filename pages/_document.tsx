@@ -34,7 +34,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href="https://www.googletagmanager.com" />
           {/* eslint-disable-next-line */}
-          <script
+          {/* <script
             defer
             async
             dangerouslySetInnerHTML={{
@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);j.pre
 })(window,document,'script','dataLayer','GTM-PXMSHCX');`,
             }}
-          />
+          /> */}
         </Head>
         <body>
           <noscript>
