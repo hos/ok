@@ -8,7 +8,7 @@ import { CenterView } from "../components/CenterView";
 import { ImageContainer } from "../components/ImageContainer";
 import { Meta } from "../components/Meta";
 import { useShortcut } from "../hooks/useShortcut";
-import TheOriginOfTheWorld from "../public/images/The-Origin-Of-The-World.jpg";
+import TheOriginOfTheWorld from "../public/images/large/The-Origin-of-the-World.jpg";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
