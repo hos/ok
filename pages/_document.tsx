@@ -36,6 +36,7 @@ export default class MyDocument extends Document {
           {/* eslint-disable-next-line */}
           <script
             defer
+            async
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
