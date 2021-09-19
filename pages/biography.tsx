@@ -9,6 +9,7 @@ import { Meta } from "../components/Meta";
 import { Text } from "../components/Text";
 import { Title } from "../components/Title";
 import { getDocument } from "../lib/getDocument";
+import KarenOhanyan from "../public/images/Karen-Ohanyan.jpg";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
@@ -35,10 +36,8 @@ export const Biography: React.FC<BiographyProps> = (props) => {
       <Meta />
       <Title>{t("Biography")}</Title>
       <Image
-        src="/images/Karen-Ohanyan.jpg"
-        alt="Exhibitions"
-        width="481"
-        height="393"
+        src={KarenOhanyan}
+        alt="Karen Ohanyan Portrait"
         objectFit="contain"
         objectPosition="left"
       />
