@@ -8,6 +8,7 @@ import { CenterView } from "../components/CenterView";
 import { ImageContainer } from "../components/ImageContainer";
 import { Meta } from "../components/Meta";
 import { useShortcut } from "../hooks/useShortcut";
+import TheOriginOfTheWorld from "../public/images/The-Origin-Of-The-World.jpg";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
@@ -38,11 +39,8 @@ const Home: NextPage = () => {
         <ImageBlock>
           <Image
             priority
-            layout="responsive"
-            width="800"
-            height="500"
             objectFit="contain"
-            src="/images/The-Origin-of-the-World.jpg"
+            src={TheOriginOfTheWorld}
             alt={t("images:The-Origin-of-the-World.jpg")}
           />
         </ImageBlock>
