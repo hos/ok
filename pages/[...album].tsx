@@ -16,11 +16,8 @@ import { Meta } from "../components/Meta";
 import albums from "../data/albums.json";
 import { useAlbumNav } from "../hooks/useAlbumNav";
 import { useShortcut } from "../hooks/useShortcut";
-import Images from "../lib/images";
 import { useLD } from "../lib/ld";
 import { i18n } from "../next-i18next.config";
-
-type ImageName = keyof typeof Images;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = [];
@@ -127,7 +124,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
               width="800"
               height="500"
               objectFit="contain"
-              src={Images[image.fileName as ImageName]}
+              src={`/images/large/${image.fileName}`}
               alt={t(`images:${image.fileName}`)}
             />
             <Title>{t(`images:${image.fileName}`)}</Title>
