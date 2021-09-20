@@ -134,6 +134,22 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
             <Arrow right>{"◁"}</Arrow>
           </Link>
         </ImageContainer>
+        <Hide>
+          {album?.images.map((img) => {
+            return (
+              <Image
+                key={img.fileName}
+                layout="responsive"
+                width="800"
+                height="500"
+                objectFit="contain"
+                loading="lazy"
+                src={`/images/large/${img.fileName}`}
+                alt={t(`images:${img.fileName}`)}
+              />
+            );
+          })}
+        </Hide>
         <ImageList />
       </Container>
     </CenterView>
@@ -151,6 +167,12 @@ const Container = styled.div`
 interface ArrowProps {
   right?: boolean;
 }
+
+const Hide = styled.div`
+  position: fixed;
+  visibility: hidden;
+  overflow: hidden;
+`;
 
 const Arrow = styled.a<ArrowProps>`
   width: 60px;
