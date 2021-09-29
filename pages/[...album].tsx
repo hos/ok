@@ -118,15 +118,19 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
             <Arrow>{"◁"}</Arrow>
           </Link>
           <ImageBlock>
-            <Image
-              priority
-              layout="responsive"
-              width="800"
-              height="500"
-              objectFit="contain"
-              src={`/images/large/${image.fileName}`}
-              alt={t(`images:${image.fileName}`)}
-            />
+            <Link href={`/images/large/${image.fileName}`} passHref>
+              <a target="_blank">
+                <Image
+                  priority
+                  layout="responsive"
+                  width="800"
+                  height="500"
+                  objectFit="contain"
+                  src={`/images/large/${image.fileName}`}
+                  alt={t(`images:${image.fileName}`)}
+                />
+              </a>
+            </Link>
             <Title>{t(`images:${image.fileName}`)}</Title>
             <Desc>{` - ${image.description}`}</Desc>
           </ImageBlock>
