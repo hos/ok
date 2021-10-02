@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
 import { useCallback, useMemo } from "react";
-
-import albums from "../data/albums.json";
-import articles from "../data/articles.json";
+import albums from "src/data/albums.json";
+import articles from "src/data/articles.json";
 
 export const usePageNav = () => {
   const router = useRouter();

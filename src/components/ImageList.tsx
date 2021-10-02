@@ -3,9 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React from "react";
+import albums from "src/data/albums.json";
 import styled from "styled-components";
-
-import albums from "../data/albums.json";
 
 interface ImageListProps {
   _?: void;

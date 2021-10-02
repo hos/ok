@@ -3,13 +3,13 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+import { CenterView } from "src/components/CenterView";
+import { Meta } from "src/components/Meta";
+import { Text } from "src/components/Text";
+import { Title } from "src/components/Title";
+import { getDocument } from "src/lib/getDocument";
 
-import { CenterView } from "../components/CenterView";
-import { Meta } from "../components/Meta";
-import { Text } from "../components/Text";
-import { Title } from "../components/Title";
-import { getDocument } from "../lib/getDocument";
-import KarenOhanyan from "../public/images/Karen-Ohanyan.jpg";
+import KarenOhanyan from "@/public/images/Karen-Ohanyan.jpg";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {

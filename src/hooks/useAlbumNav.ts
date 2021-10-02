@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import albums from "../data/albums.json";
+import albums from "src/data/albums.json";
 
 export const useAlbumNav = (image: string, album?: typeof albums[0] | null) => {
   const next = useMemo(() => {

@@ -2,9 +2,8 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+import { Meta } from "src/components/Meta";
 import styled from "styled-components";
-
-import { Meta } from "../components/Meta";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {

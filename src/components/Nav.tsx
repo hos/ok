@@ -2,11 +2,11 @@ import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { useCallback, useEffect } from "react";
+import albums from "src/data/albums.json";
+import { useActiveLink } from "src/hooks/useActiveLink";
+import { usePageNav } from "src/hooks/usePageNav";
 import styled from "styled-components";
 
-import albums from "../data/albums.json";
-import { useActiveLink } from "../hooks/useActiveLink";
-import { usePageNav } from "../hooks/usePageNav";
 import { Hamburger } from "./Hamburger";
 import { ImageList } from "./ImageList";
 import { LanguageBar } from "./LanguageBar";

@@ -1,6 +1,6 @@
 const { i18n } = require("./next-i18next.config");
-const albums = require("./data/albums.json");
-const articles = require("./data/articles.json");
+const albums = require("./src/data/albums.json");
+const articles = require("./src/data/articles.json");
 
 module.exports = {
   siteUrl: process.env.HOST_URL || "https://karenohanyan.art",

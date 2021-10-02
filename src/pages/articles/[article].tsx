@@ -4,14 +4,14 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useMemo } from "react";
 import { Article as ArticleSchema } from "schema-dts";
+import { CenterView } from "src/components/CenterView";
+import { Meta } from "src/components/Meta";
+import { PostBody } from "src/components/PostBody";
+import articles from "src/data/articles.json";
+import getDocument from "src/lib/getDocument";
 import styled from "styled-components";
 
-import { CenterView } from "../../components/CenterView";
-import { Meta } from "../../components/Meta";
-import { PostBody } from "../../components/PostBody";
-import articles from "../../data/articles.json";
-import getDocument from "../../lib/getDocument";
-import { i18n } from "../../next-i18next.config";
+import { i18n } from "@/next-i18next.config";
 
 export type AlbumName = keyof typeof articles;
 

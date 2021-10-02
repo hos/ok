@@ -3,12 +3,11 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+import { CenterView } from "src/components/CenterView";
+import { Meta } from "src/components/Meta";
+import { Text } from "src/components/Text";
+import { Title } from "src/components/Title";
 import styled from "styled-components";
-
-import { CenterView } from "../components/CenterView";
-import { Meta } from "../components/Meta";
-import { Text } from "../components/Text";
-import { Title } from "../components/Title";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {

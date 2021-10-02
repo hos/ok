@@ -6,18 +6,18 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect } from "react";
 import { VisualArtwork } from "schema-dts";
+import { ImageBlock } from "src/components/Block";
+import { CenterView } from "src/components/CenterView";
+import { ImageContainer } from "src/components/ImageContainer";
+import { ImageList } from "src/components/ImageList";
+import { Meta } from "src/components/Meta";
+import albums from "src/data/albums.json";
+import { useAlbumNav } from "src/hooks/useAlbumNav";
+import { useShortcut } from "src/hooks/useShortcut";
+import { useLD } from "src/lib/ld";
 import styled from "styled-components";
 
-import { ImageBlock } from "../components/Block";
-import { CenterView } from "../components/CenterView";
-import { ImageContainer } from "../components/ImageContainer";
-import { ImageList } from "../components/ImageList";
-import { Meta } from "../components/Meta";
-import albums from "../data/albums.json";
-import { useAlbumNav } from "../hooks/useAlbumNav";
-import { useShortcut } from "../hooks/useShortcut";
-import { useLD } from "../lib/ld";
-import { i18n } from "../next-i18next.config";
+import { i18n } from "@/next-i18next.config";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = [];

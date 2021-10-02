@@ -2,13 +2,13 @@ import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { ImageBlock } from "src/components/Block";
+import { CenterView } from "src/components/CenterView";
+import { ImageContainer } from "src/components/ImageContainer";
+import { Meta } from "src/components/Meta";
+import { useShortcut } from "src/hooks/useShortcut";
 
-import { ImageBlock } from "../components/Block";
-import { CenterView } from "../components/CenterView";
-import { ImageContainer } from "../components/ImageContainer";
-import { Meta } from "../components/Meta";
-import { useShortcut } from "../hooks/useShortcut";
-import TheOriginOfTheWorld from "../public/images/large/The-Origin-of-the-World.jpg";
+import TheOriginOfTheWorld from "@/public/images/large/The-Origin-of-the-World.jpg";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
