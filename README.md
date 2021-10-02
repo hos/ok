@@ -1,4 +1,4 @@
-# karen-ohanyan
+# Karen Ohanyan
 
 Karen Ohanyan's personal website.
 
