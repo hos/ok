@@ -126,8 +126,8 @@ const Nav = styled.nav`
   }
 
   .show-menu &:after {
-    content: " " !important;
-    box-shadow: 0 0 5px #000 !important;
+    content: " ";
+    box-shadow: 0 0 5px #000;
   }
 
   @media screen and (max-width: 800px) {
