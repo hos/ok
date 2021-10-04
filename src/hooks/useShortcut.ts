@@ -12,7 +12,7 @@ interface IUseShortcutProps {
 
 export const useShortcut = () => {
   for (const short of Shortcuts) {
-    useShortcutSingle(short); // eslint-disable-line
+    useShortcutSingle(short); // eslint-disable-line react-hooks/rules-of-hooks
   }
 };
 
