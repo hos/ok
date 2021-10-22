@@ -37,6 +37,12 @@ export const Meta: React.FC<MetaProps> = (props) => {
         property="og:image:alt"
         content={props.imageAlt || props.description}
       />
+      <meta property="og:twitter:image" content={absImage} />
+      <meta
+        property="og:twitter:image:alt"
+        content={props.imageAlt || props.description}
+      />
+      <meta property="og:twitter:card" content="summary_large_image" />
       <meta property="og:type" content={props.type || "website"} />
 
       <link rel="icon" href="/favicon.ico" />
