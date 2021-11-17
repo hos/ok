@@ -1,7 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import albums from "src/data/albums.json";
 import { useActiveLink } from "src/hooks/useActiveLink";
 import { usePageNav } from "src/hooks/usePageNav";
@@ -24,24 +24,41 @@ export const Menu: React.FC<NavProps> = (props) => {
   const { isOpen, setIsOpen } = useActiveLink();
 
   const [next, previous] = usePageNav();
+  const otherKeyPressed = useRef<Map<string, boolean>>(new Map());
 
   const toggleMenu = useCallback(() => {
     document.querySelector("body")?.classList.toggle("show-menu");
   }, []);
 
   useEffect(() => {
-    const handle = (e: KeyboardEvent) => {
-      if (e.key === "ArrowUp") {
+    const handleDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp" && otherKeyPressed.current.size === 0) {
+        e.preventDefault();
         router.push(previous);
+        return;
       }
-      if (e.key === "ArrowDown") {
+      if (e.key === "ArrowDown" && otherKeyPressed.current.size === 0) {
+        e.preventDefault();
         router.push(next);
+        return;
       }
-    };
-    document.addEventListener("keydown", handle);
 
-    return () => document.removeEventListener("keydown", handle);
-  }, [router, previous, next]);
+      otherKeyPressed.current.set(e.key, true);
+    };
+
+    const handleUp = (e: KeyboardEvent) => {
+      console.log(e.key)
+      otherKeyPressed.current.delete(e.key);
+    };
+
+    document.addEventListener("keydown", handleDown);
+    document.addEventListener("keyup", handleUp);
+
+    return () => {
+      document.removeEventListener("keydown", handleDown)
+      document.removeEventListener("keyup", handleUp)
+    };
+  }, [otherKeyPressed, router, previous, next]);
 
   return (
     <Container className={props.className}>
