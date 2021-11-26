@@ -35,7 +35,6 @@ const _ImageList: React.FC<ImageListProps> = (props) => {
           >
             <a>
               <Image
-                priority
                 width="70"
                 height="70"
                 objectFit="cover"
