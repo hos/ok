@@ -3,7 +3,7 @@ const albums = require("./src/data/albums.json");
 const articles = require("./src/data/articles.json");
 
 module.exports = {
-  siteUrl: process.env.HOST_URL || "https://karenohanyan.art",
+  siteUrl: process.env.HOST_URL || "https://www.karenohanyan.art",
   generateRobotsTxt: true,
   sitemapSize: 7000,
   additionalPaths: async (config) => {
