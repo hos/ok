@@ -125,7 +125,7 @@ export const Shortcuts: IUseShortcutProps[] = [
     styleUp: {
       transform: `none`,
     },
-    key: "r",
+    key: "k",
     clickCount: 10,
   },
   {
