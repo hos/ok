@@ -47,7 +47,6 @@ export const Menu: React.FC<NavProps> = (props) => {
     };
 
     const handleUp = (e: KeyboardEvent) => {
-      console.log(e.key)
       otherKeyPressed.current.delete(e.key);
     };
 
@@ -55,8 +54,8 @@ export const Menu: React.FC<NavProps> = (props) => {
     document.addEventListener("keyup", handleUp);
 
     return () => {
-      document.removeEventListener("keydown", handleDown)
-      document.removeEventListener("keyup", handleUp)
+      document.removeEventListener("keydown", handleDown);
+      document.removeEventListener("keyup", handleUp);
     };
   }, [otherKeyPressed, router, previous, next]);
 
