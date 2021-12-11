@@ -64,6 +64,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
     : [];
 
   const album = albums.find((album) => album.path === albumName);
+  const isLargeMode = router.query.mode + "" === "large";
 
   const [next, previous] = useAlbumNav(imageName, album);
 
@@ -89,7 +90,22 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
     document.addEventListener("keydown", handle);
 
     return () => document.removeEventListener("keydown", handle);
-  }, [router, previous, next]);
+  }, [isLargeMode, router, previous, next]);
+
+  useEffect(() => {
+    const handle = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isLargeMode) {
+        const url = new URL(location.href);
+        url.search = "";
+        router.push(url.toString(), undefined, {
+          shallow: true,
+        });
+      }
+    };
+    document.addEventListener("keydown", handle);
+
+    return () => document.removeEventListener("keydown", handle);
+  }, [isLargeMode, router, previous, next]);
 
   const image = album?.images.find(
     (img) => img.fileName === imageName + ".jpg"
@@ -101,6 +117,16 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
 
   return (
     <CenterView>
+      {isLargeMode ? (
+        <Overlay>
+          <Image
+            layout="fill"
+            src={`/images/large/${image.fileName}`}
+            alt={image.description}
+            objectFit="contain"
+          ></Image>
+        </Overlay>
+      ) : null}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -118,8 +144,12 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
             <Arrow>{"◁"}</Arrow>
           </Link>
           <ImageBlock>
-            <Link href={`/images/large/${image.fileName}`} passHref>
-              <a target="_blank">
+            <Link
+              href={{ pathname: router.asPath, query: { mode: "large" } }}
+              shallow
+              passHref
+            >
+              <a>
                 <Image
                   priority
                   layout="responsive"
@@ -159,6 +189,16 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
     </CenterView>
   );
 };
+
+const Overlay = styled.div`
+  background-color: rgba(0, 0, 0, 1);
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;
 
 const Container = styled.div`
   @media screen and (min-width: 800px) {
