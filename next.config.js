@@ -1,11 +1,12 @@
 const { i18n } = require("./next-i18next.config");
 
+const age = 60 * 60 * 24 * 90;
+
 /** @type {import('next').NextConfig} */
 module.exports = {
   i18n,
   reactStrictMode: true,
   headers() {
-    const age = 60 * 60 * 24 * 30;
     return [
       {
         source: "/:all*(svg|jpg|png)",
@@ -20,6 +21,6 @@ module.exports = {
     ];
   },
   images: {
-    minimumCacheTTL: 60 * 60 * 24 * 30,
+    minimumCacheTTL: age,
   },
 };
