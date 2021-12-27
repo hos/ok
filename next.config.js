@@ -1,6 +1,6 @@
 const { i18n } = require("./next-i18next.config");
 
-const age = 60 * 60 * 24 * 90;
+const age = 60 * 60 * 24 * 365;
 
 /** @type {import('next').NextConfig} */
 module.exports = {
