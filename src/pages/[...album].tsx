@@ -219,12 +219,13 @@ const Hide = styled.div`
 `;
 
 const Arrow = styled.a<ArrowProps>`
-  width: 60px;
+  height: 48px;
+  width: 48px;
   cursor: pointer;
   transform: rotateY(${(props) => (props.right ? "180deg" : "none")});
 
   @media screen and (max-width: 800px) {
-    width: 20px;
+    width: 48px;
   }
 `;
 
