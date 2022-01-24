@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import * as i18next from "next-i18next";
-import React, { useMemo } from "react";
+import React from "react";
 import styled from "styled-components";
 
 interface LanguageBarProps {
@@ -17,39 +16,17 @@ const langs = [
 export const LanguageBar: React.FC<LanguageBarProps> = () => {
   const router = useRouter();
 
-  const disabledLangs = useMemo(() => {
-    if (!router.asPath.includes("/articles")) {
-      return [];
-    }
-
-    const currentPath = router.asPath.split("/")[2];
-
-    return langs.filter(({ path }) => {
-      const translation = i18next.i18n?.getResource(
-        path,
-        "articles",
-        currentPath
-      );
-      if (!translation) {
-        return true;
-      }
-      return false;
-    });
-  }, [router]);
-
   return (
     <Container>
       {langs.map((lang) => {
-        const disabled =
-          disabledLangs.findIndex((p) => p.path === lang.path) > -1;
         return (
           <Link
             href={router.asPath}
-            locale={disabled ? router.locale : lang.path}
+            locale={lang.path}
             passHref
             key={lang.path}
           >
-            <a className={`red ${disabled ? "disabled" : ""}`}>{lang.name}</a>
+            <a className={`red}`}>{lang.name}</a>
           </Link>
         );
       })}
