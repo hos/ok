@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import * as i18next from "next-i18next";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 
 interface LanguageBarProps {
-  _?: void;
+  disabled?: Array<string>;
 }
 
 const langs = [
@@ -16,17 +17,39 @@ const langs = [
 export const LanguageBar: React.FC<LanguageBarProps> = () => {
   const router = useRouter();
 
+  const disabledLangs = useMemo(() => {
+    if (!router.asPath.includes("/articles")) {
+      return [];
+    }
+
+    const currentPath = router.asPath.split("/")[2];
+
+    return langs.filter(({ path }) => {
+      const translation = i18next.i18n?.getResource(
+        path,
+        "articles",
+        currentPath
+      );
+      if (!translation) {
+        return true;
+      }
+      return false;
+    });
+  }, [router]);
+
   return (
     <Container>
       {langs.map((lang) => {
+        const disabled =
+          disabledLangs.findIndex((p) => p.path === lang.path) > -1;
         return (
           <Link
             href={router.asPath}
-            locale={lang.path}
+            locale={disabled ? router.locale : lang.path}
             passHref
             key={lang.path}
           >
-            <a className="red">{lang.name}</a>
+            <a className={`red ${disabled ? "disabled" : ""}`}>{lang.name}</a>
           </Link>
         );
       })}
@@ -39,6 +62,11 @@ const Container = styled.div`
   font-size: 10px;
   text-transform: uppercase;
   padding-top: 20px;
+
+  .disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
 
   & > span {
     margin-left: 5px;

@@ -43,3 +43,10 @@ body {
   margin: 0;
   overflow-y: scroll;
 }
+
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}

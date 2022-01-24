@@ -35,6 +35,10 @@ export const Articles: React.FC<ArticlesProps> = () => {
 
       <Container>
         {Object.entries(articles).map(([key, value]) => {
+          const title = t(key);
+          if (title === key) {
+            return null;
+          }
           return (
             <Link href={`/articles/${key}`} key={key} passHref>
               <a>
