@@ -116,7 +116,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
   }
 
   return (
-    <CenterView>
+    <CenterView className={isLargeMode ? "large-mode" : ""}>
       {isLargeMode ? (
         <Overlay>
           <Image
@@ -141,7 +141,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
       <Container className="album">
         <ImageContainer>
           <Link href={`${previous}`} passHref shallow>
-            <Arrow>{"◁"}</Arrow>
+            <Arrow className="left">{"◁"}</Arrow>
           </Link>
           <ImageBlock>
             <Link
@@ -165,7 +165,9 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
             <Desc>{` - ${image.description}`}</Desc>
           </ImageBlock>
           <Link href={`${next}`} passHref shallow>
-            <Arrow right>{"◁"}</Arrow>
+            <Arrow id="arrow" className="right">
+              {"◁"}
+            </Arrow>
           </Link>
         </ImageContainer>
         <Hide>
@@ -208,21 +210,37 @@ const Container = styled.div`
   }
 `;
 
-interface ArrowProps {
-  right?: boolean;
-}
-
 const Hide = styled.div`
   position: fixed;
   visibility: hidden;
   overflow: hidden;
 `;
 
+interface ArrowProps {}
+
 const Arrow = styled.a<ArrowProps>`
   height: 48px;
   width: 48px;
+  line-height: 48px;
+  text-align: center;
   cursor: pointer;
-  transform: rotateY(${(props) => (props.right ? "180deg" : "none")});
+  &.right {
+    transform: rotateY(180deg);
+  }
+
+  .large-mode & {
+    position: fixed;
+    color: white;
+    top: 50%;
+    z-index: 10;
+  }
+
+  .large-mode &.left {
+    left: 1rem;
+  }
+  .large-mode &.right {
+    right: 1rem;
+  }
 
   @media screen and (max-width: 800px) {
     width: 48px;

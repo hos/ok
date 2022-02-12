@@ -1,12 +1,11 @@
-import React from "react";
+import { FC } from "react";
 import styled from "styled-components";
 
-interface CenterViewProps {
-  _?: void;
+interface CenterViewProps extends FC {
   text?: boolean;
 }
 
-export const CenterView: React.FC<CenterViewProps> = styled.div<CenterViewProps>`
+export const CenterView = styled.div<CenterViewProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
