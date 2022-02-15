@@ -141,7 +141,9 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
       <Container className="album">
         <ImageContainer>
           <Link href={`${previous}`} passHref shallow>
-            <Arrow className="left">{"◁"}</Arrow>
+            <Arrow className="left">
+              <span />
+            </Arrow>
           </Link>
           <ImageBlock>
             <Link
@@ -166,7 +168,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
           </ImageBlock>
           <Link href={`${next}`} passHref shallow>
             <Arrow id="arrow" className="right">
-              {"◁"}
+              <span />
             </Arrow>
           </Link>
         </ImageContainer>
@@ -224,8 +226,14 @@ const Arrow = styled.a<ArrowProps>`
   line-height: 48px;
   text-align: center;
   cursor: pointer;
-  &.right {
-    transform: rotateY(180deg);
+
+  & span {
+    height: 10px;
+    width: 10px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
   }
 
   .large-mode & {
@@ -233,6 +241,20 @@ const Arrow = styled.a<ArrowProps>`
     color: white;
     top: 50%;
     z-index: 10;
+  }
+
+  .large-mode & span {
+    border: solid white;
+    border-width: 0 2px 2px 0;
+  }
+
+  &.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+  &.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
   }
 
   .large-mode &.left {
