@@ -208,6 +208,18 @@
     ]
   },
   {
+    "name": "2015",
+    "path": "2015",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "2015-Untitled.jpg",
+        "description": "oil on canvas, 147,5x195cm"
+      }
+    ]
+  },
+  {
     "name": "2016 (From avant-garde To avant-garde)",
     "path": "2016",
     "default": 5,
