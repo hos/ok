@@ -358,5 +358,25 @@
         "description": "oil on canvas, 110x80cm"
       }
     ]
+  },
+  {
+    "name": "2021",
+    "path": "2021",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "Calendar-1.jpg",
+        "description": "oil on canvas, 220x148cm"
+      },
+      {
+        "fileName": "Calendar-2.jpg",
+        "description": "oil on canvas, 148x220cm"
+      },
+      {
+        "fileName": "Calendar-3.jpg",
+        "description": "oil on canvas, 220x148cm"
+      }
+    ]
   }
 ]
