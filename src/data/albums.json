@@ -318,5 +318,21 @@
         "description": "oil on canvas, 146x202cm"
       }
     ]
+  },
+  {
+    "name": "2019",
+    "path": "2019",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "2019-Untitled-1.jpg",
+        "description": "oil on canvas, 161x160cm"
+      },
+      {
+        "fileName": "2019-Untitled-2.jpg",
+        "description": "oil on canvas, 148x220cm"
+      }
+    ]
   }
 ]

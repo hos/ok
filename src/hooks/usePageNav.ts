@@ -17,6 +17,7 @@ export const usePageNav = () => {
       "/2016",
       "/2017",
       "/2017-2019",
+      "/2019",
       "/articles",
       "/vardan-azatyan-real-utopias",
       "/gohar-vardanyan-real-utopias",
