@@ -378,5 +378,17 @@
         "description": "oil on canvas, 220x148cm"
       }
     ]
+  },
+  {
+    "name": "2022",
+    "path": "2022",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "Cascade-2022.jpg",
+        "description": "oil on canvas and badges, 145,5x202cm"
+      }
+    ]
   }
 ]
