@@ -18,6 +18,7 @@ export const usePageNav = () => {
       "/2017",
       "/2017-2019",
       "/2019",
+      "/2020",
       "/articles",
       "/vardan-azatyan-real-utopias",
       "/gohar-vardanyan-real-utopias",
@@ -46,7 +47,10 @@ export const usePageNav = () => {
       //  this is a album
       const album = albums.find(({ path }) => `/${path}` === route);
       if (album) {
-        return route + `/${album.images[0].fileName.replace(".jpg", "")}`;
+        return (
+          route +
+          `/${album.images[album.default || 0]!.fileName.replace(".jpg", "")}`
+        );
       }
     }
 

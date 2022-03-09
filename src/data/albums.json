@@ -334,5 +334,29 @@
         "description": "oil on canvas, 148x220cm"
       }
     ]
+  },
+  {
+    "name": "2020",
+    "path": "2020",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "Vardan-Azatyan.jpg",
+        "description": "oil on canvas, 110x80cm"
+      },
+      {
+        "fileName": "Father’s-portrait.jpg",
+        "description": "oil on canvas, 110x80cm"
+      },
+      {
+        "fileName": "Self-portrait.jpg",
+        "description": "oil on canvas, 110x80cm"
+      },
+      {
+        "fileName": "Dreamer’s-Knife.jpg",
+        "description": "oil on canvas, 110x80cm"
+      }
+    ]
   }
 ]
