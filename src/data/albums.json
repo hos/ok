@@ -288,6 +288,18 @@
     ]
   },
   {
+    "name": "2017",
+    "path": "2017",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "2017-Untitled.jpg",
+        "description": "oil on canvas, 200x180cm"
+      }
+    ]
+  },
+  {
     "name": "2017-2019 (Sevan)",
     "path": "2017-2019",
     "default": 0,
