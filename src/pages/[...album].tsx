@@ -120,6 +120,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
       {isLargeMode ? (
         <Overlay>
           <Image
+            quality={100}
             layout="fill"
             src={`/images/large/${image.fileName}`}
             alt={image.description}
@@ -154,6 +155,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
               <a>
                 <Image
                   priority
+                  quality={100}
                   layout="responsive"
                   width="800"
                   height="500"
