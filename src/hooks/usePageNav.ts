@@ -15,9 +15,8 @@ export const usePageNav = () => {
       "/2010-2014",
       "/2015",
       "/2016",
-      "/2017",
+      "/2017-2018",
       "/2017-2019",
-      "/2019",
       "/2020",
       "/2021",
       "/2022",
@@ -36,12 +35,8 @@ export const usePageNav = () => {
   }, []);
 
   const current = useMemo(() => {
-    const part =
-      router.query.article || router.query.album?.[0] || router.asPath;
-
-    return routes.findIndex((route) => {
-      return route === part.toString() || route === `/${part}`;
-    });
+    const part = router.query.article || router.query.album?.[0] || "";
+    return routes.indexOf(`/${part}`);
   }, [routes, router]);
 
   const normalize = useCallback((route: string) => {

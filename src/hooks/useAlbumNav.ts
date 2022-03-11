@@ -16,7 +16,7 @@ export const useAlbumNav = (image: string, album?: typeof albums[0] | null) => {
 
   const next = useMemo(() => {
     if (!album) {
-      return [null, null];
+      return null;
     }
     const idx = album.images.findIndex(
       (img) => img.fileName === image + ".jpg"
@@ -36,11 +36,13 @@ export const useAlbumNav = (image: string, album?: typeof albums[0] | null) => {
   }, [album, image]);
 
   return [
-    `/${album?.path}/${(next + "").replace(".jpg", "")}${
-      queryString ? `?${queryString}` : ""
-    }`,
-    `/${album?.path}/${(previous + "").replace(".jpg", "")}${
-      queryString ? `?${queryString}` : ""
-    }`,
+    next &&
+      `/${album?.path}/${(next + "").replace(".jpg", "")}${
+        queryString ? `?${queryString}` : ""
+      }`,
+    previous &&
+      `/${album?.path}/${(previous + "").replace(".jpg", "")}${
+        queryString ? `?${queryString}` : ""
+      }`,
   ];
 };

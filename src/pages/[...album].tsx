@@ -80,10 +80,10 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
 
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
+      if (e.key === "ArrowLeft" && previous) {
         router.push(previous, undefined, { shallow: true });
       }
-      if (e.key === "ArrowRight") {
+      if (e.key === "ArrowRight" && next) {
         router.push(next, undefined, { shallow: true });
       }
     };
