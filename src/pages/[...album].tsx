@@ -19,6 +19,8 @@ import styled from "styled-components";
 
 import { i18n } from "@/next-i18next.config";
 
+import Overlay from "../components/Overlay";
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = [];
 
@@ -195,16 +197,6 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
     </CenterView>
   );
 };
-
-const Overlay = styled.div`
-  background-color: rgba(0, 0, 0, 1);
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`;
 
 const Container = styled.div`
   @media screen and (min-width: 800px) {
