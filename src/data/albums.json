@@ -288,14 +288,22 @@
     ]
   },
   {
-    "name": "2017",
-    "path": "2017",
+    "name": "2017-2018",
+    "path": "2017-2018",
     "default": 0,
     "artform": "Painting",
     "images": [
       {
-        "fileName": "2017-Untitled.jpg",
+        "fileName": "17-18-Untitled-1.jpg",
         "description": "oil on canvas, 200x180cm"
+      },
+      {
+        "fileName": "17-18-Untitled-2.jpg",
+        "description": "oil on canvas, 161x160cm"
+      },
+      {
+        "fileName": "17-18-Untitled-3.jpg",
+        "description": "oil on canvas, 148x220cm"
       }
     ]
   },
@@ -320,37 +328,21 @@
     ]
   },
   {
-    "name": "2019",
-    "path": "2019",
-    "default": 0,
-    "artform": "Painting",
-    "images": [
-      {
-        "fileName": "2019-Untitled-1.jpg",
-        "description": "oil on canvas, 161x160cm"
-      },
-      {
-        "fileName": "2019-Untitled-2.jpg",
-        "description": "oil on canvas, 148x220cm"
-      }
-    ]
-  },
-  {
     "name": "2020",
     "path": "2020",
     "default": 0,
     "artform": "Painting",
     "images": [
       {
+        "fileName": "Self-portrait.jpg",
+        "description": "oil on canvas, 110x80cm"
+      },
+      {
         "fileName": "Vardan-Azatyan.jpg",
         "description": "oil on canvas, 110x80cm"
       },
       {
         "fileName": "Father’s-portrait.jpg",
-        "description": "oil on canvas, 110x80cm"
-      },
-      {
-        "fileName": "Self-portrait.jpg",
         "description": "oil on canvas, 110x80cm"
       },
       {
