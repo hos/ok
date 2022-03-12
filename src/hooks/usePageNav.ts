@@ -13,8 +13,13 @@ export const usePageNav = () => {
       "/2007",
       "/2008-2009",
       "/2010-2014",
+      "/2015",
       "/2016",
+      "/2017-2018",
       "/2017-2019",
+      "/2020",
+      "/2021",
+      "/2022",
       "/articles",
       "/vardan-azatyan-real-utopias",
       "/gohar-vardanyan-real-utopias",
@@ -30,12 +35,8 @@ export const usePageNav = () => {
   }, []);
 
   const current = useMemo(() => {
-    const part =
-      router.query.article || router.query.album?.[0] || router.asPath;
-
-    return routes.findIndex((route) => {
-      return route === part.toString() || route === `/${part}`;
-    });
+    const part = router.query.article || router.query.album?.[0] || "";
+    return routes.indexOf(`/${part}`);
   }, [routes, router]);
 
   const normalize = useCallback((route: string) => {
@@ -43,7 +44,10 @@ export const usePageNav = () => {
       //  this is a album
       const album = albums.find(({ path }) => `/${path}` === route);
       if (album) {
-        return route + `/${album.images[0].fileName.replace(".jpg", "")}`;
+        return (
+          route +
+          `/${album.images[album.default || 0]!.fileName.replace(".jpg", "")}`
+        );
       }
     }
 

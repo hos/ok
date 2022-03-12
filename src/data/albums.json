@@ -18,6 +18,14 @@
         "description": "acrylic on canvas, 120x168cm"
       },
       {
+        "fileName": "Still-Life-1.jpg",
+        "description": "acrylic on canvas, 149x149cm"
+      },
+      {
+        "fileName": "Still-Life-2.jpg",
+        "description": "acrylic on canvas, 119x169cm"
+      },
+      {
         "fileName": "Knife-and-Butter.jpg",
         "description": "acrylic on canvas, 119x169cm"
       },
@@ -200,6 +208,18 @@
     ]
   },
   {
+    "name": "2015",
+    "path": "2015",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "2015-Untitled.jpg",
+        "description": "oil on canvas, 147,5x195cm"
+      }
+    ]
+  },
+  {
     "name": "2016 (From avant-garde To avant-garde)",
     "path": "2016",
     "default": 5,
@@ -268,6 +288,26 @@
     ]
   },
   {
+    "name": "2017-2018",
+    "path": "2017-2018",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "17-18-Untitled-1.jpg",
+        "description": "acrylic  on canvas, 200x180cm"
+      },
+      {
+        "fileName": "17-18-Untitled-2.jpg",
+        "description": "oil on canvas, 161x160cm"
+      },
+      {
+        "fileName": "17-18-Untitled-3.jpg",
+        "description": "oil on canvas, 148x220cm"
+      }
+    ]
+  },
+  {
     "name": "2017-2019 (Sevan)",
     "path": "2017-2019",
     "default": 0,
@@ -284,6 +324,62 @@
       {
         "fileName": "Sevan-3.jpg",
         "description": "oil on canvas, 146x202cm"
+      }
+    ]
+  },
+  {
+    "name": "2020",
+    "path": "2020",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "Self-portrait.jpg",
+        "description": "oil on canvas, 110x80cm"
+      },
+      {
+        "fileName": "Vardan-Azatyan.jpg",
+        "description": "oil on canvas, 110x80cm"
+      },
+      {
+        "fileName": "Father’s-portrait.jpg",
+        "description": "oil on canvas, 110x80cm"
+      },
+      {
+        "fileName": "Dreamer’s-Knife.jpg",
+        "description": "oil on canvas, 110x80cm"
+      }
+    ]
+  },
+  {
+    "name": "2021",
+    "path": "2021",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "Calendar-1.jpg",
+        "description": "oil on canvas, 220x148cm"
+      },
+      {
+        "fileName": "Calendar-2.jpg",
+        "description": "oil on canvas, 148x220cm"
+      },
+      {
+        "fileName": "Calendar-3.jpg",
+        "description": "oil on canvas, 220x148cm"
+      }
+    ]
+  },
+  {
+    "name": "2022",
+    "path": "2022",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "Cascade-2022.jpg",
+        "description": "oil on canvas and badges, 145,5x202cm"
       }
     ]
   }

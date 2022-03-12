@@ -19,6 +19,8 @@ import styled from "styled-components";
 
 import { i18n } from "@/next-i18next.config";
 
+import Overlay from "../components/Overlay";
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = [];
 
@@ -80,10 +82,10 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
 
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
+      if (e.key === "ArrowLeft" && previous) {
         router.push(previous, undefined, { shallow: true });
       }
-      if (e.key === "ArrowRight") {
+      if (e.key === "ArrowRight" && next) {
         router.push(next, undefined, { shallow: true });
       }
     };
@@ -120,6 +122,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
       {isLargeMode ? (
         <Overlay>
           <Image
+            quality={100}
             layout="fill"
             src={`/images/large/${image.fileName}`}
             alt={image.description}
@@ -154,6 +157,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
               <a>
                 <Image
                   priority
+                  quality={100}
                   layout="responsive"
                   width="800"
                   height="500"
@@ -193,16 +197,6 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
     </CenterView>
   );
 };
-
-const Overlay = styled.div`
-  background-color: rgba(0, 0, 0, 1);
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`;
 
 const Container = styled.div`
   @media screen and (min-width: 800px) {
