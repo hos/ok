@@ -2,7 +2,7 @@
   {
     "name": "2000-2004",
     "path": "2000-2004",
-    "default": 3,
+    "default": 0,
     "artform": "Painting",
     "images": [
       {
@@ -122,7 +122,7 @@
   {
     "name": "2007",
     "path": "2007",
-    "default": 6,
+    "default": 0,
     "artform": "Painting",
     "images": [
       {
@@ -186,7 +186,7 @@
   {
     "name": "2010-2014",
     "path": "2010-2014",
-    "default": 3,
+    "default": 0,
     "artform": "Painting",
     "images": [
       {
@@ -222,7 +222,7 @@
   {
     "name": "2016 (From avant-garde To avant-garde)",
     "path": "2016",
-    "default": 5,
+    "default": 0,
     "artform": "Collage",
     "images": [
       {
