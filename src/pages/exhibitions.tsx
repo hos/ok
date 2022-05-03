@@ -16,6 +16,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         "images",
         "meta",
         "albums",
+        "exhibitions",
       ])),
     },
   };
@@ -31,7 +32,7 @@ const ExText = styled(Text)`
 `;
 
 export const Exhibitions: React.FC<ExhibitionsProps> = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("exhibitions");
   return (
     <CenterView text>
       <Meta />
@@ -46,29 +47,19 @@ export const Exhibitions: React.FC<ExhibitionsProps> = () => {
       />
       <ExText>
         <Red> 2021 - </Red>
-        <span>
-          {t('"Sevan" Cafesjian Center for the Arts (Yerevan, Armenia)')}
-        </span>
+        <span>{t("sevan")}</span>
         <br />
         <Red> 2016 - </Red>
-        <span>
-          {t(
-            '"From Avant-garde to Avant-garde" Sargis Muradyan gallery (Yerevan, Armenia)'
-          )}
-        </span>
+        <span>{t("avantGarde")}</span>
         <br />
         <Red> 2009 - </Red>
-        <span>{t('"Body Investments" ACCEA (Yerevan, Armenia)')}</span>
+        <span>{t("bodyInvestments")}</span>
         <br />
         <Red> 2006 - </Red>
-        <span>{t('"Real Utopias" ACCEA (Yerevan, Armenia)')}</span>
+        <span>{t("realUtopias")}</span>
         <br />
         <br />
-        <span>
-          {t(
-            "Karen Ohanyan took part in many collective exhibitions, as well."
-          )}
-        </span>
+        <span>{t("also")}</span>
       </ExText>
     </CenterView>
   );
