@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -33,15 +33,13 @@ const _ImageList: React.FC<ImageListProps> = (props) => {
             key={image.fileName}
             scroll={false}
           >
-            <a>
-              <Image
-                width="70"
-                height="70"
-                objectFit="cover"
-                src={`/images/large/${image.fileName}`}
-                alt={t(image.fileName)}
-              />
-            </a>
+            <Image
+              width="70"
+              height="70"
+              objectFit="cover"
+              src={`/images/large/${image.fileName}`}
+              alt={t(image.fileName)}
+            />
           </Link>
         );
       })}

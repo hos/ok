@@ -12,9 +12,7 @@ export const Name: React.FC<NameProps> = () => {
   return (
     <Container>
       <Link href="/" passHref>
-        <a>
-          <h1>{t("Karen Ohanyan")}</h1>
-        </a>
+        <h1>{t("Karen Ohanyan")}</h1>
       </Link>
     </Container>
   );

@@ -26,11 +26,15 @@ export const Contacts: React.FC<ContactsProps> = () => {
     <Container>
       <Meta />
 
-      <Link href="mailto:karenohanyan.art@gmail.com" passHref>
-        <a target="_blank">google: karenohanyan.art@gmail.com</a>
+      <Link href="mailto:karenohanyan.art@gmail.com" passHref target="_blank">
+        google: karenohanyan.art@gmail.com
       </Link>
-      <Link href="https://www.facebook.com/karen.ohanyan.14" passHref>
-        <a target="_blank">facebook: karen.ohanyan.14</a>
+      <Link
+        href="https://www.facebook.com/karen.ohanyan.14"
+        passHref
+        target="_blank"
+      >
+        facebook: karen.ohanyan.14
       </Link>
     </Container>
   );

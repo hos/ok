@@ -70,7 +70,9 @@ export const Menu: React.FC<NavProps> = (props) => {
         <br />
         <Ul className="parent-menu">
           <Li>
-            <Link href="/">{t("Home")}</Link>
+            <Link href="/" legacyBehavior>
+              {t("Home")}
+            </Link>
           </Li>
           <Li id="works-submenu" className={isOpen ? `` : "hidden"}>
             <a onClick={() => setIsOpen(!isOpen)}>{t("Works")}</a>
@@ -84,8 +86,9 @@ export const Menu: React.FC<NavProps> = (props) => {
                         album.default || 0
                       ].fileName.replace(".jpg", "")}`}
                       passHref
+                      className={"work"}
                     >
-                      <a className={"work"}>{t(`albums:${album.path}`)}</a>
+                      {t(`albums:${album.path}`)}
                     </Link>
                   </Li>
                 );
@@ -93,16 +96,24 @@ export const Menu: React.FC<NavProps> = (props) => {
             </Ul>
           </Li>
           <Li>
-            <Link href="/articles">{t("Articles")}</Link>
+            <Link href="/articles" legacyBehavior>
+              {t("Articles")}
+            </Link>
           </Li>
           <Li>
-            <Link href="/biography">{t("Biography")}</Link>
+            <Link href="/biography" legacyBehavior>
+              {t("Biography")}
+            </Link>
           </Li>
           <Li>
-            <Link href="/exhibitions">{t("Exhibitions")}</Link>
+            <Link href="/exhibitions" legacyBehavior>
+              {t("Exhibitions")}
+            </Link>
           </Li>
           <Li>
-            <Link href="/contacts">{t("Contacts")}</Link>
+            <Link href="/contacts" legacyBehavior>
+              {t("Contacts")}
+            </Link>
           </Li>
         </Ul>
         <ImageList />

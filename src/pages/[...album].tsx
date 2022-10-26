@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -143,7 +143,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
       {/* className "album" can be used with shortcuts */}
       <Container className="album">
         <ImageContainer>
-          <Link href={`${previous}`} passHref shallow>
+          <Link href={`${previous}`} passHref shallow legacyBehavior>
             <Arrow className="left">
               <span />
             </Arrow>
@@ -154,23 +154,21 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
               shallow
               passHref
             >
-              <a>
-                <Image
-                  priority
-                  quality={100}
-                  layout="responsive"
-                  width="800"
-                  height="500"
-                  objectFit="contain"
-                  src={`/images/large/${image.fileName}`}
-                  alt={t(`images:${image.fileName}`)}
-                />
-              </a>
+              <Image
+                priority
+                quality={100}
+                layout="responsive"
+                width="800"
+                height="500"
+                objectFit="contain"
+                src={`/images/large/${image.fileName}`}
+                alt={t(`images:${image.fileName}`)}
+              />
             </Link>
             <Title>{t(`images:${image.fileName}`)}</Title>
             <Desc>{` - ${image.description}`}</Desc>
           </ImageBlock>
-          <Link href={`${next}`} passHref shallow>
+          <Link href={`${next}`} passHref shallow legacyBehavior>
             <Arrow id="arrow" className="right">
               <span />
             </Arrow>

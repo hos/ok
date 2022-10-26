@@ -41,13 +41,11 @@ export const Articles: React.FC<ArticlesProps> = () => {
           }
           return (
             <Link href={`/articles/${key}`} key={key} passHref>
-              <a>
-                <RedTitle>{t(key)}</RedTitle>
-                <p>
-                  {t(`${value.author}`)} / {value.year || 0}
-                </p>
-                <p>{t(`articles-desc:${key}`)}</p>
-              </a>
+              <RedTitle>{t(key)}</RedTitle>
+              <p>
+                {t(`${value.author}`)} / {value.year || 0}
+              </p>
+              <p>{t(`articles-desc:${key}`)}</p>
             </Link>
           );
         })}

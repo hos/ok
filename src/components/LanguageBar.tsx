@@ -25,8 +25,9 @@ export const LanguageBar: React.FC<LanguageBarProps> = () => {
             locale={lang.path}
             passHref
             key={lang.path}
+            className={`red}`}
           >
-            <a className={`red}`}>{lang.name}</a>
+            {lang.name}
           </Link>
         );
       })}

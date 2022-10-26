@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FC, useCallback, useRef, useState } from "react";
+import { FC, ReactNode, useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 
-interface OverlayProps {}
+interface OverlayProps {
+  children?: ReactNode;
+}
 
 export const Overlay: FC<OverlayProps> = (props) => {
   const [isFocusMode, setIsFocusMode] = useState(false);
@@ -50,15 +52,13 @@ const CloseButton = () => {
         passHref
         shallow
       >
-        <a>
-          <svg height="100%" width="100%" viewBox="0 0 32 32">
-            <title />
-            <g id="cross" stroke="#fff" fill="#fff" strokeWidth={2}>
-              <line x1="7" x2="25" y1="7" y2="25" />
-              <line x1="7" x2="25" y1="25" y2="7" />
-            </g>
-          </svg>
-        </a>
+        <svg height="100%" width="100%" viewBox="0 0 32 32">
+          <title />
+          <g id="cross" stroke="#fff" fill="#fff" strokeWidth={2}>
+            <line x1="7" x2="25" y1="7" y2="25" />
+            <line x1="7" x2="25" y1="25" y2="7" />
+          </g>
+        </svg>
       </Link>
     </ButtonContainer>
   );
