@@ -15,7 +15,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     </Container>
   );
 };
-// vscode wv em a\[atwum]
+
 const Main = styled.main`
   width: 75%;
   display: inline-flex;
