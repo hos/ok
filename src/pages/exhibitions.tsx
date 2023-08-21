@@ -46,6 +46,9 @@ export const Exhibitions: React.FC<ExhibitionsProps> = () => {
         objectPosition="left"
       />
       <ExText>
+        <Red> 2023 - </Red>
+        <span>{t("studio20")}</span>
+        <br />
         <Red> 2021 - </Red>
         <span>{t("sevan")}</span>
         <br />
