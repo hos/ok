@@ -34,7 +34,7 @@ const ExText = styled(Text)`
 export const Exhibitions: React.FC<ExhibitionsProps> = () => {
   const { t } = useTranslation("exhibitions");
   return (
-    <CenterView text>
+    <CenterView $text>
       <Meta />
       <Title>Solo Exhibitions</Title>
       <Image

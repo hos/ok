@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{}, { article: string }> = async (
-  ctx
+  ctx,
 ) => {
   const article = ctx.params?.article;
   return {
@@ -74,7 +74,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
   };
 
   return (
-    <CenterView text>
+    <CenterView $text>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

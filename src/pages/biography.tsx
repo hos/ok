@@ -32,7 +32,7 @@ interface BiographyProps {
 export const Biography: React.FC<BiographyProps> = (props) => {
   const { t } = useTranslation();
   return (
-    <CenterView text>
+    <CenterView $text>
       <Meta />
       <Title>{t("Biography")}</Title>
       <Image

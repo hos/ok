@@ -30,7 +30,7 @@ export const Articles: React.FC<ArticlesProps> = () => {
   const { t } = useTranslation("articles");
 
   return (
-    <CenterView text>
+    <CenterView $text>
       <Meta />
 
       <Container>
