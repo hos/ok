@@ -29,7 +29,7 @@ export const useShortcutSingle = (props: IUseShortcutProps) => {
 
   const addFilter = useCallback(() => {
     const elements = Array.from(
-      document.querySelectorAll(selector)
+      document.querySelectorAll(selector),
     ) as HTMLElement[];
     if (!elements?.length) {
       return null;
@@ -44,7 +44,7 @@ export const useShortcutSingle = (props: IUseShortcutProps) => {
 
   const removeFilter = useCallback(() => {
     const elements = Array.from(
-      document.querySelectorAll(selector)
+      document.querySelectorAll(selector),
     ) as HTMLElement[];
     if (!elements) {
       return null;
@@ -98,7 +98,7 @@ export const useShortcutSingle = (props: IUseShortcutProps) => {
 
   useEffect(() => {
     const elements = Array.from(
-      document.querySelectorAll(selector)
+      document.querySelectorAll(selector),
     ) as HTMLElement[];
 
     const add = () => setCounter((c) => c + 1);

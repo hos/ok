@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
@@ -42,8 +42,12 @@ export const Exhibitions: React.FC<ExhibitionsProps> = () => {
         alt="Exhibitions"
         width="481"
         height="393"
-        objectFit="contain"
-        objectPosition="left"
+        style={{
+          maxWidth: "100%",
+          height: "auto",
+          objectFit: "contain",
+          objectPosition: "left",
+        }}
       />
       <ExText>
         <Red> 2021 - </Red>

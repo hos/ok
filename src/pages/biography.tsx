@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
@@ -38,8 +38,12 @@ export const Biography: React.FC<BiographyProps> = (props) => {
       <Image
         src={KarenOhanyan}
         alt="Karen Ohanyan Portrait"
-        objectFit="contain"
-        objectPosition="left"
+        style={{
+          maxWidth: "100%",
+          height: "auto",
+          objectFit: "contain",
+          objectPosition: "left",
+        }}
       />
 
       <Text dangerouslySetInnerHTML={{ __html: props.content }}></Text>

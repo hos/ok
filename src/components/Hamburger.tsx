@@ -6,7 +6,7 @@ interface HamburgerProps {
   onClick?: (_val: any) => void;
 }
 
-export const _Hamburger: React.FC<HamburgerProps> = (props) => {
+export const HamburgerUnstyled: React.FC<HamburgerProps> = (props) => {
   const ref = useRef<HTMLDivElement | null>();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export const _Hamburger: React.FC<HamburgerProps> = (props) => {
   );
 };
 
-export const Hamburger = styled(_Hamburger)`
+export const Hamburger = styled(HamburgerUnstyled)`
   width: 30px;
   top: 20px;
   left: 30px;

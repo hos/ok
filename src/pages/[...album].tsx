@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       paths.push(`/${album.path}/${img.fileName.replace(".jpg", "")}`);
       for (const locale of i18n?.locales || []) {
         paths.push(
-          `/${locale}/${album.path}/${img.fileName.replace(".jpg", "")}`
+          `/${locale}/${album.path}/${img.fileName.replace(".jpg", "")}`,
         );
       }
     }
@@ -110,7 +110,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
   }, [isLargeMode, router, previous, next]);
 
   const image = album?.images.find(
-    (img) => img.fileName === imageName + ".jpg"
+    (img) => img.fileName === imageName + ".jpg",
   );
 
   if (!image) {
@@ -123,10 +123,13 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
         <Overlay>
           <Image
             quality={100}
-            layout="fill"
             src={`/images/large/${image.fileName}`}
             alt={image.description}
-            objectFit="contain"
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "contain",
+            }}
           ></Image>
         </Overlay>
       ) : null}
@@ -157,12 +160,15 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
               <Image
                 priority
                 quality={100}
-                layout="responsive"
                 width="800"
                 height="500"
-                objectFit="contain"
                 src={`/images/large/${image.fileName}`}
                 alt={t(`images:${image.fileName}`)}
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  objectFit: "contain",
+                }}
               />
             </Link>
             <Title>{t(`images:${image.fileName}`)}</Title>
@@ -179,13 +185,17 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
             return (
               <Image
                 key={img.fileName}
-                layout="responsive"
                 width="800"
                 height="500"
-                objectFit="contain"
                 loading="lazy"
                 src={`/images/large/${img.fileName}`}
                 alt={t(`images:${img.fileName}`)}
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "contain",
+                }}
               />
             );
           })}

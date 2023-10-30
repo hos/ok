@@ -1,5 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ImageBlock } from "src/components/Block";
@@ -39,9 +39,13 @@ const Home: NextPage = () => {
         <ImageBlock>
           <Image
             priority
-            objectFit="contain"
             src={TheOriginOfTheWorld}
             alt={t("images:The-Origin-of-the-World.jpg")}
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+              objectFit: "contain",
+            }}
           />
         </ImageBlock>
       </ImageContainer>

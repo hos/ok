@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -11,7 +11,7 @@ interface ImageListProps {
   className?: string;
 }
 
-const _ImageList: React.FC<ImageListProps> = (props) => {
+const ImageListUnstyled: React.FC<ImageListProps> = (props) => {
   const { t } = useTranslation();
   const router = useRouter();
   const [albumName] = Array.isArray(router.query.album)
@@ -36,7 +36,7 @@ const _ImageList: React.FC<ImageListProps> = (props) => {
             <Image
               width="70"
               height="70"
-              objectFit="cover"
+              style={{ objectFit: "cover" }}
               src={`/images/large/${image.fileName}`}
               alt={t(image.fileName)}
             />
@@ -47,7 +47,7 @@ const _ImageList: React.FC<ImageListProps> = (props) => {
   );
 };
 
-export const ImageList = styled(_ImageList)`
+export const ImageList = styled(ImageListUnstyled)`
   display: flex;
   flex-wrap: wrap;
   max-width: 320px;

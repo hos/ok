@@ -3,12 +3,12 @@ import path from "path";
 
 export const getDocument = async (
   name: string,
-  locale?: string
+  locale?: string,
 ): Promise<string | null> => {
   let html = "";
   const localePath = path.resolve(
     process.cwd(),
-    `./public/locales/${locale || "en"}/docs/${name}.html`
+    `./public/locales/${locale || "en"}/docs/${name}.html`,
   );
   try {
     html = (await fs.readFile(localePath)).toString();
@@ -17,7 +17,7 @@ export const getDocument = async (
     if (locale !== "en") {
       const localePath = path.resolve(
         process.cwd(),
-        `./public/locales/${locale || "en"}/docs/${name}.html`
+        `./public/locales/${locale || "en"}/docs/${name}.html`,
       );
       html = (await fs.readFile(localePath)).toString();
     }
