@@ -37,5 +37,8 @@
     "prettier": "^3.0.3",
     "typescript": "5.2.2"
   },
-  "packageManager": "yarn@4.0.1"
+  "packageManager": "yarn@4.0.1",
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
