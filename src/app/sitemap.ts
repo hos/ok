@@ -1,11 +1,8 @@
 import { MetadataRoute } from "next";
 
+import { host, locales } from "@/src/config";
 import albums from "@/src/data/albums.json";
 import articles from "@/src/data/articles.json";
-
-import { locales } from "../i18n";
-
-const host = process.env.HOST_URL || "https://www.karenohanyan.art";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [];
@@ -14,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const img of album.images) {
       for (const locale of locales) {
         urls.push({
-          url: `${host}/${locale}/${album.path}/${img.fileName.replace(
+          url: `https://${host}/${locale}/${album.path}/${img.fileName.replace(
             ".jpg",
             "",
           )}`,
@@ -29,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const [key] of Object.entries(articles)) {
     for (const locale of locales) {
       urls.push({
-        url: `${host}/${locale}/articles/${key}`,
+        url: `https://${host}/${locale}/articles/${key}`,
         changeFrequency: "yearly",
         priority: 0.7,
         lastModified: new Date().toISOString(),

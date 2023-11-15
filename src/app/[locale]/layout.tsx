@@ -9,7 +9,7 @@ import { ReactNode } from "react";
 
 import AppRouterNavigation from "@/src/components/AppRouterNavigation";
 import { Shortcuts } from "@/src/components/Shortcuts";
-import { locales } from "@/src/i18n";
+import { locales } from "@/src/config";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();

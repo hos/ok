@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://karenohanyan.art
-
-# Sitemaps
-Sitemap: https://karenohanyan.art/sitemap.xml

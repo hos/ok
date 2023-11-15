@@ -8,7 +8,7 @@ import {
 } from "next/navigation";
 
 import { Nav } from "@/src/components/Nav";
-import { locales } from "@/src/i18n";
+import { locales } from "@/src/config";
 
 const AppRouterNavigation = ({ locale }: { locale: string }) => {
   const pathname = usePathname();

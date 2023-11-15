@@ -13,5 +13,3 @@ export default getRequestConfig(async ({ locale }) => ({
     ...(await import(`../public/locales/${locale}/meta.json`)).default,
   },
 }));
-
-export const locales = ["en", "ru", "hy"];
