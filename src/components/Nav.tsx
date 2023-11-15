@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import albums from "src/data/albums.json";
@@ -96,7 +97,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
             );
           })}
         </ul>
-        <ImageList className="max-md:hidden" albumName={slug} />
+        <ImageList className="max-md:hidden" albumPath={slug} />
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -8,17 +10,16 @@ import { cn } from "../lib/utils";
 
 interface ImageListProps {
   className?: string;
-  albumName: string;
+  albumPath: string;
 }
 
 export const ImageList: React.FC<ImageListProps> = ({
   className,
-  albumName,
+  albumPath,
 }) => {
   const t = useTranslations();
 
-  const album = albums.find((alb) => alb.path === albumName);
-
+  const album = albums.find((alb) => alb.path === albumPath);
   if (!album) {
     return null;
   }
@@ -34,14 +35,14 @@ export const ImageList: React.FC<ImageListProps> = ({
         return (
           <Link
             key={image.fileName}
-            href={`/${albumName}/${image.fileName.replace(".jpg", "")}`}
+            href={`/${albumPath}/${image.fileName.replace(".jpg", "")}`}
             scroll={false}
             className="mr-1"
           >
             <Image
               width="70"
               height="70"
-              style={{ objectFit: "cover" }}
+              className="object-cover"
               src={`/images/large/${image.fileName}`}
               alt={t(`images.${image.fileName.replace(".jpg", "")}`)}
             />

@@ -123,7 +123,7 @@ const AlbumPage = async ({
       />
       {/* className "album" can be used with shortcuts */}
       <div className="album">
-        <div className="w-[80%] mx-auto flex flex-row items-center max-md:w-full">
+        <div className="w-[90%] md:w-[80%] mx-auto flex flex-row items-center max-md:w-full">
           <Link href={`${previous}`} shallow>
             <Arrow
               className="[.large-mode_&]:left-4"
@@ -140,8 +140,7 @@ const AlbumPage = async ({
                 src={`/images/large/${image.fileName}`}
                 alt={imageNameLocalized}
                 data-filename={fileNameNoExt}
-                sizes="100vw"
-                className="object-contain"
+                className="object-contain max-h-[500px] w-full h-auto"
               />
             </Link>
             <p className="text-xs m-0 m-0 pb-5">
@@ -156,7 +155,7 @@ const AlbumPage = async ({
             />
           </Link>
         </div>
-        <ImageList className="md:hidden" albumName={album?.name || ""} />
+        <ImageList className="md:hidden" albumPath={album?.path || ""} />
       </div>
     </div>
   );

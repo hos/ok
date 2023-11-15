@@ -39,7 +39,7 @@ const Biography: React.FC<{ params: { locale: string } }> = async ({
       />
 
       <div
-        className="py-10"
+        className="py-10 max-md:px-2"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
     </div>
