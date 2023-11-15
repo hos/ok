@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 interface PostBody {
   content: string;
@@ -7,12 +6,8 @@ interface PostBody {
 
 export const PostBody: React.FC<PostBody> = ({ content }) => {
   return (
-    <Container className="max-w-2xl mx-auto">
+    <div className="pb-5">
       <div dangerouslySetInnerHTML={{ __html: content }} />
-    </Container>
+    </div>
   );
 };
-
-const Container = styled.div`
-  padding-bottom: 40px;
-`;

@@ -2,9 +2,6 @@ import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { ImageBlock } from "src/components/Block";
-import { CenterView } from "src/components/CenterView";
-import { ImageContainer } from "src/components/ImageContainer";
 import { Meta } from "src/components/Meta";
 import { useShortcut } from "src/hooks/useShortcut";
 
@@ -28,28 +25,24 @@ const Home: NextPage = () => {
   useShortcut();
 
   return (
-    <CenterView>
+    <div className="w-full mx-auto flex flex-col justify-start">
       <Meta
         title={t("Karen Ohanyan")}
         description={t("description")}
         imageURL={`/images/The-Origin-of-the-World.jpg`}
         imageAlt={t(`images:The-Origin-of-the-World.jpg`)}
       />
-      <ImageContainer>
-        <ImageBlock>
+      <div className="w-[80%] mx-auto flex flex-row items-center max-md:w-full">
+        <div className="w-full h-auto text-center">
           <Image
             priority
             src={TheOriginOfTheWorld}
             alt={t("images:The-Origin-of-the-World.jpg")}
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-              objectFit: "contain",
-            }}
+            className="max-w-full h-auto object-contain"
           />
-        </ImageBlock>
-      </ImageContainer>
-    </CenterView>
+        </div>
+      </div>
+    </div>
   );
 };
 

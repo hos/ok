@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import styled from "styled-components";
 
-interface LanguageBarProps {
-  disabled?: Array<string>;
-}
+interface LanguageBarProps {}
 
 const langs = [
   { path: "hy", name: "հայ" },
@@ -17,45 +14,19 @@ export const LanguageBar: React.FC<LanguageBarProps> = () => {
   const router = useRouter();
 
   return (
-    <Container>
+    <div className="max-md:my-5 pt-5 inline-block text-[10px]">
       {langs.map((lang) => {
         return (
           <Link
+            key={lang.path}
             href={router.asPath}
             locale={lang.path}
-            passHref
-            key={lang.path}
-            className={`red}`}
+            className="text-red m-0.5 uppercase"
           >
             {lang.name}
           </Link>
         );
       })}
-    </Container>
+    </div>
   );
 };
-
-const Container = styled.div`
-  display: inline-block;
-  font-size: 10px;
-  text-transform: uppercase;
-  padding-top: 20px;
-
-  .disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-
-  & > span {
-    margin-left: 5px;
-  }
-
-  & a {
-    margin: 2px;
-    color: rgb(203, 73, 73);
-  }
-
-  @media screen and (max-width: 800px) {
-    margin: 20px 0;
-  }
-`;

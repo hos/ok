@@ -4,12 +4,10 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useMemo } from "react";
 import { Article as ArticleSchema } from "schema-dts";
-import { CenterView } from "src/components/CenterView";
 import { Meta } from "src/components/Meta";
 import { PostBody } from "src/components/PostBody";
 import articles from "src/data/articles.json";
 import getDocument from "src/lib/getDocument";
-import styled from "styled-components";
 
 import { i18n } from "@/next-i18next.config";
 
@@ -65,7 +63,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
       return null;
     }
 
-    return <RedTitle>{t(`${article}`)}</RedTitle>;
+    return <h2 className="text-red">{t(`${article}`)}</h2>;
   }, [t, meta, article]);
 
   const schema: ArticleSchema = {
@@ -74,7 +72,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
   };
 
   return (
-    <CenterView $text>
+    <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -82,12 +80,8 @@ export const Article: React.FC<ArticleProps> = (props) => {
       <Meta />
       {title}
       <PostBody content={props.content}></PostBody>
-    </CenterView>
+    </div>
   );
 };
-
-const RedTitle = styled.h2`
-  color: rgb(203, 73, 73);
-`;
 
 export default Article;

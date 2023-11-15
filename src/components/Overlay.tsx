@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, ReactNode, useCallback, useRef, useState } from "react";
-import styled from "styled-components";
+
+import { cn } from "../lib/utils";
 
 interface OverlayProps {
   children?: ReactNode;
@@ -20,36 +21,29 @@ export const Overlay: FC<OverlayProps> = (props) => {
   }, [setIsFocusMode]);
 
   return (
-    <Container
-      className={isFocusMode ? "focus" : ""}
+    <div
+      className={cn(
+        "group/overlay",
+        isFocusMode ? "focus" : "",
+        `bg-black fixed inset-0 z-10`,
+      )}
       onMouseMove={() => enableFocusMode()}
     >
       <CloseButton />
       {props.children}
-    </Container>
+    </div>
   );
 };
 
 export default Overlay;
 
-const Container = styled.div`
-  background-color: rgba(0, 0, 0, 1);
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`;
-
 const CloseButton = () => {
   const router = useRouter();
 
   return (
-    <ButtonContainer>
+    <div className="absolute top-8 right-8 w-6 h-6 z-20 md:[.focus_&]:opacity-0 transition-opacity duration-500">
       <Link
         href={{ query: {}, pathname: router.asPath.split("?")?.[0] }}
-        passHref
         shallow
       >
         <svg height="100%" width="100%" viewBox="0 0 32 32">
@@ -60,21 +54,6 @@ const CloseButton = () => {
           </g>
         </svg>
       </Link>
-    </ButtonContainer>
+    </div>
   );
 };
-
-const ButtonContainer = styled.div`
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.5s ease-in-out;
-
-  ${Container}.focus & {
-    opacity: 0;
-  }
-`;

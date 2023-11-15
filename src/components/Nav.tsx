@@ -5,19 +5,25 @@ import { useCallback, useEffect, useRef } from "react";
 import albums from "src/data/albums.json";
 import { useActiveLink } from "src/hooks/useActiveLink";
 import { usePageNav } from "src/hooks/usePageNav";
-import styled from "styled-components";
+
+import { cn } from "@/src/lib/utils";
 
 import { Hamburger } from "./Hamburger";
 import { ImageList } from "./ImageList";
 import { LanguageBar } from "./LanguageBar";
-import { Li, Ul } from "./ListItem";
-import { Name } from "./Name";
 
-interface NavProps {
-  className?: string;
-}
+const urlsAndLabels = [
+  { url: "/", label: "Home" },
+  { url: "/works", label: "Works" },
+  { url: "/articles", label: "Articles" },
+  { url: "/biography", label: "Biography" },
+  { url: "/exhibitions", label: "Exhibitions" },
+  { url: "/contacts", label: "Contacts" },
+];
 
-export const Menu: React.FC<NavProps> = (props) => {
+interface NavProps {}
+
+export const Menu: React.FC<NavProps> = () => {
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -59,118 +65,79 @@ export const Menu: React.FC<NavProps> = (props) => {
     };
   }, [otherKeyPressed, router, previous, next]);
 
+  const linkClassName = `text-xs p-[1px] text-black no-underline cursor-pointer hover:bg-red hover:text-white [&.selected]:bg-black [&.selected]:text-white leading-5`;
+
   return (
-    <Container className={props.className}>
-      <Nav>
+    <div className="grow max-md:absolute">
+      <div
+        className={`inline-block max-md:h-full m-0 md:m-4 bg-white md:bg-transparent max-w-95
+      max-md:z-10
+      max-md:duration-300
+      max-md:ease-in
+      max-md:fixed
+      max-md:p-8
+      max-md:pt-5
+      max-md:-left-96
+      max-md:inset-y-0
+      [.show-menu_&]:shadow-2xl
+      [.show-menu_&]:left-0
+      `}
+      >
         <div>
           <Hamburger onClick={() => toggleMenu()} />
         </div>
         <LanguageBar />
-        <Name />
+        <div className="whitespace-nowrap mt-3.5 relative top-0 cursor-pointer">
+          <Link href="/" passHref>
+            <h1 className="text-2xl m-0 font-thin">{t("Karen Ohanyan")}</h1>
+          </Link>
+        </div>
         <br />
-        <Ul className="parent-menu">
-          <Li>
-            <Link href="/" legacyBehavior>
-              {t("Home")}
-            </Link>
-          </Li>
-          <Li id="works-submenu" className={isOpen ? `` : "hidden"}>
-            <a onClick={() => setIsOpen(!isOpen)}>{t("Works")}</a>
-            <Ul className="submenu">
-              {albums.map((album) => {
-                return (
-                  <Li key={album.name}>
-                    <Link
-                      scroll={false}
-                      href={`/${album.path}/${album.images[
-                        album.default || 0
-                      ].fileName.replace(".jpg", "")}`}
-                      passHref
-                      className={"work"}
-                    >
-                      {t(`albums:${album.path}`)}
-                    </Link>
-                  </Li>
-                );
-              })}
-            </Ul>
-          </Li>
-          <Li>
-            <Link href="/articles" legacyBehavior>
-              {t("Articles")}
-            </Link>
-          </Li>
-          <Li>
-            <Link href="/biography" legacyBehavior>
-              {t("Biography")}
-            </Link>
-          </Li>
-          <Li>
-            <Link href="/exhibitions" legacyBehavior>
-              {t("Exhibitions")}
-            </Link>
-          </Li>
-          <Li>
-            <Link href="/contacts" legacyBehavior>
-              {t("Contacts")}
-            </Link>
-          </Li>
-        </Ul>
-        <ImageList />
-      </Nav>
-    </Container>
+        <ul className="parent-menu m-0 p-0 list-none">
+          {urlsAndLabels.map(({ url, label }) => {
+            if (label !== "Works") {
+              return (
+                <li key={label}>
+                  <Link href={url} className={linkClassName}>
+                    {t(label)}
+                  </Link>
+                </li>
+              );
+            }
+
+            return (
+              <li key={label}>
+                <a className={linkClassName} onClick={() => setIsOpen(!isOpen)}>
+                  {t(label)}
+                </a>
+                <ul
+                  className={cn(
+                    `submenu m-0 p-0 list-none ${isOpen ? "" : "hidden"}`,
+                  )}
+                >
+                  {albums.map((album) => {
+                    return (
+                      <li key={album.name} className="p-0 pl-[10px]">
+                        <Link
+                          scroll={false}
+                          href={`/${album.path}/${album.images[
+                            album.default || 0
+                          ].fileName.replace(".jpg", "")}`}
+                          passHref
+                          className={linkClassName}
+                        >
+                          {t(`albums:${album.path}`)}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+            );
+          })}
+        </ul>
+        <ImageList className="max-md:hidden" />
+      </div>
+    </div>
   );
 };
-
-const Container = styled.div`
-  flex-grow: 1;
-
-  @media screen and (max-width: 800px) {
-    position: absolute;
-  }
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  min-width: 250px;
-  display: inline-block;
-  margin-left: 16px;
-  z-index: 2;
-  overflow: visible;
-
-  & ul {
-    list-style-type: none;
-  }
-
-  .show-menu & {
-    left: 0;
-    max-width: 400px;
-    background-color: #fff;
-    border-right: 0.5px solid #eee;
-    box-shadow: 10px 10px 200px #333;
-  }
-
-  .show-menu &:after {
-    content: " ";
-    box-shadow: 0 0 5px #000;
-  }
-
-  @media screen and (max-width: 800px) {
-    height: 100vh;
-    margin-left: 0;
-    background-color: transparent;
-    transition: all 0.2s;
-    position: fixed;
-    padding: 30px;
-    padding-top: 20px;
-    left: -500px;
-    bottom: 0;
-    top: 0;
-    & ${ImageList} {
-      display: none;
-      position: absolute;
-    }
-  }
-`;

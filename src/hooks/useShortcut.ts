@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
-import { CSSProperties } from "styled-components";
+import { CSSProperties, useCallback, useEffect, useState } from "react";
 
 interface IUseShortcutProps {
   selector: string;

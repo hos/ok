@@ -6,20 +6,17 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect } from "react";
 import { VisualArtwork } from "schema-dts";
-import { ImageBlock } from "src/components/Block";
-import { CenterView } from "src/components/CenterView";
-import { ImageContainer } from "src/components/ImageContainer";
 import { ImageList } from "src/components/ImageList";
 import { Meta } from "src/components/Meta";
 import albums from "src/data/albums.json";
 import { useAlbumNav } from "src/hooks/useAlbumNav";
 import { useShortcut } from "src/hooks/useShortcut";
 import { useLD } from "src/lib/ld";
-import styled from "styled-components";
 
 import { i18n } from "@/next-i18next.config";
 
 import Overlay from "../components/Overlay";
+import { cn } from "../lib/utils";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = [];
@@ -118,7 +115,12 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
   }
 
   return (
-    <CenterView className={isLargeMode ? "large-mode" : ""}>
+    <div
+      className={cn(
+        "w-full mx-auto flex flex-col justify-start",
+        isLargeMode ? "large-mode" : "",
+      )}
+    >
       {isLargeMode ? (
         <Overlay>
           <Image
@@ -144,18 +146,18 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
         imageAlt={t(`images:${image.fileName}`)}
       />
       {/* className "album" can be used with shortcuts */}
-      <Container className="album">
-        <ImageContainer>
-          <Link href={`${previous}`} passHref shallow legacyBehavior>
-            <Arrow className="left">
-              <span />
-            </Arrow>
+      <div className="album">
+        <div className="w-[80%] mx-auto flex flex-row items-center max-md:w-full">
+          <Link href={`${previous}`} shallow>
+            <Arrow
+              className="[.large-mode_&]:left-4"
+              iconClassName="-rotate-[135deg]"
+            />
           </Link>
-          <ImageBlock>
+          <div className="w-full h-auto text-center">
             <Link
               href={{ pathname: router.asPath, query: { mode: "large" } }}
               shallow
-              passHref
             >
               <Image
                 priority
@@ -171,113 +173,57 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
                 }}
               />
             </Link>
-            <Title>{t(`images:${image.fileName}`)}</Title>
-            <Desc>{` - ${image.description}`}</Desc>
-          </ImageBlock>
-          <Link href={`${next}`} passHref shallow legacyBehavior>
-            <Arrow id="arrow" className="right">
-              <span />
-            </Arrow>
+            <p className="text-xs m-0 m-0 pb-5">
+              {t(`images:${image.fileName}`)}
+              <span className="text-gray-600">{` - ${image.description}`}</span>
+            </p>
+          </div>
+          <Link href={`${next}`} shallow>
+            <Arrow
+              className="[.large-mode_&]:right-4"
+              iconClassName="rotate-45"
+            />
           </Link>
-        </ImageContainer>
-        <Hide>
-          {album?.images.map((img) => {
-            return (
-              <Image
-                key={img.fileName}
-                width="800"
-                height="500"
-                loading="lazy"
-                src={`/images/large/${img.fileName}`}
-                alt={t(`images:${img.fileName}`)}
-                sizes="100vw"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "contain",
-                }}
-              />
-            );
-          })}
-        </Hide>
-        <ImageList />
-      </Container>
-    </CenterView>
+        </div>
+        <ImageList className="md:hidden" />
+      </div>
+    </div>
   );
 };
 
-const Container = styled.div`
-  @media screen and (min-width: 800px) {
-    & ${ImageList} {
-      display: none;
-    }
-  }
-`;
+const Arrow = ({
+  className,
+  iconClassName,
+}: {
+  className?: string;
+  iconClassName?: string;
+}) => (
+  <span
+    className={cn(
+      "w-[48px] h-[48px] leading-[48px] text-center cursor-pointer [.large-mode_&]:top-1/2 [.large-mode_&]:fixed [.large-mode_&]:z-20",
+      className,
+    )}
+  >
+    <ArrowIcon className={iconClassName} />
+  </span>
+);
 
-const Hide = styled.div`
-  position: fixed;
-  visibility: hidden;
-  overflow: hidden;
-`;
-
-interface ArrowProps {}
-
-const Arrow = styled.a<ArrowProps>`
-  height: 48px;
-  width: 48px;
-  line-height: 48px;
-  text-align: center;
-  cursor: pointer;
-
-  & span {
-    height: 10px;
-    width: 10px;
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-  }
-
-  .large-mode & {
-    position: fixed;
-    color: white;
-    top: 50%;
-    z-index: 10;
-  }
-
-  .large-mode & span {
-    border: solid white;
-    border-width: 0 2px 2px 0;
-  }
-
-  &.right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-  }
-  &.left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-  }
-
-  .large-mode &.left {
-    left: 1rem;
-  }
-  .large-mode &.right {
-    right: 1rem;
-  }
-
-  @media screen and (max-width: 800px) {
-    width: 48px;
-  }
-`;
-
-const Title = styled.span`
-  font-size: 11px;
-`;
-
-const Desc = styled.span`
-  font-size: 11px;
-  color: #444;
-`;
+const ArrowIcon = ({ className }: { className?: string }) => (
+  <span
+    className={cn(
+      `h-3
+       w-3
+       border-solid
+       border-black
+       border-0
+       border-t-2
+       border-r-2
+       inline-block
+       p-0.5
+       [.large-mode_&]:border-white`,
+      className,
+    )}
+  />
+);
 
 export default ImagePage;

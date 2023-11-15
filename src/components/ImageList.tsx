@@ -4,14 +4,15 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React from "react";
 import albums from "src/data/albums.json";
-import styled from "styled-components";
+
+import { cn } from "../lib/utils";
 
 interface ImageListProps {
   _?: void;
   className?: string;
 }
 
-const ImageListUnstyled: React.FC<ImageListProps> = (props) => {
+export const ImageList: React.FC<ImageListProps> = (props) => {
   const { t } = useTranslation();
   const router = useRouter();
   const [albumName] = Array.isArray(router.query.album)
@@ -25,13 +26,19 @@ const ImageListUnstyled: React.FC<ImageListProps> = (props) => {
   }
 
   return (
-    <div className={`list ${props.className}`}>
+    <div
+      className={cn(
+        `list flex flex-wrap max-w-[80%] md:max-w-[320px] my-[20px] mx-auto md:mt-20px max-md:justify-center`,
+        props.className,
+      )}
+    >
       {album.images.map((image) => {
         return (
           <Link
-            href={`/${albumName}/${image.fileName.replace(".jpg", "")}`}
             key={image.fileName}
+            href={`/${albumName}/${image.fileName.replace(".jpg", "")}`}
             scroll={false}
+            className="mr-1"
           >
             <Image
               width="70"
@@ -46,22 +53,3 @@ const ImageListUnstyled: React.FC<ImageListProps> = (props) => {
     </div>
   );
 };
-
-export const ImageList = styled(ImageListUnstyled)`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 320px;
-  text-align: center;
-  margin-top: 20px;
-
-  & a {
-    margin-right: 4px;
-  }
-
-  @media screen and (max-width: 800px) {
-    max-width: 80%;
-    margin: 20px auto;
-    width: 100%;
-    justify-content: center;
-  }
-`;

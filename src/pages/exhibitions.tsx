@@ -3,11 +3,7 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
-import { CenterView } from "src/components/CenterView";
 import { Meta } from "src/components/Meta";
-import { Text } from "src/components/Text";
-import { Title } from "src/components/Title";
-import styled from "styled-components";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
@@ -26,51 +22,44 @@ interface ExhibitionsProps {
   _?: void;
 }
 
-const ExText = styled(Text)`
-  font-size: 12.5px;
-  line-height: 19px;
-`;
-
 export const Exhibitions: React.FC<ExhibitionsProps> = () => {
   const { t } = useTranslation("exhibitions");
   return (
-    <CenterView $text>
+    <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
       <Meta />
-      <Title>Solo Exhibitions</Title>
+      <h1 className="text-xl m-0 m-0 pb-5">Solo Exhibitions</h1>
       <Image
         src="/images/exhibition.jpg"
         alt="Exhibitions"
         width="481"
         height="393"
-        style={{
-          maxWidth: "100%",
-          height: "auto",
-          objectFit: "contain",
-          objectPosition: "left",
-        }}
+        className="max-w-full h-auto object-contain object-left"
       />
-      <ExText>
-        <Red> 2021 - </Red>
-        <span>{t("sevan")}</span>
-        <br />
-        <Red> 2016 - </Red>
-        <span>{t("avantGarde")}</span>
-        <br />
-        <Red> 2009 - </Red>
-        <span>{t("bodyInvestments")}</span>
-        <br />
-        <Red> 2006 - </Red>
-        <span>{t("realUtopias")}</span>
-        <br />
-        <br />
-        <span>{t("also")}</span>
-      </ExText>
-    </CenterView>
+      <div className="py-10 text-xs leading-5">
+        <p className="m-0 mt-0.5">
+          <span className="text-red"> 2021 - </span>
+          {t("sevan")}
+        </p>
+
+        <p className="m-0 mt-0.5">
+          <span className="text-red"> 2016 - </span>
+          {t("avantGarde")}
+        </p>
+
+        <p className="m-0 mt-0.5">
+          <span className="text-red"> 2009 - </span>
+          {t("bodyInvestments")}
+        </p>
+
+        <p className="m-0 mt-0.5">
+          <span className="text-red"> 2006 - </span>
+          {t("realUtopias")}
+        </p>
+
+        <p className="m-0 mt-4">{t("also")}</p>
+      </div>
+    </div>
   );
 };
-
-const Red = styled.span`
-  color: rgb(203, 73, 73);
-`;
 
 export default Exhibitions;
