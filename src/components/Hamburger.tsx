@@ -1,16 +1,21 @@
-import { useRouter } from "next/router";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "../lib/utils";
 
 interface HamburgerProps {
   onClick?: (_val: any) => void;
+  isLargeMode?: boolean;
 }
 
-export const Hamburger: React.FC<HamburgerProps> = (props) => {
+export const Hamburger: React.FC<HamburgerProps> = ({
+  onClick,
+  isLargeMode,
+}) => {
   const ref = useRef<HTMLDivElement | null>();
-  const router = useRouter();
-  const isLargeMode = router.query.mode === "large";
+
+  const toggleMenu = useCallback(() => {
+    document.querySelector("body")?.classList.toggle("show-menu");
+  }, []);
 
   useEffect(() => {
     const handle = () => {
@@ -27,6 +32,7 @@ export const Hamburger: React.FC<HamburgerProps> = (props) => {
 
   return (
     <div
+      onClick={toggleMenu}
       ref={(_ref) => (ref.current = _ref)}
       className={cn(
         `
@@ -40,7 +46,7 @@ export const Hamburger: React.FC<HamburgerProps> = (props) => {
         isLargeMode ? "hidden" : "",
       )}
     >
-      <span onClick={props.onClick}>
+      <span onClick={onClick}>
         {new Array(3).fill(0).map((_, i) => {
           return (
             <hr key={i} className="my-[2px] w-full border-t-2 border-black" />

@@ -1,8 +1,8 @@
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { Person } from "schema-dts";
 
 export const useLD = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const karen: Person = {
     "@type": "Person",

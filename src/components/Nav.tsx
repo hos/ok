@@ -1,13 +1,10 @@
-import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
-import { useCallback, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import albums from "src/data/albums.json";
-import { useActiveLink } from "src/hooks/useActiveLink";
-import { usePageNav } from "src/hooks/usePageNav";
 
 import { cn } from "@/src/lib/utils";
 
+import { AppKeyboardNavigation } from "./AppKeyboardNavigation";
 import { Hamburger } from "./Hamburger";
 import { ImageList } from "./ImageList";
 import { LanguageBar } from "./LanguageBar";
@@ -21,49 +18,14 @@ const urlsAndLabels = [
   { url: "/contacts", label: "Contacts" },
 ];
 
-interface NavProps {}
+interface NavProps {
+  slug: string;
+  pathname: string;
+  isLargeMode: boolean;
+}
 
-export const Menu: React.FC<NavProps> = () => {
-  const { t } = useTranslation();
-  const router = useRouter();
-
-  const { isOpen, setIsOpen } = useActiveLink();
-
-  const [next, previous] = usePageNav();
-  const otherKeyPressed = useRef<Map<string, boolean>>(new Map());
-
-  const toggleMenu = useCallback(() => {
-    document.querySelector("body")?.classList.toggle("show-menu");
-  }, []);
-
-  useEffect(() => {
-    const handleDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowUp" && otherKeyPressed.current.size === 0) {
-        e.preventDefault();
-        router.push(previous);
-        return;
-      }
-      if (e.key === "ArrowDown" && otherKeyPressed.current.size === 0) {
-        e.preventDefault();
-        router.push(next);
-        return;
-      }
-
-      otherKeyPressed.current.set(e.key, true);
-    };
-
-    const handleUp = (e: KeyboardEvent) => {
-      otherKeyPressed.current.delete(e.key);
-    };
-
-    document.addEventListener("keydown", handleDown);
-    document.addEventListener("keyup", handleUp);
-
-    return () => {
-      document.removeEventListener("keydown", handleDown);
-      document.removeEventListener("keyup", handleUp);
-    };
-  }, [otherKeyPressed, router, previous, next]);
+export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
+  const t = useTranslations();
 
   const linkClassName = `text-xs p-[1px] text-black no-underline cursor-pointer hover:bg-red hover:text-white [&.selected]:bg-black [&.selected]:text-white leading-5`;
 
@@ -84,9 +46,9 @@ export const Menu: React.FC<NavProps> = () => {
       `}
       >
         <div>
-          <Hamburger onClick={() => toggleMenu()} />
+          <Hamburger isLargeMode={isLargeMode} />
         </div>
-        <LanguageBar />
+        <LanguageBar currentPath={pathname} />
         <div className="whitespace-nowrap mt-3.5 relative top-0 cursor-pointer">
           <Link href="/" passHref>
             <h1 className="text-2xl m-0 font-thin">{t("Karen Ohanyan")}</h1>
@@ -107,15 +69,10 @@ export const Menu: React.FC<NavProps> = () => {
 
             return (
               <li key={label}>
-                <span
-                  className={linkClassName}
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  {t(label)}
-                </span>
+                <AppKeyboardNavigation className={linkClassName} slug={slug} />
                 <ul
                   className={cn(
-                    `submenu m-0 p-0 list-none ${isOpen ? "" : "hidden"}`,
+                    `m-0 p-0 list-none hidden [.show-works-menu_&]:block`,
                   )}
                 >
                   {albums.map((album) => {
@@ -129,7 +86,7 @@ export const Menu: React.FC<NavProps> = () => {
                           passHref
                           className={linkClassName}
                         >
-                          {t(`albums:${album.path}`)}
+                          {t(`albums.${album.path}`)}
                         </Link>
                       </li>
                     );
@@ -139,7 +96,7 @@ export const Menu: React.FC<NavProps> = () => {
             );
           })}
         </ul>
-        <ImageList className="max-md:hidden" />
+        <ImageList className="max-md:hidden" albumName={slug} />
       </div>
     </div>
   );

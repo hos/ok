@@ -1,4 +1,11 @@
+"use client";
+
 import { CSSProperties, useCallback, useEffect, useState } from "react";
+
+export const Shortcuts = () => {
+  useShortcut();
+  return null;
+};
 
 interface IUseShortcutProps {
   selector: string;
@@ -10,7 +17,7 @@ interface IUseShortcutProps {
 }
 
 export const useShortcut = () => {
-  for (const short of Shortcuts) {
+  for (const short of ShortcutConfigs) {
     useShortcutSingle(short); // eslint-disable-line react-hooks/rules-of-hooks
   }
 };
@@ -30,6 +37,7 @@ export const useShortcutSingle = (props: IUseShortcutProps) => {
     const elements = Array.from(
       document.querySelectorAll(selector),
     ) as HTMLElement[];
+
     if (!elements?.length) {
       return null;
     }
@@ -114,9 +122,9 @@ export const useShortcutSingle = (props: IUseShortcutProps) => {
   }, [selector]);
 };
 
-export const Shortcuts: IUseShortcutProps[] = [
+const ShortcutConfigs: IUseShortcutProps[] = [
   {
-    selector: `.album img[alt^="Sevan"]`,
+    selector: `.album img[data-filename^="Sevan"]`,
     styleDown: {
       transition: "0.3s",
       transform: `rotateZ(180deg)`,
@@ -128,7 +136,7 @@ export const Shortcuts: IUseShortcutProps[] = [
     clickCount: 10,
   },
   {
-    selector: 'img[alt="The Origin of the World"]',
+    selector: 'img[data-filename="The-Origin-of-the-World"]',
     key: "o",
     styleDown: {
       transition: `2s`,

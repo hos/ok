@@ -1,26 +1,15 @@
-import { GetStaticProps } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 import { Meta } from "src/components/Meta";
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(ctx.locale || "en", [
-        "images",
-        "meta",
-        "albums",
-      ])),
-    },
-  };
-};
-
-interface ContactsProps {
-  _?: void;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+  return { title: t("Contacts"), description: t("description") };
 }
 
-export const Contacts: React.FC<ContactsProps> = () => {
+const Contacts: React.FC<{}> = async () => {
   return (
     <div className="w-full flex flex-col items-center">
       <Meta />

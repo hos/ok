@@ -1,6 +1,7 @@
-const { i18n } = require("./next-i18next.config");
 const albums = require("./src/data/albums.json");
 const articles = require("./src/data/articles.json");
+
+const locales = ["en", "ru", "hy"];
 
 module.exports = {
   siteUrl: process.env.HOST_URL || "https://www.karenohanyan.art",
@@ -16,7 +17,7 @@ module.exports = {
           changefreq: "yearly",
           priority: 0.7,
           lastmod: new Date().toISOString(),
-          alternateRefs: i18n.locales.map((locale) => {
+          alternateRefs: locales.map((locale) => {
             return {
               href: `${config.siteUrl}/${locale}`,
               hreflang: locale,

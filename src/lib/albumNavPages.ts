@@ -1,23 +1,19 @@
-import { useRouter } from "next/router";
-import { useMemo } from "react";
 import albums from "src/data/albums.json";
 
-export const useAlbumNav = (
+export const albumNavPages = (
   image: string,
+  isLargeMode: boolean,
   album?: (typeof albums)[0] | null,
 ) => {
-  const router = useRouter();
-  const isLargeMode = router.query.mode + "" === "large";
-
-  const queryString = useMemo(() => {
+  const queryString = (() => {
     const query = new URLSearchParams();
     if (isLargeMode) {
       query.append("mode", "large");
     }
     return query.toString();
-  }, [isLargeMode]);
+  })();
 
-  const next = useMemo(() => {
+  const next = (() => {
     if (!album) {
       return null;
     }
@@ -25,9 +21,9 @@ export const useAlbumNav = (
       (img) => img.fileName === image + ".jpg",
     );
     return (album.images[idx + 1] || album.images[0]).fileName;
-  }, [album, image]);
+  })();
 
-  const previous = useMemo(() => {
+  const previous = (() => {
     if (!album) {
       return null;
     }
@@ -36,7 +32,7 @@ export const useAlbumNav = (
     );
     return (album.images[idx - 1] || album.images[album.images.length - 1])
       .fileName;
-  }, [album, image]);
+  })();
 
   return [
     next &&
