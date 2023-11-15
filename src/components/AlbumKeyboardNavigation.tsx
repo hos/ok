@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 import { albumNavPages } from "../lib/albumNavPages";
@@ -13,9 +13,9 @@ export const AlbumKeyboardNavigation = ({
   album: any;
 }) => {
   const router = useRouter();
-  const params = useParams();
+  const search = useSearchParams();
 
-  const isLargeMode = params?.mode === "large";
+  const isLargeMode = search?.get("mode") === "large";
 
   const [next, previous] = albumNavPages(imageName, isLargeMode, album);
 
