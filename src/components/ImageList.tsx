@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React from "react";
 import albums from "src/data/albums.json";
@@ -8,16 +7,15 @@ import albums from "src/data/albums.json";
 import { cn } from "../lib/utils";
 
 interface ImageListProps {
-  _?: void;
   className?: string;
+  albumName: string;
 }
 
-export const ImageList: React.FC<ImageListProps> = (props) => {
+export const ImageList: React.FC<ImageListProps> = ({
+  className,
+  albumName,
+}) => {
   const { t } = useTranslation();
-  const router = useRouter();
-  const [albumName] = Array.isArray(router.query.album)
-    ? router.query.album
-    : [];
 
   const album = albums.find((alb) => alb.path === albumName);
 
@@ -29,7 +27,7 @@ export const ImageList: React.FC<ImageListProps> = (props) => {
     <div
       className={cn(
         `list flex flex-wrap max-w-[80%] md:max-w-[320px] my-[20px] mx-auto md:mt-20px max-md:justify-center`,
-        props.className,
+        className,
       )}
     >
       {album.images.map((image) => {

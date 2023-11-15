@@ -182,7 +182,7 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
             />
           </Link>
         </div>
-        <ImageList className="md:hidden" />
+        <ImageList className="md:hidden" albumName={album?.name || ""} />
       </div>
     </div>
   );

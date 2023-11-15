@@ -23,10 +23,17 @@ interface NavProps {
   slug: string;
   pathname: string;
   navigate: (_url: string) => void;
+  isLargeMode: boolean;
   t: (_key: string) => string;
 }
 
-export const Menu: React.FC<NavProps> = ({ t, slug, pathname, navigate }) => {
+export const Menu: React.FC<NavProps> = ({
+  t,
+  slug,
+  pathname,
+  navigate,
+  isLargeMode,
+}) => {
   const { isOpen, setIsOpen } = useActiveLink({ pathname, album: slug });
 
   const [next, previous] = usePageNav(slug);
@@ -85,9 +92,9 @@ export const Menu: React.FC<NavProps> = ({ t, slug, pathname, navigate }) => {
       `}
       >
         <div>
-          <Hamburger onClick={() => toggleMenu()} />
+          <Hamburger onClick={() => toggleMenu()} isLargeMode={isLargeMode} />
         </div>
-        <LanguageBar />
+        <LanguageBar currentPath={pathname} />
         <div className="whitespace-nowrap mt-3.5 relative top-0 cursor-pointer">
           <Link href="/" passHref>
             <h1 className="text-2xl m-0 font-thin">{t("Karen Ohanyan")}</h1>
@@ -140,7 +147,7 @@ export const Menu: React.FC<NavProps> = ({ t, slug, pathname, navigate }) => {
             );
           })}
         </ul>
-        <ImageList className="max-md:hidden" />
+        <ImageList className="max-md:hidden" albumName={slug} />
       </div>
     </div>
   );

@@ -18,6 +18,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
       <div className="md:w-3/4 py-8 inline-flex mt-14">{props.children}</div>
       <Menu
         t={t}
+        isLargeMode={router.query.mode + "" === "large"}
         navigate={router.push}
         pathname={router.asPath}
         slug={
