@@ -12,13 +12,14 @@ interface LanguageBarProps {
 }
 
 export const LanguageBar: React.FC<LanguageBarProps> = ({ currentPath }) => {
+  const currentPathWithoutLang = currentPath.replace(/\/[a-z]{2}\/?/, "");
   return (
     <div className="max-md:my-5 pt-5 inline-block text-[10px]">
       {langs.map((lang) => {
         return (
           <Link
             key={lang.path}
-            href={currentPath}
+            href={`/${lang.path}/${currentPathWithoutLang}`}
             locale={lang.path}
             className="text-red m-0.5 uppercase"
           >

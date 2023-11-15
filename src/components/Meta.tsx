@@ -1,6 +1,8 @@
-import { useRouter } from "next/dist/client/router";
+"use client";
+
 import Head from "next/head";
-import { useTranslation } from "next-i18next";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 interface MetaProps {
   title?: string;
@@ -12,8 +14,8 @@ interface MetaProps {
 }
 
 export const Meta: React.FC<MetaProps> = (props) => {
-  const router = useRouter();
-  const { t } = useTranslation();
+  const pathname = usePathname();
+  const t = useTranslations();
 
   const withOrigin = (val: string) =>
     val.startsWith("http") ? val : `https://karenohanyan.art${val}`;
@@ -22,7 +24,7 @@ export const Meta: React.FC<MetaProps> = (props) => {
     ? props.imageURL
     : `/images/Karen-Ohanyan.jpg`;
   const absImage = withOrigin(imageUrl);
-  const url = withOrigin(props.url || router.asPath);
+  const url = withOrigin(props.url || pathname!);
   const width = 1200;
   const height = 1200;
 

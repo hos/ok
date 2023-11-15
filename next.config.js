@@ -1,10 +1,8 @@
-const { i18n } = require("./next-i18next.config");
-
+const withNextIntl = require("next-intl/plugin")();
 const age = 60 * 60 * 24 * 365;
 
 /** @type {import('next').NextConfig} */
-module.exports = {
-  i18n,
+module.exports = withNextIntl({
   reactStrictMode: true,
   headers() {
     return [
@@ -23,4 +21,4 @@ module.exports = {
   images: {
     minimumCacheTTL: age,
   },
-};
+});

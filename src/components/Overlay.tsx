@@ -1,6 +1,8 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+"use client";
+
 import { FC, ReactNode, useCallback, useRef, useState } from "react";
+
+import { CloseButton } from "@/src/components/CloseButton";
 
 import { cn } from "../lib/utils";
 
@@ -36,24 +38,3 @@ export const Overlay: FC<OverlayProps> = (props) => {
 };
 
 export default Overlay;
-
-const CloseButton = () => {
-  const router = useRouter();
-
-  return (
-    <div className="absolute top-8 right-8 w-6 h-6 z-20 md:[.focus_&]:opacity-0 transition-opacity duration-500">
-      <Link
-        href={{ query: {}, pathname: router.asPath.split("?")?.[0] }}
-        shallow
-      >
-        <svg height="100%" width="100%" viewBox="0 0 32 32">
-          <title />
-          <g id="cross" stroke="#fff" fill="#fff" strokeWidth={2}>
-            <line x1="7" x2="25" y1="7" y2="25" />
-            <line x1="7" x2="25" y1="25" y2="7" />
-          </g>
-        </svg>
-      </Link>
-    </div>
-  );
-};

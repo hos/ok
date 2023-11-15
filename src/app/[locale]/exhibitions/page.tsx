@@ -1,29 +1,19 @@
-import { GetStaticProps } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 import { Meta } from "src/components/Meta";
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
   return {
-    props: {
-      ...(await serverSideTranslations(ctx.locale || "en", [
-        "images",
-        "meta",
-        "albums",
-        "exhibitions",
-      ])),
-    },
+    title: t("exhibitions.Solo Exhibitions"),
+    description: t("description"),
   };
-};
-
-interface ExhibitionsProps {
-  _?: void;
 }
 
-export const Exhibitions: React.FC<ExhibitionsProps> = () => {
-  const { t } = useTranslation("exhibitions");
+const Exhibitions: React.FC<{}> = async () => {
+  const t = await getTranslations("exhibitions");
   return (
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
       <Meta />
@@ -34,6 +24,7 @@ export const Exhibitions: React.FC<ExhibitionsProps> = () => {
         width="481"
         height="393"
         className="max-w-full h-auto object-contain object-left"
+        priority
       />
       <div className="py-10 text-xs leading-5">
         <p className="m-0 mt-0.5">

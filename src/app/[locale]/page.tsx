@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 
+const pageFileName = "The-Origin-of-the-World";
+
 import TheOriginOfTheWorld from "@/public/images/large/The-Origin-of-the-World.jpg";
 
 const Home: NextPage = () => {
@@ -13,8 +15,9 @@ const Home: NextPage = () => {
           <Image
             priority
             src={TheOriginOfTheWorld}
-            alt={t("images:The-Origin-of-the-World.jpg")}
+            alt={t(`images.${pageFileName}`)}
             className="max-w-full h-auto object-contain"
+            data-filename={pageFileName}
           />
         </div>
       </div>

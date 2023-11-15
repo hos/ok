@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "../lib/utils";
 
@@ -12,6 +12,10 @@ export const Hamburger: React.FC<HamburgerProps> = ({
   isLargeMode,
 }) => {
   const ref = useRef<HTMLDivElement | null>();
+
+  const toggleMenu = useCallback(() => {
+    document.querySelector("body")?.classList.toggle("show-menu");
+  }, []);
 
   useEffect(() => {
     const handle = () => {
@@ -28,6 +32,7 @@ export const Hamburger: React.FC<HamburgerProps> = ({
 
   return (
     <div
+      onClick={toggleMenu}
       ref={(_ref) => (ref.current = _ref)}
       className={cn(
         `

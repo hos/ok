@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import React from "react";
 import albums from "src/data/albums.json";
 
@@ -15,7 +15,7 @@ export const ImageList: React.FC<ImageListProps> = ({
   className,
   albumName,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const album = albums.find((alb) => alb.path === albumName);
 
@@ -43,7 +43,7 @@ export const ImageList: React.FC<ImageListProps> = ({
               height="70"
               style={{ objectFit: "cover" }}
               src={`/images/large/${image.fileName}`}
-              alt={t(image.fileName)}
+              alt={t(`images.${image.fileName.replace(".jpg", "")}`)}
             />
           </Link>
         );
