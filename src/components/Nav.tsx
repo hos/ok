@@ -1,6 +1,4 @@
-import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
 import { useCallback, useEffect, useRef } from "react";
 import albums from "src/data/albums.json";
 import { useActiveLink } from "src/hooks/useActiveLink";
@@ -21,15 +19,18 @@ const urlsAndLabels = [
   { url: "/contacts", label: "Contacts" },
 ];
 
-interface NavProps {}
+interface NavProps {
+  slug: string;
+  pathname: string;
+  navigate: (_url: string) => void;
+  t: (_key: string) => string;
+}
 
-export const Menu: React.FC<NavProps> = () => {
-  const { t } = useTranslation();
-  const router = useRouter();
+export const Menu: React.FC<NavProps> = ({ t, slug, pathname, navigate }) => {
+  const { isOpen, setIsOpen } = useActiveLink({ pathname, album: slug });
 
-  const { isOpen, setIsOpen } = useActiveLink();
-
-  const [next, previous] = usePageNav();
+  const [next, previous] = usePageNav(slug);
+  // navigate only if up or down key is pressed, no other key
   const otherKeyPressed = useRef<Map<string, boolean>>(new Map());
 
   const toggleMenu = useCallback(() => {
@@ -40,12 +41,12 @@ export const Menu: React.FC<NavProps> = () => {
     const handleDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowUp" && otherKeyPressed.current.size === 0) {
         e.preventDefault();
-        router.push(previous);
+        navigate(previous);
         return;
       }
       if (e.key === "ArrowDown" && otherKeyPressed.current.size === 0) {
         e.preventDefault();
-        router.push(next);
+        navigate(next);
         return;
       }
 
@@ -63,7 +64,7 @@ export const Menu: React.FC<NavProps> = () => {
       document.removeEventListener("keydown", handleDown);
       document.removeEventListener("keyup", handleUp);
     };
-  }, [otherKeyPressed, router, previous, next]);
+  }, [otherKeyPressed, navigate, previous, next]);
 
   const linkClassName = `text-xs p-[1px] text-black no-underline cursor-pointer hover:bg-red hover:text-white [&.selected]:bg-black [&.selected]:text-white leading-5`;
 

@@ -1,9 +1,13 @@
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import albums from "src/data/albums.json";
 
-export const useActiveLink = () => {
-  const router = useRouter();
+export const useActiveLink = ({
+  pathname,
+  album,
+}: {
+  pathname: string;
+  album: string;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -14,7 +18,6 @@ export const useActiveLink = () => {
       .querySelector(".parent-menu a[href].selected")
       ?.classList.remove("selected");
 
-    const album = router.query.album?.[0];
     const isAlbum = !!(album && albums.find(({ path }) => path === album));
     setIsOpen(isAlbum);
 
@@ -26,7 +29,7 @@ export const useActiveLink = () => {
     // then we want to highlight that one. But, if we don't have that
     // link to specific article then we just want to highlight the articles
     // in menu item list. Otherwise don't highlight any item.
-    const pathnameParts = router.asPath.split("/");
+    const pathnameParts = pathname.split("/");
     while (pathnameParts.length > 0) {
       const mostSpecificLink = pathnameParts.join("/");
       const matchedLink = links.find((a) => a.href.includes(mostSpecificLink));
@@ -36,7 +39,7 @@ export const useActiveLink = () => {
       }
       pathnameParts.pop();
     }
-  }, [router]);
+  }, [pathname, album]);
 
   return { isOpen, setIsOpen };
 };
