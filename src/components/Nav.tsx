@@ -107,9 +107,12 @@ export const Menu: React.FC<NavProps> = () => {
 
             return (
               <li key={label}>
-                <a className={linkClassName} onClick={() => setIsOpen(!isOpen)}>
+                <span
+                  className={linkClassName}
+                  onClick={() => setIsOpen(!isOpen)}
+                >
                   {t(label)}
-                </a>
+                </span>
                 <ul
                   className={cn(
                     `submenu m-0 p-0 list-none ${isOpen ? "" : "hidden"}`,
