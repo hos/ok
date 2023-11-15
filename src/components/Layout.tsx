@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import styled from "styled-components";
 
 import { Menu } from "./Nav";
 
@@ -9,25 +8,9 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = (props) => {
   return (
-    <Container>
-      <Main>{props.children}</Main>
+    <div className="flex flex-row">
+      <div className="md:w-3/4 py-8 inline-flex mt-14">{props.children}</div>
       <Menu />
-    </Container>
+    </div>
   );
 };
-
-const Main = styled.main`
-  width: 75%;
-  display: inline-flex;
-  margin-top: 50px;
-
-  @media screen and (max-width: 800px) {
-    width: 100%;
-    padding: 0 30px;
-  }
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-`;

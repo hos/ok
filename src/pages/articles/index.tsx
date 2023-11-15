@@ -3,10 +3,8 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
-import { CenterView } from "src/components/CenterView";
 import { Meta } from "src/components/Meta";
 import articles from "src/data/articles.json";
-import styled from "styled-components";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
@@ -30,10 +28,10 @@ export const Articles: React.FC<ArticlesProps> = () => {
   const { t } = useTranslation("articles");
 
   return (
-    <CenterView $text>
+    <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
       <Meta />
 
-      <Container>
+      <div className="m-auto pb-28 max-w-2xl">
         {Object.entries(articles).map(([key, value]) => {
           const title = t(key);
           if (title === key) {
@@ -41,37 +39,17 @@ export const Articles: React.FC<ArticlesProps> = () => {
           }
           return (
             <Link href={`/articles/${key}`} key={key} passHref>
-              <RedTitle>{t(key)}</RedTitle>
-              <p>
+              <h4 className="text-red font-medium">{t(key)}</h4>
+              <p className="text-sm">
                 {t(`${value.author}`)} / {value.year || 0}
               </p>
-              <p>{t(`articles-desc:${key}`)}</p>
+              <p className="text-xs">{t(`articles-desc:${key}`)}</p>
             </Link>
           );
         })}
-      </Container>
-    </CenterView>
+      </div>
+    </div>
   );
 };
-
-const RedTitle = styled.h4`
-  color: rgb(203, 73, 73);
-`;
-
-const Container = styled.div`
-  max-width: 600px;
-  padding-bottom: 100px;
-  margin: auto;
-  ${RedTitle} {
-    font-weight: 500;
-  }
-  p {
-    font-size: 14px;
-  }
-
-  p + p {
-    font-size: 12px;
-  }
-`;
 
 export default Articles;

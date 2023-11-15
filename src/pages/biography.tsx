@@ -3,10 +3,7 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
-import { CenterView } from "src/components/CenterView";
 import { Meta } from "src/components/Meta";
-import { Text } from "src/components/Text";
-import { Title } from "src/components/Title";
 import { getDocument } from "src/lib/getDocument";
 
 import KarenOhanyan from "@/public/images/Karen-Ohanyan.jpg";
@@ -32,9 +29,9 @@ interface BiographyProps {
 export const Biography: React.FC<BiographyProps> = (props) => {
   const { t } = useTranslation();
   return (
-    <CenterView $text>
+    <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
       <Meta />
-      <Title>{t("Biography")}</Title>
+      <h1 className="text-xl m-0 m-0 pb-5">{t("Biography")}</h1>
       <Image
         src={KarenOhanyan}
         alt="Karen Ohanyan Portrait"
@@ -46,8 +43,11 @@ export const Biography: React.FC<BiographyProps> = (props) => {
         }}
       />
 
-      <Text dangerouslySetInnerHTML={{ __html: props.content }}></Text>
-    </CenterView>
+      <div
+        className="py-10"
+        dangerouslySetInnerHTML={{ __html: props.content }}
+      ></div>
+    </div>
   );
 };
 

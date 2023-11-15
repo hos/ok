@@ -1,13 +1,16 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+
+import { cn } from "../lib/utils";
 
 interface HamburgerProps {
-  className?: string;
   onClick?: (_val: any) => void;
 }
 
-export const HamburgerUnstyled: React.FC<HamburgerProps> = (props) => {
+export const Hamburger: React.FC<HamburgerProps> = (props) => {
   const ref = useRef<HTMLDivElement | null>();
+  const router = useRouter();
+  const isLargeMode = router.query.mode === "large";
 
   useEffect(() => {
     const handle = () => {
@@ -23,40 +26,27 @@ export const HamburgerUnstyled: React.FC<HamburgerProps> = (props) => {
   }, []);
 
   return (
-    <div className={props.className} ref={(_ref) => (ref.current = _ref)}>
+    <div
+      ref={(_ref) => (ref.current = _ref)}
+      className={cn(
+        `
+        w-8
+        top-5
+        left-8
+        fixed
+        duration-500
+        [.show-menu_&]:opacity-1
+        md:hidden`,
+        isLargeMode ? "hidden" : "",
+      )}
+    >
       <span onClick={props.onClick}>
-        <hr />
-        <hr />
-        <hr />
+        {new Array(3).fill(0).map((_, i) => {
+          return (
+            <hr key={i} className="my-[2px] w-full border-t-2 border-black" />
+          );
+        })}
       </span>
     </div>
   );
 };
-
-export const Hamburger = styled(HamburgerUnstyled)`
-  width: 30px;
-  top: 20px;
-  left: 30px;
-  display: none;
-  position: fixed;
-  transition: 0.5s;
-
-  &.hide {
-    opacity: 0;
-  }
-
-  .show-menu & {
-    opacity: 1;
-  }
-
-  & hr {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    width: 100%;
-    border-top: 2px solid #000;
-  }
-
-  @media screen and (max-width: 800px) {
-    display: inline-block;
-  }
-`;
