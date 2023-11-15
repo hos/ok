@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Meta } from "src/components/Meta";
-import { useShortcut } from "src/hooks/useShortcut";
 
 import TheOriginOfTheWorld from "@/public/images/large/The-Origin-of-the-World.jpg";
 
@@ -21,8 +20,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
-
-  useShortcut();
 
   return (
     <div className="w-full mx-auto flex flex-col justify-start">

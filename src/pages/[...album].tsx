@@ -10,7 +10,6 @@ import { ImageList } from "src/components/ImageList";
 import { Meta } from "src/components/Meta";
 import albums from "src/data/albums.json";
 import { useAlbumNav } from "src/hooks/useAlbumNav";
-import { useShortcut } from "src/hooks/useShortcut";
 import { useLD } from "src/lib/ld";
 
 import { i18n } from "@/next-i18next.config";
@@ -74,8 +73,6 @@ export const ImagePage: React.FC<ImagePageProps> = () => {
     artist: karen,
     artform: album?.artform,
   };
-
-  useShortcut();
 
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
