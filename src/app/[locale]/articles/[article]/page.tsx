@@ -1,4 +1,6 @@
-import fs from "fs/promises";
+import fs from "node:fs/promises";
+import path from "node:path";
+
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import React from "react";
@@ -33,10 +35,10 @@ const Article: React.FC<ArticleProps> = async ({ params }) => {
   // @ts-expect-error
   const meta = articles[name];
 
-  const content = await fs.readFile(
+  const filePath = path.resolve(
     `${process.cwd()}/public/locales/${locale}/docs/${name}.html`,
-    "utf-8",
   );
+  const content = await fs.readFile(filePath, "utf-8");
 
   const schema: ArticleSchema = {
     "@type": "NewsArticle",
