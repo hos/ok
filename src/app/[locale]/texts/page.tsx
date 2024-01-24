@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import React from "react";
 import { Meta } from "src/components/Meta";
-import articles from "src/data/articles.json";
+import texts from "src/data/texts.json";
 
-export default function ArticlesPage() {
+export default function TextsPage() {
   const t = useTranslations();
 
   return (
@@ -14,16 +14,16 @@ export default function ArticlesPage() {
       <Meta />
 
       <div className="m-auto pb-28 max-w-2xl">
-        {Object.entries(articles).map(([key, value]) => {
+        {Object.entries(texts).map(([key, value]) => {
           const title = t(key);
           if (title === key) {
             return null;
           }
           return (
-            <Link href={`/articles/${key}`} key={key} passHref>
-              <h4 className="text-red font-medium">{t(`articles.${key}`)}</h4>
+            <Link href={`/texts/${key}`} key={key} passHref>
+              <h4 className="text-red font-medium">{t(`texts.${key}`)}</h4>
               <p className="text-sm">
-                {t(`articles.${value.author}`)} / {value.year || 0}
+                {t(`texts.${value.author}`)} / {value.year || 0}
               </p>
               <p className="text-xs">{t(key)}</p>
             </Link>

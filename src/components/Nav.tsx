@@ -13,9 +13,9 @@ import { LanguageBar } from "./LanguageBar";
 const urlsAndLabels = [
   { url: "/", label: "Home" },
   { url: "/works", label: "Works" },
-  { url: "/articles", label: "Articles" },
-  { url: "/biography", label: "Biography" },
   { url: "/exhibitions", label: "Exhibitions" },
+  { url: "/texts", label: "Texts" },
+  { url: "/biography", label: "Biography" },
   { url: "/contacts", label: "Contacts" },
 ];
 

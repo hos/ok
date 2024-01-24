@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 import { host, locales } from "@/src/config";
 import albums from "@/src/data/albums.json";
-import articles from "@/src/data/articles.json";
+import texts from "@/src/data/texts.json";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [];
@@ -23,10 +23,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  for (const [key] of Object.entries(articles)) {
+  for (const [key] of Object.entries(texts)) {
     for (const locale of locales) {
       urls.push({
-        url: `https://${host}/${locale}/articles/${key}`,
+        url: `https://${host}/${locale}/texts/${key}`,
         changeFrequency: "yearly",
         priority: 0.7,
         lastModified: new Date().toISOString(),

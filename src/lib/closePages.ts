@@ -1,5 +1,5 @@
 import albums from "src/data/albums.json";
-import articles from "src/data/articles.json";
+import texts from "src/data/texts.json";
 
 const routes = [
   "/",
@@ -15,7 +15,7 @@ const routes = [
   "/2020",
   "/2021",
   "/2022",
-  "/articles",
+  "/texts",
   "/vardan-azatyan-real-utopias",
   "/gohar-vardanyan-real-utopias",
   "/eva-khachatryan-walls",
@@ -42,8 +42,8 @@ const normalize = (route: string) => {
 
   const pure = route.replace("/", "");
 
-  if (pure in articles) {
-    return `/articles/${pure}`;
+  if (pure in texts) {
+    return `/texts/${pure}`;
   }
   return route;
 };

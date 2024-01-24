@@ -4,43 +4,44 @@ import path from "node:path";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import React from "react";
-import { Article as ArticleSchema } from "schema-dts";
+import { NewsArticle } from "schema-dts";
 import { Meta } from "src/components/Meta";
 import { PostBody } from "src/components/PostBody";
-import articles from "src/data/articles.json";
+import texts from "src/data/texts.json";
 
 type Props = {
-  params: { article: string };
+  params: { textId: string };
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { params } = props;
-  const { article } = params;
+  const { textId } = params;
 
-  const name = article?.toString();
+  const name = textId?.toString();
   const t = await getTranslations();
 
-  return { title: t(`articles.${name}`), description: t(`${name}`) };
+  return { title: t(`texts.${name}`), description: t(`${name}`) };
 }
 
-interface ArticleProps {
-  params: { article: string; locale: string };
+interface TextProps {
+  params: { textId: string; locale: string };
 }
 
-const Article: React.FC<ArticleProps> = async ({ params }) => {
-  const { locale, article } = params || {};
-  const t = await getTranslations("articles");
+const Text: React.FC<TextProps> = async ({ params }) => {
+  const { locale, textId } = params || {};
 
-  const name = (article || "").toString();
+  const t = await getTranslations("texts");
+
+  const name = (textId || "").toString();
   // @ts-expect-error
-  const meta = articles[name];
+  const meta = texts[name];
 
   const filePath = path.resolve(
     `${process.cwd()}/public/locales/${locale}/docs/${name}.html`,
   );
   const content = await fs.readFile(filePath, "utf-8");
 
-  const schema: ArticleSchema = {
+  const schema: NewsArticle = {
     "@type": "NewsArticle",
     datePublished: `${meta.year}`,
   };
@@ -58,4 +59,4 @@ const Article: React.FC<ArticleProps> = async ({ params }) => {
   );
 };
 
-export default Article;
+export default Text;

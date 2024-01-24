@@ -104,7 +104,7 @@ export const useActiveLink = ({ album }: { album: string }) => {
     // We want to match as specific href as possible, meaning
     // in the list of menu items if we have link to specific album
     // then we want to highlight that one. But, if we don't have that
-    // link to specific article then we just want to highlight the articles
+    // link to specific article then we just want to highlight the texts
     // in menu item list. Otherwise don't highlight any item.
     const pathnameParts = pathname.split("/").slice(-2);
     while (pathnameParts.length > 0) {
