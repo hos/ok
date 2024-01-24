@@ -28,6 +28,13 @@ const Contacts: React.FC<{}> = async () => {
       >
         facebook: karen.ohanyan.14
       </Link>
+      <Link
+        className="font-width-500 text-base"
+        href="https://www.instagram.com/ok_art_karenohanyan/"
+        target="_blank"
+      >
+        instagram: @ok_art_karenohanyan
+      </Link>
     </div>
   );
 };
