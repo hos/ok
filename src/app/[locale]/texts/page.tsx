@@ -20,10 +20,21 @@ export default function TextsPage() {
             return null;
           }
           return (
-            <Link href={`/texts/${key}`} key={key} passHref>
+            <Link
+              href={value.hasLink ? `/texts/${key}` : "#"}
+              key={key}
+              passHref
+              onClick={(e) => {
+                if (!value.hasLink) {
+                  e.preventDefault();
+                }
+              }}
+            >
               <h4 className="text-red font-medium">{t(`texts.${key}`)}</h4>
               <p className="text-sm">
-                {t(`texts.${value.author}`)} / {value.year || 0}
+                {/* @ts-ignore */}
+                {value.noAuthor ? null : t(`texts.${value.author}`)}
+                {"year" in value ? ` / ${value.year}` : ""}
               </p>
               <p className="text-xs">{t(key)}</p>
             </Link>

@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import React from "react";
 import { NewsArticle } from "schema-dts";
@@ -39,7 +40,10 @@ const Text: React.FC<TextProps> = async ({ params }) => {
   const filePath = path.resolve(
     `${process.cwd()}/public/locales/${locale}/docs/${name}.html`,
   );
-  const content = await fs.readFile(filePath, "utf-8");
+  const content = await fs.readFile(filePath, "utf-8").catch(() => null);
+  if (!content) {
+    return notFound();
+  }
 
   const schema: NewsArticle = {
     "@type": "NewsArticle",

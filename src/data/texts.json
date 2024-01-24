@@ -2,41 +2,70 @@
   "vardan-azatyan-real-utopias": {
     "author": "Vardan Azatyan",
     "noTitle": false,
-    "year": 2006
+    "year": 2006,
+    "hasLink": true
   },
   "gohar-vardanyan-real-utopias": {
     "author": "Gohar Vardanyan",
     "noTitle": false,
-    "year": 2006
+    "year": 2006,
+    "hasLink": true
   },
   "eva-khachatryan-walls": {
     "author": "Eva Khachatryan",
     "noTitle": false,
-    "year": 2007
+    "year": 2007,
+    "hasLink": true
   },
   "vardan-jaloyan-body-investments": {
     "author": "Vardan Jaloyan",
     "noTitle": false,
-    "year": 2008
+    "year": 2008,
+    "hasLink": true
   },
   "elena-aydinyan-from-avant-garde-to-avant-garde": {
     "author": "Elena Aydinyan",
     "noTitle": false,
-    "year": 2016
+    "year": 2016,
+    "hasLink": true
   },
   "armen-yesayants-sevan": {
     "author": "Armen Yesayants",
     "noTitle": true,
-    "year": 2021
+    "year": 2021,
+    "hasLink": true
   },
   "ashot-pashinyan-utopia-or-dystopia": {
     "author": "Ashot Pashinyan",
     "noTitle": true,
-    "year": 2021
+    "year": 2021,
+    "hasLink": true
   },
   "bella-hakobjanyan-sevan": {
     "author": "Bella Hakobjanyan",
     "noTitle": true,
-    "year": 2021
+    "year": 2021,
+    "hasLink": true
+  },
+  "armenak-grigoryan-amo": {
+    "author": "Armenak Grigoryan",
+    "noTitle": false,
+    "hasLink": false
+  },
+  "vardan-jaloyan-communism": {
+    "author": "Vardan Jaloyan",
+    "noTitle": false,
+    "hasLink": true
+  },
+  "hrachya-galstyan-khaltura": {
+    "author": "Hrachya Galstyan",
+    "noTitle": false,
+    "hasLink": true
+  },
+  "momik-vardanyan": {
+    "author": "Momik Vardanyan",
+    "noTitle": true,
+    "hasLink": true,
+    "noAuthor": true
   }
 }
