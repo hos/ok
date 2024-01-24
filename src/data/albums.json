@@ -208,14 +208,26 @@
     ]
   },
   {
-    "name": "2015",
-    "path": "2015",
+    "name": "2015-2018",
+    "path": "2015-2018",
     "default": 0,
     "artform": "Painting",
     "images": [
       {
         "fileName": "2015-Untitled.jpg",
         "description": "oil on canvas, 147,5x195cm"
+      },
+      {
+        "fileName": "17-18-Untitled-1.jpg",
+        "description": "acrylic  on canvas, 200x180cm"
+      },
+      {
+        "fileName": "17-18-Untitled-2.jpg",
+        "description": "oil on canvas, 161x160cm"
+      },
+      {
+        "fileName": "17-18-Untitled-3.jpg",
+        "description": "oil on canvas, 148x220cm"
       }
     ]
   },
@@ -284,26 +296,6 @@
       {
         "fileName": "To-Fly.jpg",
         "description": "collage, 50.5x36.5cm"
-      }
-    ]
-  },
-  {
-    "name": "2017-2018",
-    "path": "2017-2018",
-    "default": 0,
-    "artform": "Painting",
-    "images": [
-      {
-        "fileName": "17-18-Untitled-1.jpg",
-        "description": "acrylic  on canvas, 200x180cm"
-      },
-      {
-        "fileName": "17-18-Untitled-2.jpg",
-        "description": "oil on canvas, 161x160cm"
-      },
-      {
-        "fileName": "17-18-Untitled-3.jpg",
-        "description": "oil on canvas, 148x220cm"
       }
     ]
   },
