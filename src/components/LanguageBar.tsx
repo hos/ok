@@ -4,7 +4,6 @@ import React from "react";
 const langs = [
   { path: "hy", name: "հայ" },
   { path: "en", name: "eng" },
-  { path: "ru", name: "рус" },
 ];
 
 interface LanguageBarProps {

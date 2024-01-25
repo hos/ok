@@ -47,25 +47,28 @@
     "year": 2021,
     "hasLink": true
   },
-  "armenak-grigoryan-amo": {
-    "author": "Armenak Grigoryan",
-    "noTitle": false,
-    "hasLink": false
-  },
-  "vardan-jaloyan-communism": {
-    "author": "Vardan Jaloyan",
-    "noTitle": false,
-    "hasLink": true
-  },
   "hrachya-galstyan-khaltura": {
     "author": "Hrachya Galstyan",
     "noTitle": false,
+    "year": 2022,
     "hasLink": true
+  },
+  "armenak-grigoryan-amo": {
+    "author": "Armenak Grigoryan",
+    "noTitle": false,
+    "year": 2022,
+    "hasLink": false
   },
   "momik-vardanyan": {
     "author": "Momik Vardanyan",
     "noTitle": true,
     "hasLink": true,
-    "noAuthor": true
+    "year": 2023
+  },
+  "vardan-jaloyan-communism": {
+    "author": "Vardan Jaloyan",
+    "noTitle": false,
+    "year": 2023,
+    "hasLink": true
   }
 }

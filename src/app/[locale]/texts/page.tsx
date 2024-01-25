@@ -10,7 +10,7 @@ export default function TextsPage() {
   const t = useTranslations();
 
   return (
-    <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
+    <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start p-5">
       <Meta />
 
       <div className="m-auto pb-28 max-w-2xl">

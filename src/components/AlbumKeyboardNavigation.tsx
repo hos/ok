@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { useLocale } from "next-intl";
 import { useEffect } from "react";
 
 import { albumNavPages } from "../lib/albumNavPages";
@@ -13,11 +14,12 @@ export const AlbumKeyboardNavigation = ({
   album: any;
 }) => {
   const router = useRouter();
+  const locale = useLocale();
   const search = useSearchParams();
 
   const isLargeMode = search?.get("mode") === "large";
 
-  const [next, previous] = albumNavPages(imageName, isLargeMode, album);
+  const [next, previous] = albumNavPages(imageName, isLargeMode, locale, album);
 
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {

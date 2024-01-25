@@ -52,10 +52,10 @@ const AlbumPage = async ({
   params,
   searchParams,
 }: {
-  params: { slug: string[] };
+  params: { slug: string[]; locale: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
-  const { slug } = params;
+  const { slug, locale } = params;
   const t = await getTranslations();
 
   const karen: Person = {
@@ -74,7 +74,12 @@ const AlbumPage = async ({
     (img) => img.fileName === imageName + ".jpg",
   );
 
-  const [next, previous] = albumNavPages(imageName, isLargeMode, album);
+  const [next, previous] = albumNavPages(
+    imageName,
+    isLargeMode,
+    locale.toString(),
+    album,
+  );
 
   if (!image) {
     return null;

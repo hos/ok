@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 import albums from "src/data/albums.json";
 
@@ -17,6 +17,7 @@ export const ImageList: React.FC<ImageListProps> = ({
   className,
   albumPath,
 }) => {
+  const locale = useLocale();
   const t = useTranslations();
 
   const album = albums.find((alb) => alb.path === albumPath);
@@ -35,7 +36,10 @@ export const ImageList: React.FC<ImageListProps> = ({
         return (
           <Link
             key={image.fileName}
-            href={`/${albumPath}/${image.fileName.replace(".jpg", "")}`}
+            href={`/${locale}/${albumPath}/${image.fileName.replace(
+              ".jpg",
+              "",
+            )}`}
             scroll={false}
             className="mr-1"
           >
@@ -43,6 +47,7 @@ export const ImageList: React.FC<ImageListProps> = ({
               width="70"
               height="70"
               className="object-cover"
+              data-filename={image.fileName.replace(".jpg", "")}
               src={`/images/large/${image.fileName}`}
               alt={t(`images.${image.fileName.replace(".jpg", "")}`)}
             />

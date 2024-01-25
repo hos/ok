@@ -320,13 +320,13 @@
     ]
   },
   {
-    "name": "2020",
-    "path": "2020",
+    "name": "2020-2023 (Dreamer)",
+    "path": "2020-2023",
     "default": 0,
     "artform": "Painting",
     "images": [
       {
-        "fileName": "Self-portrait.jpg",
+        "fileName": "self-portrait-in-front-of-easel.jpg",
         "description": "oil on canvas, 110x80cm"
       },
       {
@@ -340,6 +340,22 @@
       {
         "fileName": "Dreamer’s-Knife.jpg",
         "description": "oil on canvas, 110x80cm"
+      },
+      {
+        "fileName": "Cascade-2022.jpg",
+        "description": "oil on canvas and badges, 145,5x202cm"
+      },
+      {
+        "fileName": "self-portrait-1997.jpg",
+        "description": "oil on canvas, 35x24cm"
+      },
+      {
+        "fileName": "self-portrait-pencil-on-parchment.jpg",
+        "description": "pencil on parchment, 38cm"
+      },
+      {
+        "fileName": "self-portrait-stein-on-the-wall.jpg",
+        "description": "stein on the wall - 50x60.5cm"
       }
     ]
   },
@@ -364,14 +380,33 @@
     ]
   },
   {
-    "name": "2022",
+    "name": "2022 (Khaltura)",
     "path": "2022",
     "default": 0,
-    "artform": "Painting",
     "images": [
       {
-        "fileName": "Cascade-2022.jpg",
-        "description": "oil on canvas and badges, 145,5x202cm"
+        "fileName": "lenin-with-ideologue.jpg",
+        "description": "oil on canvas - 87x112cm"
+      },
+      {
+        "fileName": "sunset.jpg",
+        "description": "oil on canvas - 80x100cm"
+      },
+      {
+        "fileName": "hillside.jpg",
+        "description": "oil on canvas - 64x84cm"
+      },
+      {
+        "fileName": "sevan-island.jpg",
+        "description": "oil on canvas - 84x104cm"
+      },
+      {
+        "fileName": "sevan's-island-with-churches.jpg",
+        "description": "oil on canvas - 79x63cm"
+      },
+      {
+        "fileName": "stepan-shahumyan.jpg",
+        "description": "oil on canvas - 95x68cm"
       }
     ]
   }

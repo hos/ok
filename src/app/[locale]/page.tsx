@@ -1,9 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 
-const pageFileName = "The-Origin-of-the-World";
-
-import TheOriginOfTheWorld from "@/public/images/large/The-Origin-of-the-World.jpg";
+const pageFileName = "self-portrait-pencil-on-parchment";
 
 const Home: NextPage = () => {
   const t = (str: string) => str;
@@ -14,10 +12,13 @@ const Home: NextPage = () => {
         <div className="w-full h-auto text-center">
           <Image
             priority
-            src={TheOriginOfTheWorld}
+            src={`/images/large/self-portrait-pencil-on-parchment.jpg`}
             alt={t(`images.${pageFileName}`)}
             className="max-w-full h-auto object-contain"
             data-filename={pageFileName}
+            width={600}
+            height={600}
+            style={{ objectFit: "contain" }}
           />
         </div>
       </div>
