@@ -146,6 +146,7 @@ const ShortcutConfigs: IUseShortcutProps[] = [
       transition: `2s`,
       filter: "none",
     },
+    clickCount: 5,
   },
   {
     selector: `body`,
