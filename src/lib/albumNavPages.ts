@@ -3,6 +3,7 @@ import albums from "src/data/albums.json";
 export const albumNavPages = (
   image: string,
   isLargeMode: boolean,
+  locale: string,
   album?: (typeof albums)[0] | null,
 ) => {
   const queryString = (() => {
@@ -36,11 +37,11 @@ export const albumNavPages = (
 
   return [
     next &&
-      `/${album?.path}/${(next + "").replace(".jpg", "")}${
+      `/${locale}/${album?.path}/${(next + "").replace(".jpg", "")}${
         queryString ? `?${queryString}` : ""
       }`,
     previous &&
-      `/${album?.path}/${(previous + "").replace(".jpg", "")}${
+      `/${locale}/${album?.path}/${(previous + "").replace(".jpg", "")}${
         queryString ? `?${queryString}` : ""
       }`,
   ];
