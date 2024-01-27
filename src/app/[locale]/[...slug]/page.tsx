@@ -148,7 +148,7 @@ const AlbumPage = async ({
                 className="object-contain max-h-[500px] w-full h-auto"
               />
             </Link>
-            <p className="text-xs m-0 m-0 pb-5">
+            <p className="text-xs m-0 pb-5">
               {imageNameLocalized}
               <span className="text-gray-600">{` - ${image.description}`}</span>
             </p>
