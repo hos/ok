@@ -15,6 +15,7 @@ const urlsAndLabels = [
   { url: "/works", label: "Works" },
   { url: "/exhibitions", label: "Exhibitions" },
   { url: "/texts", label: "Texts" },
+  { url: "/media", label: "Media" },
   { url: "/biography", label: "Biography" },
   { url: "/contacts", label: "Contacts" },
 ];

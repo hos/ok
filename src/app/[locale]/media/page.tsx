@@ -1,0 +1,37 @@
+import { getTranslations } from "next-intl/server";
+
+const mediaItems = {
+  unmeritorious:
+    "https://www.youtube.com/embed/toxdne_U4jY?si=QeXjyeQp03Q9dJK3",
+  dreamer: "https://www.youtube.com/embed/0-VS5onKs6A?si=7946LlwEmLtL16lr",
+  realUtopias: "https://www.youtube.com/embed/GzPt0upyGfM?si=NKRzaWHLcHIhzB_W",
+  cca: "https://www.youtube.com/embed/fpl1JerGkFA?si=wxPScq-m1j4LyfFv",
+};
+
+export default async function MediaPage() {
+  const t = await getTranslations();
+
+  return (
+    <div className="w-full max-w-[600px] p-5 mx-auto">
+      <h1>{t("Media")}</h1>
+      <div className="w-full flex flex-col">
+        <div className="m-auto">
+          {Object.entries(mediaItems).map(([key, value]) => {
+            return (
+              <div key={key}>
+                <h3>{t(`media.${key}`)}</h3>
+                <iframe
+                  width="560"
+                  height="315"
+                  src={value}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+                ></iframe>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}

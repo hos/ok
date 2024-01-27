@@ -4,6 +4,7 @@ export default getRequestConfig(async ({ locale }) => ({
   timeZone: "Asia/Yerevan",
   messages: {
     albums: (await import(`../public/locales/${locale}/albums.json`)).default,
+    media: (await import(`../public/locales/${locale}/media.json`)).default,
     ...(await import(`../public/locales/${locale}/texts-body.json`)).default,
     texts: (await import(`../public/locales/${locale}/texts.json`)).default,
     exhibitions: (await import(`../public/locales/${locale}/exhibitions.json`))
