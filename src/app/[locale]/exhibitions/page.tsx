@@ -47,6 +47,26 @@ const Exhibitions: React.FC<{}> = async () => {
           {t("realUtopias")}
         </p>
 
+        <p className="m-0 mt-0.5">
+          <span className="text-red"> 2022 - </span>
+          {t("khaltura")}
+        </p>
+
+        <p className="m-0 mt-0.5">
+          <span className="text-red"> 2022 - </span>
+          {t("champion")}
+        </p>
+
+        <p className="m-0 mt-0.5">
+          <span className="text-red"> 2023 - </span>
+          {t("dreamer")}
+        </p>
+
+        <p className="m-0 mt-0.5">
+          <span className="text-red"> 2023 - </span>
+          {t("visions")}
+        </p>
+
         <p className="m-0 mt-4">{t("also")}</p>
       </div>
     </div>
