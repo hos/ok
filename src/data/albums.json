@@ -355,7 +355,7 @@
       },
       {
         "fileName": "self-portrait-stein-on-the-wall.jpg",
-        "description": "stein on the wall - 50x60.5cm"
+        "description": "stein on the wall, 50x60.5cm"
       }
     ]
   },
@@ -386,27 +386,27 @@
     "images": [
       {
         "fileName": "lenin-with-ideologue.jpg",
-        "description": "oil on canvas - 87x112cm"
+        "description": "oil on canvas, 87x112cm"
       },
       {
         "fileName": "sunset.jpg",
-        "description": "oil on canvas - 80x100cm"
+        "description": "oil on canvas, 80x100cm"
       },
       {
         "fileName": "hillside.jpg",
-        "description": "oil on canvas - 64x84cm"
+        "description": "oil on canvas, 64x84cm"
       },
       {
         "fileName": "sevan-island.jpg",
-        "description": "oil on canvas - 84x104cm"
+        "description": "oil on canvas, 84x104cm"
       },
       {
         "fileName": "sevan's-island-with-churches.jpg",
-        "description": "oil on canvas - 79x63cm"
+        "description": "oil on canvas, 79x63cm"
       },
       {
         "fileName": "stepan-shahumyan.jpg",
-        "description": "oil on canvas - 95x68cm"
+        "description": "oil on canvas, 95x68cm"
       }
     ]
   },
@@ -421,6 +421,74 @@
       {
         "fileName": "shakespeare-sonnet-102.jpg",
         "description": "oil on canvas, 170x140cm"
+      }
+    ]
+  },
+  {
+    "name": "2023 (Champion)",
+    "path": "2023-champion",
+    "images": [
+      {
+        "fileName": "champion.jpg",
+        "description": "oil on canvas, 120x200cm"
+      }
+    ]
+  },
+  {
+    "name": "2023 (Visions of the Death of Communism)",
+    "path": "2023-visions-of-the-death-of-communism",
+    "images": [
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-1.jpg",
+        "description": "mixed media on canvas, 140x170cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-2.jpg",
+        "description": "mixed media on cardboard, 63x87cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-3.jpg",
+        "description": "mixed media on cardboard, 63x87cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-4.jpg",
+        "description": "mixed media on cardboard, 63x87cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-5.jpg",
+        "description": "mixed media on cardboard, 63x87cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-6.jpg",
+        "description": "mixed media on cardboard, 63x87cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-7.jpg",
+        "description": "mixed media on cardboard, 63x87cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-8.jpg",
+        "description": "mixed media on cardboard, 53x8cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-9.jpg",
+        "description": "mixed media on cardboard, 33x45cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-10.jpg",
+        "description": "mixed media on cardboard, 51x63cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-11.jpg",
+        "description": "mixed media on cardboard, 32.5x52cm"
+      },
+      {
+        "fileName": "visions-of-the-death-of-communism-untitled-12.jpg",
+        "description": "mixed media on canvas, 145x201cm"
+      },
+      {
+        "fileName": "lenin_s-deathmask-by-s_merkurov-1924.jpg",
+        "description": "plaster, 30x43cm"
       }
     ]
   }
