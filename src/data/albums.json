@@ -409,5 +409,19 @@
         "description": "oil on canvas - 95x68cm"
       }
     ]
+  },
+  {
+    "name": "2022 (Shakespeare sonnets)",
+    "path": "2022-shakespeare-sonnets",
+    "images": [
+      {
+        "fileName": "shakespeare-sonnet-90.jpg",
+        "description": "oil on canvas, 120x180cm"
+      },
+      {
+        "fileName": "shakespeare-sonnet-102.jpg",
+        "description": "oil on canvas, 170x140cm"
+      }
+    ]
   }
 ]
