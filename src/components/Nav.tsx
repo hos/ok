@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import albums from "src/data/albums.json";
 
 import { cn } from "@/src/lib/utils";
@@ -28,6 +28,7 @@ interface NavProps {
 
 export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
   const t = useTranslations();
+  const locale = useLocale();
 
   const linkClassName = `text-xs p-[1px] text-black no-underline cursor-pointer hover:bg-red hover:text-white [&.selected]:bg-black [&.selected]:text-white leading-5`;
 
@@ -62,7 +63,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
             if (label !== "Works") {
               return (
                 <li key={label}>
-                  <Link href={url} className={linkClassName}>
+                  <Link href={`/${locale}/${url}`} className={linkClassName}>
                     {t(label)}
                   </Link>
                 </li>
@@ -82,7 +83,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
                       <li key={album.name} className="p-0 pl-[10px]">
                         <Link
                           scroll={false}
-                          href={`/${album.path}/${album.images[
+                          href={`/${locale}/${album.path}/${album.images[
                             album.default || 0
                           ].fileName.replace(".jpg", "")}`}
                           passHref
