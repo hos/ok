@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import React from "react";
+import React, { FC, PropsWithChildren } from "react";
 import { Meta } from "src/components/Meta";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,7 +17,7 @@ const Exhibitions: React.FC<{}> = async () => {
   return (
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
       <Meta />
-      <h1 className="text-xl m-0 m-0 pb-5">{t("Solo Exhibitions")}</h1>
+      <h1 className="text-xl m-0 pb-5">{t("Solo Exhibitions")}</h1>
       <Image
         src="/images/exhibition.jpg"
         alt="Exhibitions"
@@ -27,50 +27,50 @@ const Exhibitions: React.FC<{}> = async () => {
         priority
       />
       <div className="py-10 text-xs leading-5">
-        <p className="m-0 mt-0.5">
-          <span className="text-red"> 2021 - </span>
-          {t("sevan")}
-        </p>
-
-        <p className="m-0 mt-0.5">
-          <span className="text-red"> 2016 - </span>
-          {t("avantGarde")}
-        </p>
-
-        <p className="m-0 mt-0.5">
-          <span className="text-red"> 2009 - </span>
-          {t("bodyInvestments")}
-        </p>
-
-        <p className="m-0 mt-0.5">
-          <span className="text-red"> 2006 - </span>
-          {t("realUtopias")}
-        </p>
-
-        <p className="m-0 mt-0.5">
-          <span className="text-red"> 2022 - </span>
-          {t("khaltura")}
-        </p>
-
-        <p className="m-0 mt-0.5">
-          <span className="text-red"> 2022 - </span>
-          {t("champion")}
-        </p>
-
-        <p className="m-0 mt-0.5">
-          <span className="text-red"> 2023 - </span>
-          {t("dreamer")}
-        </p>
-
-        <p className="m-0 mt-0.5">
-          <span className="text-red"> 2023 - </span>
-          {t("visions")}
-        </p>
-
+        <Paragraph>
+          {" "}
+          <RedSpan> 2023 - </RedSpan> {t("visions")}{" "}
+        </Paragraph>
+        <Paragraph>
+          {" "}
+          <RedSpan> 2023 - </RedSpan> {t("dreamer")}{" "}
+        </Paragraph>
+        <Paragraph>
+          {" "}
+          <RedSpan> 2022 - </RedSpan> {t("khaltura")}{" "}
+        </Paragraph>
+        <Paragraph>
+          {" "}
+          <RedSpan> 2022 - </RedSpan> {t("champion")}{" "}
+        </Paragraph>
+        <Paragraph>
+          {" "}
+          <RedSpan> 2021 - </RedSpan> {t("sevan")}{" "}
+        </Paragraph>
+        <Paragraph>
+          {" "}
+          <RedSpan> 2016 - </RedSpan> {t("avantGarde")}{" "}
+        </Paragraph>
+        <Paragraph>
+          {" "}
+          <RedSpan> 2009 - </RedSpan> {t("bodyInvestments")}{" "}
+        </Paragraph>
+        <Paragraph>
+          {" "}
+          <RedSpan> 2006 - </RedSpan> {t("realUtopias")}{" "}
+        </Paragraph>
         <p className="m-0 mt-4">{t("also")}</p>
       </div>
     </div>
   );
 };
+
+const Paragraph: FC<PropsWithChildren> = ({ children }) => (
+  <p className="m-0 mt-0.5">{children}</p>
+);
+
+const RedSpan: FC<PropsWithChildren> = ({ children }) => (
+  <span className="text-red">{children}</span>
+);
 
 export default Exhibitions;
