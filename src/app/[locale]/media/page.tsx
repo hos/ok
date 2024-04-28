@@ -14,15 +14,13 @@ export default async function MediaPage() {
   return (
     <div className="w-full max-w-[600px] p-5 mx-auto">
       <h1>{t("Media")}</h1>
-      <div className="w-full flex flex-col">
+      <div>
         <div className="m-auto">
           {Object.entries(mediaItems).map(([key, value]) => {
             return (
               <div key={key}>
                 <h3>{t(`media.${key}`)}</h3>
                 <iframe
-                  width="560"
-                  height="315"
                   src={value}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
