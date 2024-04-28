@@ -33,6 +33,7 @@ export async function generateMetadata({
   const imageDescription = image?.description;
   const title = `${imageLocalizedName} - ${imageDescription}, ${name}`;
   const description = t("description");
+  const imageUrl = `/images/large/${image?.fileName}`;
 
   return {
     title,
@@ -40,10 +41,12 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      images: [imageUrl],
     },
     twitter: {
       title,
       description,
+      images: [imageUrl],
     },
   };
 }

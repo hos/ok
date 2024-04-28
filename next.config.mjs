@@ -1,8 +1,11 @@
-const withNextIntl = require("next-intl/plugin")();
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
+
 const age = 60 * 60 * 24 * 365;
 
 /** @type {import('next').NextConfig} */
-module.exports = withNextIntl({
+export default withNextIntl({
   reactStrictMode: true,
   headers() {
     return [

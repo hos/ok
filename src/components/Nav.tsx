@@ -53,7 +53,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
         </div>
         <LanguageBar currentPath={pathname} />
         <div className="whitespace-nowrap mt-3.5 relative top-0 cursor-pointer">
-          <Link href="/" passHref>
+          <Link href={`/${locale || ""}`} passHref>
             <h1 className="text-2xl m-0 font-thin">{t("Karen Ohanyan")}</h1>
           </Link>
         </div>
