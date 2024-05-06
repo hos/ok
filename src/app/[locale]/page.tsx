@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 
-const pageFileName = "self-portrait-pencil-on-parchment";
+const pageFileName = "champion";
 
 const Home: NextPage = () => {
   const t = (str: string) => str;
@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <div className="w-full h-auto text-center">
           <Image
             priority
-            src={`/images/large/self-portrait-pencil-on-parchment.jpg`}
+            src={`/images/large/champion.jpg`}
             alt={t(`images.${pageFileName}`)}
             className="max-w-full h-auto object-contain"
             data-filename={pageFileName}
