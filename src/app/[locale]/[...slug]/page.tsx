@@ -102,7 +102,7 @@ const AlbumPage = async ({
   return (
     <div
       className={cn(
-        "w-full mx-auto flex flex-col justify-start",
+        "w-full mx-auto flex flex-col justify-start max-md:h-full h-4/5",
         isLargeMode ? "large-mode" : "",
       )}
     >
@@ -130,15 +130,15 @@ const AlbumPage = async ({
         imageAlt={imageNameLocalized}
       />
       {/* className "album" can be used with shortcuts */}
-      <div className="album">
-        <div className="w-[90%] md:w-[80%] mx-auto flex flex-row items-center max-md:w-full">
+      <div className="album h-full">
+        <div className="w-[90%] md:w-[80%] mx-auto flex flex-row items-center h-full max-md:h-1/2">
           <Link href={`${previous}`} shallow>
             <Arrow
               className="[.large-mode_&]:left-4"
               iconClassName="-rotate-[135deg]"
             />
           </Link>
-          <div className="w-full h-auto text-center">
+          <div className="w-full h-full text-center">
             <Link href={{ query: { mode: "large" } }} shallow>
               <Image
                 priority
@@ -148,7 +148,8 @@ const AlbumPage = async ({
                 src={`/images/large/${image.fileName}`}
                 alt={imageNameLocalized}
                 data-filename={fileNameNoExt}
-                className="object-contain max-h-[500px] w-full h-auto"
+                className="object-contain xl:max-h-[500px] w-full h-full"
+                style={{ objectFit: "contain" }}
               />
             </Link>
             <p className="text-xs m-0 pb-5">

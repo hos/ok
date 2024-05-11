@@ -38,23 +38,22 @@ export const Hamburger: React.FC<HamburgerProps> = ({
       ref={(_ref) => (ref.current = _ref)}
       className={cn(
         `
+        mx-6
         w-8
         top-5
-        left-8
+        left-0
         fixed
-        duration-500
+        duration-300
         [.show-menu_&]:opacity-1
         md:hidden`,
         isLargeMode ? "hidden" : "",
       )}
     >
-      <span onClick={onClick}>
-        {new Array(3).fill(0).map((_, i) => {
-          return (
-            <hr key={i} className="my-[2px] w-full border-t-2 border-black" />
-          );
-        })}
-      </span>
+      <div onClick={onClick} className="h-[30px] w-[30px]">
+        <hr className="transition-all duration-300 w-full [.show-menu_&]:w-3/4 border-t-2 border-black absolute [.show-menu_&]:top-1/2 top-0 [.show-menu_&]:rotate-45" />
+        <hr className="transition-all duration-300 w-full [.show-menu_&]:w-3/4 border-t-2 border-black absolute [.show-menu_&]:top-1/2 [.show-menu_&]:opacity-0 top-1/3" />
+        <hr className="transition-all duration-300 w-full [.show-menu_&]:w-3/4 border-t-2 border-black absolute [.show-menu_&]:top-1/2 top-2/3 [.show-menu_&]:-rotate-45" />
+      </div>
     </div>
   );
 };

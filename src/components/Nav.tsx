@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import albums from "src/data/albums.json";
@@ -33,7 +34,14 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
   const linkClassName = `text-xs p-[1px] text-black no-underline cursor-pointer hover:bg-red hover:text-white [&.selected]:bg-black [&.selected]:text-white leading-5`;
 
   return (
-    <div className="grow max-md:absolute">
+    <div id="nav" className={cn("grow max-md:absolute")}>
+      <div
+        className="w-screen h-screen hidden max-md:[.show-menu_&]:block"
+        onClick={() => {
+          // When clicking outside of the menu, close it.
+          document.querySelector("body")?.classList.remove("show-menu");
+        }}
+      ></div>
       <div
         className={`inline-block max-md:h-full m-0 md:m-4 bg-white md:bg-transparent max-w-95
       max-md:z-10
@@ -44,8 +52,9 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
       max-md:pt-5
       max-md:-left-96
       max-md:inset-y-0
-      [.show-menu_&]:shadow-2xl
-      [.show-menu_&]:left-0
+      max-md:[.show-menu_&]:shadow-2xl
+      max-md:[.show-menu_&]:left-0
+      overflow-scroll
       `}
       >
         <div>

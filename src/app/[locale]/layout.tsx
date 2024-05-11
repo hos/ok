@@ -56,10 +56,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           ></iframe>
         </noscript>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex flex-row">
-            <div className="w-[99%] md:w-3/4 py-8 inline-flex mt-14">
-              {children}
-            </div>
+          <div className="flex flex-row w-screen">
+            <div className="md:w-3/4 py-8 inline-flex h-screen">{children}</div>
             <AppRouterNavigation locale={locale} />
             <Shortcuts />
           </div>
