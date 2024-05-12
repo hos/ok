@@ -50,9 +50,9 @@ export const Hamburger: React.FC<HamburgerProps> = ({
       )}
     >
       <div onClick={onClick} className="h-[30px] w-[30px]">
-        <hr className="transition-all duration-300 w-full [.show-menu_&]:w-3/4 border-t-2 border-black absolute [.show-menu_&]:top-1/2 top-0 [.show-menu_&]:rotate-45" />
-        <hr className="transition-all duration-300 w-full [.show-menu_&]:w-3/4 border-t-2 border-black absolute [.show-menu_&]:top-1/2 [.show-menu_&]:opacity-0 top-1/3" />
-        <hr className="transition-all duration-300 w-full [.show-menu_&]:w-3/4 border-t-2 border-black absolute [.show-menu_&]:top-1/2 top-2/3 [.show-menu_&]:-rotate-45" />
+        <span className="transition-all bg-black duration-300 w-full h-[1.5px] [.show-menu_&]:w-3/4 absolute [.show-menu_&]:top-1/2 rounded-md top-0 [.show-menu_&]:rotate-45" />
+        <span className="transition-all bg-black duration-300 w-full h-[1.5px] [.show-menu_&]:w-3/4 absolute [.show-menu_&]:top-1/2 rounded-md [.show-menu_&]:opacity-0 top-1/3" />
+        <span className="transition-all bg-black duration-300 w-full h-[1.5px] [.show-menu_&]:w-3/4 absolute [.show-menu_&]:top-1/2 rounded-md top-2/3 [.show-menu_&]:-rotate-45" />
       </div>
     </div>
   );
