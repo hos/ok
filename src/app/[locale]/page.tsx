@@ -9,13 +9,14 @@ const Home: NextPage = () => {
 
   return (
     <div className="w-full flex flex-col justify-start">
-      <div className="w-[80%] h-full mx-auto flex flex-row items-center max-md:w-full">
-        <div className="w-full h-auto text-center">
+      <div className="w-[80%] py-2 px-2 h-full mx-auto flex flex-row items-center max-md:w-full">
+        <div className="w-full h-full text-center">
           <Image
             priority
             src={MainImage}
             alt={t(`images.${pageFileName}`)}
-            className="max-w-full max-h-[600px] h-auto object-contain"
+            className="max-w-full max-h-[600px] h-full object-contain"
+            style={{ objectFit: "contain" }}
             data-filename={pageFileName}
           />
         </div>
