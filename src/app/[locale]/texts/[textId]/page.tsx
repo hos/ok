@@ -51,7 +51,7 @@ const Text: React.FC<TextProps> = async ({ params }) => {
   };
 
   return (
-    <div className="w-full max-w-[600px] mx-auto flex flex-col justify-start">
+    <div className="w-full max-w-[600px] mx-auto flex max-md:mx-6 flex-col justify-start">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
