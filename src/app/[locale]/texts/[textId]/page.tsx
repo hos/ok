@@ -58,7 +58,7 @@ const Text: React.FC<TextProps> = async ({ params }) => {
       ></script>
       <Meta />
       {meta.noTitle ? null : <h2 className="text-red">{t(`${name}`)}</h2>}
-      <PostBody content={content}></PostBody>
+      <PostBody content={content} className="prose max-w-none"></PostBody>
     </div>
   );
 };

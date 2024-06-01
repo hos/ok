@@ -25,13 +25,13 @@ export default async function TextsPage() {
               key={key}
               passHref
             >
-              <h4 className="text-red font-medium">{t(`texts.${key}`)}</h4>
-              <p className="text-sm">
+              <h4 className="text-red font-medium my-4">{t(`texts.${key}`)}</h4>
+              <p className="text-sm mb-2">
                 {/* @ts-ignore */}
                 {value.noAuthor ? null : t(`texts.${value.author}`)}
                 {"year" in value ? ` / ${value.year}` : ""}
               </p>
-              <p className="text-xs">{t(key)}</p>
+              <p className="text-xs mb-4">{t(key)}</p>
             </Link>
           );
         })}

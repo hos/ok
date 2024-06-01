@@ -18,14 +18,16 @@ const Exhibitions: React.FC<{}> = async () => {
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
       <Meta />
       <h1 className="text-xl m-0 pb-5">{t("Solo Exhibitions")}</h1>
-      <Image
-        src="/images/exhibition.jpg"
-        alt="Exhibitions"
-        width="481"
-        height="393"
-        className="max-w-full h-auto object-contain object-left"
-        priority
-      />
+      <div className="flex justify-center">
+        <Image
+          src="/images/exhibition.jpg"
+          alt="Exhibitions"
+          width="481"
+          height="393"
+          className="max-w-full h-auto object-contain"
+          priority
+        />
+      </div>
       <div className="py-10 text-xs leading-5">
         <Paragraph>
           {" "}
