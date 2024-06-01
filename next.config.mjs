@@ -1,11 +1,11 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import { withMDX } from '@next/mdx';
 
 const withNextIntl = createNextIntlPlugin();
 
 const age = 60 * 60 * 24 * 365;
 
-/** @type {import('next').NextConfig} */
-export default withNextIntl({
+const nextConfig = {
   reactStrictMode: true,
   headers() {
     return [
@@ -24,4 +24,6 @@ export default withNextIntl({
   images: {
     minimumCacheTTL: age,
   },
-});
+};
+
+export default withNextIntl(withMDX(nextConfig));

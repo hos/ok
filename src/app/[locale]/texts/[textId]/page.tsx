@@ -1,13 +1,11 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import { allDocuments } from 'contentlayer/generated';
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import React from "react";
 import { NewsArticle } from "schema-dts";
 import { Meta } from "src/components/Meta";
-import { PostBody } from "src/components/PostBody";
 import texts from "src/data/texts.json";
 
 type Props = {
@@ -28,22 +26,21 @@ interface TextProps {
   params: { textId: string; locale: string };
 }
 
-const Text: React.FC<TextProps> = async ({ params }) => {
+const Text: React.FC<TextProps> = ({ params }) => {
   const { locale, textId } = params || {};
 
-  const t = await getTranslations("texts");
+  const t = getTranslations("texts");
 
   const name = (textId || "").toString();
   // @ts-expect-error
   const meta = texts[name];
 
-  const filePath = path.resolve(
-    `${process.cwd()}/public/locales/${locale}/docs/${name}.html`,
-  );
-  const content = await fs.readFile(filePath, "utf-8").catch(() => null);
-  if (!content) {
+  const document = allDocuments.find((doc) => doc._id === textId);
+  if (!document) {
     return notFound();
   }
+
+  const MDXContent = useMDXComponent(document.body.code);
 
   const schema: NewsArticle = {
     "@type": "NewsArticle",
@@ -58,7 +55,7 @@ const Text: React.FC<TextProps> = async ({ params }) => {
       ></script>
       <Meta />
       {meta.noTitle ? null : <h2 className="text-red">{t(`${name}`)}</h2>}
-      <PostBody content={content}></PostBody>
+      <MDXContent />
     </div>
   );
 };
