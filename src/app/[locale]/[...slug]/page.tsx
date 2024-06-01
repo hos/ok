@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Person, VisualArtwork } from "schema-dts";
 import { ImageList } from "src/components/ImageList";
 import { Meta } from "src/components/Meta";
@@ -99,6 +99,51 @@ const AlbumPage = async ({
     artform: album?.artform,
   };
 
+  // Touch event state
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  // Function to handle touch start
+  function handleTouchStart(e) {
+    setTouchStart(e.targetTouches[0].clientX);
+  }
+
+  // Function to handle touch move
+  function handleTouchMove(e) {
+    setTouchEnd(e.targetTouches[0].clientX);
+  }
+
+  // Function to handle touch end
+  function handleTouchEnd() {
+    if (touchStart - touchEnd > 150) {
+      // Swipe left
+      if (next) window.location.href = next;
+    }
+
+    if (touchStart - touchEnd < -150) {
+      // Swipe right
+      if (previous) window.location.href = previous;
+    }
+  }
+
+  // Effect to add and remove touch event listeners
+  useEffect(() => {
+    const imageElement = document.getElementById("imageElement");
+    if (imageElement) {
+      imageElement.addEventListener("touchstart", handleTouchStart);
+      imageElement.addEventListener("touchmove", handleTouchMove);
+      imageElement.addEventListener("touchend", handleTouchEnd);
+    }
+
+    return () => {
+      if (imageElement) {
+        imageElement.removeEventListener("touchstart", handleTouchStart);
+        imageElement.removeEventListener("touchmove", handleTouchMove);
+        imageElement.removeEventListener("touchend", handleTouchEnd);
+      }
+    };
+  }, [next, previous]);
+
   return (
     <div
       className={cn(
@@ -116,6 +161,7 @@ const AlbumPage = async ({
             fill
             sizes="100vw"
             className="object-contain"
+            id="imageElement"
           ></Image>
         </Overlay>
       ) : null}
@@ -150,6 +196,7 @@ const AlbumPage = async ({
                 data-filename={fileNameNoExt}
                 className="object-contain xl:max-h-[500px] w-full h-full"
                 style={{ objectFit: "contain" }}
+                id="imageElement"
               />
             </Link>
             <p className="text-xs m-0 pb-5">
