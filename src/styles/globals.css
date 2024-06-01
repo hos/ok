@@ -2,39 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "OK Custom Font";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Arial"),
-    url(//fonts.gstatic.com/ea/notosansarmenian/v3/NotoSansArmenian-Regular.eot?#iefix)
-      format("embedded-opentype"),
-    url(//fonts.gstatic.com/ea/notosansarmenian/v3/NotoSansArmenian-Regular.woff2)
-      format("woff2"),
-    url(//fonts.gstatic.com/ea/notosansarmenian/v3/NotoSansArmenian-Regular.woff)
-      format("woff"),
-    url(//fonts.gstatic.com/ea/notosansarmenian/v3/NotoSansArmenian-Regular.ttf)
-      format("truetype");
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@100..900&display=swap');
 
-@font-face {
-  font-family: "OK Custom Font";
-  font-style: bold;
-  font-weight: 700;
-  src: local("Arial"),
-    url(//fonts.gstatic.com/ea/notosansarmenian/v3/NotoSansArmenian-Bold.eot?#iefix)
-      format("embedded-opentype"),
-    url(//fonts.gstatic.com/ea/notosansarmenian/v3/NotoSansArmenian-Bold.woff2)
-      format("woff2"),
-    url(//fonts.gstatic.com/ea/notosansarmenian/v3/NotoSansArmenian-Bold.woff)
-      format("woff"),
-    url(//fonts.gstatic.com/ea/notosansarmenian/v3/NotoSansArmenian-Bold.ttf)
-      format("truetype");
-}
 
 * {
   box-sizing: border-box;
-  font-family: "OK Custom Font", "Verdana";
+  font-family: "Noto Sans Armenian", "Verdana", sans-serif;
   color: #000;
 }
 
