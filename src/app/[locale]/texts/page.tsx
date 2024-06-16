@@ -13,18 +13,15 @@ export default async function TextsPage() {
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start p-5">
       <Meta />
 
-      <div className="m-auto pb-28 max-w-2xl">
+      <div className="m-auto pb-28 max-w-2xl flex flex-col gap-6">
         {Object.entries(texts).map(([key, value]) => {
           const title = t(key);
           if (title === key) {
             return null;
           }
-          return (
-            <Link
-              href={value.hasLink ? `/${locale}/texts/${key}` : "#"}
-              key={key}
-              passHref
-            >
+
+          const content = (
+            <>
               <h4 className="text-red font-medium">{t(`texts.${key}`)}</h4>
               <p className="text-sm">
                 {/* @ts-ignore */}
@@ -32,7 +29,20 @@ export default async function TextsPage() {
                 {"year" in value ? ` / ${value.year}` : ""}
               </p>
               <p className="text-xs">{t(key)}</p>
-            </Link>
+            </>
+          );
+
+          if (value.hasLink) {
+            return (
+              <Link href={`/${locale}/texts/${key}`} key={key} passHref>
+                {content}
+              </Link>
+            );
+          }
+          return (
+            <div className="cursor-default" key={key}>
+              {content}
+            </div>
           );
         })}
       </div>
