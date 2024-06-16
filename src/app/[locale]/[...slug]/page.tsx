@@ -91,7 +91,7 @@ const AlbumPage = async ({
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
 
   return (
-    <div className={cn(isLargeMode ? "large-mode" : "", "h-full mt-6")}>
+    <div className={cn(isLargeMode ? "large-mode" : "", "h-full")}>
       <AlbumKeyboardNavigation imageName={imageName} album={album} />
       {isLargeMode ? (
         <Overlay>
