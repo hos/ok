@@ -20,8 +20,22 @@ export default async function TextsPage() {
             return null;
           }
 
-          const content = (
-            <>
+          if (value.hasLink) {
+            return (
+              <Link href={`/${locale}/texts/${key}`} key={key} passHref>
+                <h4 className="text-red font-medium">{t(`texts.${key}`)}</h4>
+                <p className="text-sm">
+                  {/* @ts-ignore */}
+                  {value.noAuthor ? null : t(`texts.${value.author}`)}
+                  {"year" in value ? ` / ${value.year}` : ""}
+                </p>
+                <p className="text-xs">{t(key)}</p>
+              </Link>
+            );
+          }
+
+          return (
+            <div className="cursor-default" key={key}>
               <h4 className="text-red font-medium">{t(`texts.${key}`)}</h4>
               <p className="text-sm">
                 {/* @ts-ignore */}
@@ -29,19 +43,6 @@ export default async function TextsPage() {
                 {"year" in value ? ` / ${value.year}` : ""}
               </p>
               <p className="text-xs">{t(key)}</p>
-            </>
-          );
-
-          if (value.hasLink) {
-            return (
-              <Link href={`/${locale}/texts/${key}`} key={key} passHref>
-                {content}
-              </Link>
-            );
-          }
-          return (
-            <div className="cursor-default" key={key}>
-              {content}
             </div>
           );
         })}

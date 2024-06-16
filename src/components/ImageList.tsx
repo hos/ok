@@ -41,12 +41,12 @@ export const ImageList: React.FC<ImageListProps> = ({
               "",
             )}`}
             scroll={false}
-            className="mr-1"
+            className="mt-1 mr-1 flex justify-center"
           >
             <Image
               width="70"
               height="70"
-              className="object-cover"
+              className="object-contain"
               data-filename={image.fileName.replace(".jpg", "")}
               src={`/images/large/${image.fileName}`}
               alt={t(`images.${image.fileName.replace(".jpg", "")}`)}
