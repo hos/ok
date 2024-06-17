@@ -105,9 +105,10 @@ const AlbumPage = async ({
               large
             />
             <CarouselContent>
-              {album?.images.map((img) => {
+              {album?.images.map((img, index) => {
                 return (
                   <AlbumImage
+                    index={index}
                     key={img.fileName}
                     image={img}
                     className="focus-album"
@@ -127,9 +128,10 @@ const AlbumPage = async ({
         >
           <UpdateUrlWithCarousel images={album?.images} album={album.path} />
           <CarouselContent className="max-h-[80vh] max-md:max-h-[50vh]">
-            {album?.images.map((img) => {
+            {album?.images.map((img, index) => {
               return (
                 <AlbumImage
+                  index={index}
                   key={img.fileName}
                   image={img}
                   className="page-album"
@@ -138,8 +140,8 @@ const AlbumPage = async ({
               );
             })}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="max-md:hidden" />
+          <CarouselNext className="max-md:hidden" />
         </Carousel>
 
         <div className="flex flex-row justify-center">

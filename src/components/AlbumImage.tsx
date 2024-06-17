@@ -54,16 +54,19 @@ export const UpdateUrlWithCarousel = ({
 };
 
 export const AlbumImage = ({
+  index,
   image,
   className,
   imageClassName,
 }: {
+  index?: number;
   image: { fileName: string; description: string };
   className?: string;
   imageClassName?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const t = useTranslations();
+  const { api } = useCarousel();
 
   const src = `/images/large/${image.fileName}`;
   const fileNameNoExt = image.fileName.replace(".jpg", "");
@@ -77,7 +80,7 @@ export const AlbumImage = ({
         className={cn("cursor-pointer", className)}
       >
         <Image
-          priority
+          priority={index === api?.selectedScrollSnap()}
           quality={100}
           width="800"
           height="500"
