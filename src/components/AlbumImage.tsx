@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 import { cn } from "../lib/utils";
 import { CarouselItem, useCarousel } from "./ui/carousel";
@@ -19,6 +20,7 @@ export const UpdateUrlWithCarousel = ({
 }) => {
   const carousel = useCarousel();
   const locale = useLocale();
+  const router = useRouter();
 
   const onSelect = useCallback(() => {
     const index = carousel.api?.selectedScrollSnap();
@@ -29,12 +31,10 @@ export const UpdateUrlWithCarousel = ({
       return;
     }
 
-    window.history.pushState(
-      {},
-      "",
+    router.push(
       `/${locale}/${album}/${img?.fileName.split(".jpg")[0]}${large ? "?mode=large" : ""}`,
     );
-  }, [locale, album, large, carousel, images]);
+  }, [locale, album, large, carousel, images, router]);
 
   useEffect(() => {
     if (!carousel?.api) {

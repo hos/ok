@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ImageList } from "src/components/ImageList";
 import albums from "src/data/albums.json";
 
@@ -90,6 +91,29 @@ const AlbumPage = async ({
   const fileNameNoExt = image.fileName.replace(".jpg", "");
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
 
+  const [imageTitle, setImageTitle] = useState(imageNameLocalized);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      const newImageName = url.split("/").pop()?.split("?")[0];
+      const newImage = album?.images.find(
+        (img) => img.fileName === newImageName + ".jpg",
+      );
+      if (newImage) {
+        const newImageNameLocalized = t(`images.${newImageName}`);
+        setImageTitle(newImageNameLocalized);
+      }
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router, album, t]);
+
   return (
     <div className={cn(isLargeMode ? "large-mode" : "", "h-full")}>
       <AlbumKeyboardNavigation imageName={imageName} album={album} />
@@ -146,7 +170,7 @@ const AlbumPage = async ({
 
         <div className="flex flex-row justify-center">
           <p className="text-xs pt-5">
-            {imageNameLocalized}
+            {imageTitle}
             <span className="text-gray-600">{` - ${image.description}`}</span>
           </p>
         </div>
