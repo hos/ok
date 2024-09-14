@@ -12,14 +12,16 @@ export const UpdateUrlWithCarousel = ({
   images,
   album,
   large,
+  setTitle,
 }: {
   images: { fileName: string }[];
   album: string;
   large?: boolean;
+  setTitle: (_val: any) => void;
 }) => {
   const carousel = useCarousel();
   const locale = useLocale();
-
+  const t = useTranslations();
   const onSelect = useCallback(() => {
     const index = carousel.api?.selectedScrollSnap();
 
@@ -29,12 +31,20 @@ export const UpdateUrlWithCarousel = ({
       return;
     }
 
+    const newUrl = `/${locale}/${album}/${img?.fileName.split(".jpg")[0]}${large ? "?mode=large" : ""}`;
+
     window.history.pushState(
-      {},
+      { ...window.history.state, as: newUrl, url: newUrl },
       "",
-      `/${locale}/${album}/${img?.fileName.split(".jpg")[0]}${large ? "?mode=large" : ""}`,
+      newUrl,
     );
-  }, [locale, album, large, carousel, images]);
+
+    // If we use router.push next.js will rerender the page which will cause the animation to stop,
+    // so instead we use this workaround to update url and title manually...
+    const title = img?.fileName.split(".jpg")[0];
+    const titleLocalized = t(`images.${title}`);
+    setTitle?.(titleLocalized);
+  }, [locale, album, large, carousel, images, setTitle, t]);
 
   useEffect(() => {
     if (!carousel?.api) {

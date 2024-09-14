@@ -72,7 +72,11 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
             if (label !== "Works") {
               return (
                 <li key={label}>
-                  <Link href={`/${locale}/${url}`} className={linkClassName}>
+                  <Link
+                    href={`/${locale}/${url}`}
+                    className={linkClassName}
+                    data-match={url.replace("/", "")}
+                  >
                     {t(label)}
                   </Link>
                 </li>
@@ -92,6 +96,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
                       <li key={album.name} className="p-0 pl-[10px]">
                         <Link
                           scroll={false}
+                          data-match={album.path}
                           href={`/${locale}/${album.path}/${album.images[
                             album.default || 0
                           ].fileName.replace(".jpg", "")}`}

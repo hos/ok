@@ -1,13 +1,16 @@
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import React from "react";
 import { Meta } from "src/components/Meta";
 import texts from "src/data/texts.json";
 
-export default async function TextsPage() {
+export default async function TextsPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
   const t = await getTranslations();
-  const locale = useLocale();
+  const locale = params.locale?.toString();
 
   return (
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start p-5">

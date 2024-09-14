@@ -14,7 +14,7 @@ const AppRouterNavigation = ({ locale }: { locale: string }) => {
   const pathname = usePathname();
   const params = useParams();
   const searchParams = useSearchParams();
-  const { slug: album } = params || {};
+  const album = params.album?.toString();
   const textId = Array.isArray(params.textId)
     ? params.textId[0]
     : params.textId;

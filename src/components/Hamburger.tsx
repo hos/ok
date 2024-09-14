@@ -35,7 +35,9 @@ export const Hamburger: React.FC<HamburgerProps> = ({
   return (
     <div
       onClick={toggleMenu}
-      ref={(_ref) => (ref.current = _ref)}
+      ref={(_ref) => {
+        ref.current = _ref;
+      }}
       className={cn(
         `
         mx-6

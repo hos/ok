@@ -24,7 +24,7 @@ export const AppKeyboardNavigation = ({
   const t = useTranslations();
   const [next, previous] = closePages(slug);
   // navigate only if up or down key is pressed, no other key
-  const { isOpen, setIsOpen } = useActiveLink({ album: slug });
+  const { isOpen, setIsOpen } = useActiveLink({ part: slug });
 
   const localePush = useCallback(
     (path: string) => {
@@ -82,7 +82,7 @@ export const AppKeyboardNavigation = ({
   );
 };
 
-export const useActiveLink = ({ album }: { album: string }) => {
+export const useActiveLink = ({ part }: { part: string }) => {
   const local = useLocale();
   const pathname = usePathname().replace(`/${local}`, "");
   const [isOpen, setIsOpen] = useState(false);
@@ -95,28 +95,23 @@ export const useActiveLink = ({ album }: { album: string }) => {
       .querySelector(".parent-menu a[href].selected")
       ?.classList.remove("selected");
 
-    const isAlbum = !!(album && albums.find(({ path }) => path === album));
-    setIsOpen(isAlbum);
-
     const elements = document.querySelectorAll(".parent-menu a[href]");
     const links: HTMLAnchorElement[] = [].slice.call(elements);
 
-    // We want to match as specific href as possible, meaning
-    // in the list of menu items if we have link to specific album
-    // then we want to highlight that one. But, if we don't have that
-    // link to specific article then we just want to highlight the texts
-    // in menu item list. Otherwise don't highlight any item.
-    const pathnameParts = pathname.split("/").slice(-2);
-    while (pathnameParts.length > 0) {
-      const mostSpecificLink = pathnameParts.join("/");
-      const matchedLink = links.find((a) => a.href.includes(mostSpecificLink));
-      if (matchedLink) {
-        matchedLink.classList.add("selected");
-        break;
-      }
-      pathnameParts.pop();
-    }
-  }, [pathname, album]);
+    // start with the longest to match as specific href as possible
+    links.sort((a, b) => b.href.length - a.href.length);
+
+    const matched = links.find((a) =>
+      pathname.includes(String(a.dataset.match)),
+    );
+
+    const isAlbum = !!(
+      part && albums.find(({ path }) => path === String(matched?.dataset.match))
+    );
+    setIsOpen(isAlbum);
+
+    matched?.classList.add("selected");
+  }, [pathname, part]);
 
   return { isOpen, setIsOpen };
 };

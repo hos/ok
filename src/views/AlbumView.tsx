@@ -1,75 +1,33 @@
-import { Metadata } from "next";
+"use client";
+
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
-import React from "react";
-import { ImageList } from "src/components/ImageList";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
 import albums from "src/data/albums.json";
 
-import { AlbumImage, UpdateUrlWithCarousel } from "@/src/components/AlbumImage";
-import { AlbumKeyboardNavigation } from "@/src/components/AlbumKeyboardNavigation";
-import Overlay from "@/src/components/Overlay";
+import { AlbumImage, UpdateUrlWithCarousel } from "../components/AlbumImage";
+import { AlbumKeyboardNavigation } from "../components/AlbumKeyboardNavigation";
+import { ImageList } from "../components/ImageList";
+import Overlay from "../components/Overlay";
 import {
   Carousel,
   CarouselContent,
   CarouselNext,
   CarouselPrevious,
-} from "@/src/components/ui/carousel";
-import { cn } from "@/src/lib/utils";
+} from "../components/ui/carousel";
+import { cn } from "../lib/utils";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string[] };
-}): Promise<Metadata> {
-  const slug = params?.slug;
-  const imageName = slug?.[1];
-  const albumName = slug?.[0];
+type AlbumViewProps = {
+  albumName: string;
+  imageName: string;
+  large?: boolean;
+};
 
-  const album = albums.find((album) => album.path === albumName);
-  const image = album?.images.find(
-    (img) => img.fileName === imageName + ".jpg",
-  );
+export const AlbumView = (props: AlbumViewProps) => {
+  const t = useTranslations();
+  const [title, setTitle] = useState("");
 
-  const t = await getTranslations();
-  const name = t("Karen Ohanyan") || "Karen Ohanyan";
-  const imageLocalizedName = t(`images.${imageName}`);
-  const imageDescription = image?.description;
-  const title = `${imageLocalizedName} - ${imageDescription}, ${name}`;
-  const description = t("description");
-  const imageUrl = `/images/large/${image?.fileName}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      images: [imageUrl],
-    },
-    twitter: {
-      title,
-      description,
-      images: [imageUrl],
-    },
-  };
-}
-
-const AlbumPage = async ({
-  params,
-  searchParams,
-}: {
-  params: { slug: string[]; locale: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
-  const { slug } = params;
-
-  const t = await getTranslations();
-
-  const [albumName, imageName] = (Array.isArray(slug) ? slug : []).map(
-    decodeURI,
-  );
-
-  const isLargeMode = searchParams?.mode === "large";
+  const { albumName, imageName, large } = props;
 
   const album = albums.find((album) => album.path === albumName);
 
@@ -91,9 +49,9 @@ const AlbumPage = async ({
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
 
   return (
-    <div className={cn(isLargeMode ? "large-mode" : "", "h-full")}>
+    <div className={cn(large ? "large-mode" : "", "h-full")}>
       <AlbumKeyboardNavigation imageName={imageName} album={album} />
-      {isLargeMode ? (
+      {large ? (
         <Overlay>
           <Carousel
             className="h-full w-full"
@@ -103,6 +61,7 @@ const AlbumPage = async ({
               images={album?.images}
               album={album.path}
               large
+              setTitle={setTitle}
             />
             <CarouselContent>
               {album?.images.map((img, index) => {
@@ -126,7 +85,13 @@ const AlbumPage = async ({
           className="w-full max-w-3xl"
           opts={{ startIndex: currentImageIndex, loop: true }}
         >
-          <UpdateUrlWithCarousel images={album?.images} album={album.path} />
+          {!large ? (
+            <UpdateUrlWithCarousel
+              images={album?.images}
+              album={album.path}
+              setTitle={setTitle}
+            />
+          ) : null}
           <CarouselContent className="max-h-[80vh] max-md:max-h-[50vh]">
             {album?.images.map((img, index) => {
               return (
@@ -146,7 +111,7 @@ const AlbumPage = async ({
 
         <div className="flex flex-row justify-center">
           <p className="text-xs pt-5">
-            {imageNameLocalized}
+            {title || imageNameLocalized}
             <span className="text-gray-600">{` - ${image.description}`}</span>
           </p>
         </div>
@@ -155,5 +120,3 @@ const AlbumPage = async ({
     </div>
   );
 };
-
-export default AlbumPage;
