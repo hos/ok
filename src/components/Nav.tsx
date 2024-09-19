@@ -7,7 +7,6 @@ import albums from "src/data/albums.json";
 import { cn } from "@/src/lib/utils";
 
 import { AppKeyboardNavigation } from "./AppKeyboardNavigation";
-import { Hamburger } from "./Hamburger";
 import { ImageList } from "./ImageList";
 import { LanguageBar } from "./LanguageBar";
 
@@ -24,10 +23,9 @@ const urlsAndLabels = [
 interface NavProps {
   slug: string;
   pathname: string;
-  isLargeMode: boolean;
 }
 
-export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
+export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
   const t = useTranslations();
   const locale = useLocale();
 
@@ -44,7 +42,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
       ></div>
       <div
         className={`inline-block max-md:h-full m-0 md:m-4 bg-white md:bg-transparent max-w-95
-      max-md:z-10
+      md:z-10
       max-md:duration-300
       max-md:ease-in
       max-md:fixed
@@ -57,9 +55,6 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname, isLargeMode }) => {
       overflow-scroll
       `}
       >
-        <div>
-          <Hamburger isLargeMode={isLargeMode} />
-        </div>
         <LanguageBar currentPath={pathname} />
         <div className="whitespace-nowrap mt-3.5 relative top-0 cursor-pointer">
           <Link href={`/${locale || ""}`} passHref>

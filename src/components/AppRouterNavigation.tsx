@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  notFound,
-  useParams,
-  usePathname,
-  useSearchParams,
-} from "next/navigation";
+import { notFound, useParams, usePathname } from "next/navigation";
 
 import { Nav } from "@/src/components/Nav";
 import { locales } from "@/src/config";
@@ -13,7 +8,6 @@ import { locales } from "@/src/config";
 const AppRouterNavigation = ({ locale }: { locale: string }) => {
   const pathname = usePathname();
   const params = useParams();
-  const searchParams = useSearchParams();
   const album = params.album?.toString();
   const textId = Array.isArray(params.textId)
     ? params.textId[0]
@@ -32,13 +26,7 @@ const AppRouterNavigation = ({ locale }: { locale: string }) => {
     notFound();
   }
 
-  return (
-    <Nav
-      isLargeMode={searchParams?.get("mode") === "large"}
-      pathname={pathname || "/"}
-      slug={slug}
-    />
-  );
+  return <Nav pathname={pathname || "/"} slug={slug} />;
 };
 
 export default AppRouterNavigation;

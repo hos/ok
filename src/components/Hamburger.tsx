@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "../lib/utils";
@@ -9,11 +10,10 @@ interface HamburgerProps {
   isLargeMode?: boolean;
 }
 
-export const Hamburger: React.FC<HamburgerProps> = ({
-  onClick,
-  isLargeMode,
-}) => {
+export const Hamburger: React.FC<HamburgerProps> = ({ onClick }) => {
+  const searchParams = useSearchParams();
   const ref = useRef<HTMLDivElement | null>();
+  const isLargeMode = searchParams?.get("mode") === "large";
 
   const toggleMenu = useCallback(() => {
     document.querySelector("body")?.classList.toggle("show-menu");

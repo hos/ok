@@ -8,6 +8,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { ReactNode } from "react";
 
 import AppRouterNavigation from "@/src/components/AppRouterNavigation";
+import { Hamburger } from "@/src/components/Hamburger";
 import { Shortcuts } from "@/src/components/Shortcuts";
 import { locales } from "@/src/config";
 
@@ -56,9 +57,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           ></iframe>
         </noscript>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex flex-row w-screen">
+          <div className="flex flex-row w-screen max-md:flex-col-reverse">
             <div className="md:w-3/4 py-12 h-screen">{children}</div>
             <AppRouterNavigation locale={locale} />
+            <Hamburger />
             <Shortcuts />
           </div>
         </NextIntlClientProvider>
