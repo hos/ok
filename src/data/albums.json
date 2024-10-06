@@ -491,5 +491,63 @@
         "description": "plaster, 30x43cm"
       }
     ]
+  },
+  {
+    "name": "2024 (Icons of the Future)",
+    "path": "2024-icons-of-the-future",
+    "images": [
+      {
+        "fileName": "icons-of-the-future-exhibition-book-1.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-2.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-3.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-4.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-5.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-6.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-7.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-8.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-9.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-10.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-11.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-12.jpg",
+        "description": ""
+      },
+      {
+        "fileName": "icons-of-the-future-exhibition-book-13.jpg",
+        "description": ""
+      }
+    ]
   }
 ]

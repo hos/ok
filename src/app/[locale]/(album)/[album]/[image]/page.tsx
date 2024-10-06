@@ -111,10 +111,12 @@ const AlbumPage = () => {
         <div className="flex flex-row justify-center">
           <p className="text-xs pt-5">
             {title || imageNameLocalized}
-            <span className="text-gray-600">{` - ${image.description}`}</span>
+            {image.description && (
+              <span className="text-gray-600">{` - ${image.description}`}</span>
+            )}
           </p>
         </div>
-        <ImageList className="md:hidden" albumPath={album?.path || ""} />
+        <ImageList className="md:hidden" />
       </div>
     </div>
   );

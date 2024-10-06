@@ -115,7 +115,7 @@ export const AlbumView = (props: AlbumViewProps) => {
             <span className="text-gray-600">{` - ${image.description}`}</span>
           </p>
         </div>
-        <ImageList className="md:hidden" albumPath={album?.path || ""} />
+        <ImageList className="md:hidden" />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 import albums from "src/data/albums.json";
@@ -10,17 +11,15 @@ import { cn } from "../lib/utils";
 
 interface ImageListProps {
   className?: string;
-  albumPath: string;
 }
 
-export const ImageList: React.FC<ImageListProps> = ({
-  className,
-  albumPath,
-}) => {
+export const ImageList: React.FC<ImageListProps> = ({ className }) => {
+  const { album: albumPath } = useParams();
   const locale = useLocale();
   const t = useTranslations();
 
   const album = albums.find((alb) => alb.path === albumPath);
+
   if (!album) {
     return null;
   }

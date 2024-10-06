@@ -31,6 +31,12 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
 
   const linkClassName = `text-xs p-[1px] text-black no-underline cursor-pointer hover:bg-red hover:text-white [&.selected]:bg-black [&.selected]:text-white leading-5`;
 
+  const sortedAlbums = albums.sort((a, b) => {
+    const aDate = parseInt(a.name, 10);
+    const bDate = parseInt(b.name, 10);
+    return bDate - aDate;
+  });
+
   return (
     <div id="nav" className={cn("grow max-md:absolute")}>
       <div
@@ -87,7 +93,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
                     `m-0 p-0 list-none hidden [.show-works-menu_&]:block`,
                   )}
                 >
-                  {albums.map((album) => {
+                  {sortedAlbums.map((album) => {
                     return (
                       <li key={album.name} className="p-0 pl-[10px]">
                         <Link
@@ -109,7 +115,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
             );
           })}
         </ul>
-        <ImageList className="max-md:hidden" albumPath={slug} />
+        <ImageList className="max-md:hidden" />
       </div>
     </div>
   );
