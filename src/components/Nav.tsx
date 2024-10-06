@@ -53,6 +53,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
       max-md:[.show-menu_&]:shadow-2xl
       max-md:[.show-menu_&]:left-0
       overflow-scroll
+      scrollbar-hide
       `}
       >
         <LanguageBar currentPath={pathname} />
