@@ -70,5 +70,11 @@
     "noTitle": false,
     "year": 2023,
     "hasLink": true
+  },
+  "tamar-hovsepian-icons": {
+    "author": "Tamar Hovsepian",
+    "noTitle": true,
+    "year": 2024,
+    "hasLink": true
   }
 }
