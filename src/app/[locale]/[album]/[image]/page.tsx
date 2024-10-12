@@ -40,6 +40,7 @@ const AlbumPage = () => {
   );
 
   const image = album?.images.at(currentImageIndex);
+  const overlayBackground = (album.background || "black") as "black" | "white";
 
   if (!image) {
     notFound();
@@ -52,7 +53,7 @@ const AlbumPage = () => {
     <div className={cn(large ? "large-mode" : "", "h-full")}>
       <AlbumKeyboardNavigation imageName={imageName} album={album} />
       {large ? (
-        <Overlay>
+        <Overlay background={overlayBackground}>
           <Carousel
             className="h-full w-full"
             opts={{ startIndex: currentImageIndex, loop: true }}

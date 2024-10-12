@@ -45,7 +45,7 @@ export const ImageList: React.FC<ImageListProps> = ({ className }) => {
             <Image
               width="70"
               height="70"
-              className="object-contain"
+              className={album.listZoom ? "object-none" : "object-contain"}
               data-filename={image.fileName.replace(".jpg", "")}
               src={`/images/large/${image.fileName}`}
               alt={t(`images.${image.fileName.replace(".jpg", "")}`)}
