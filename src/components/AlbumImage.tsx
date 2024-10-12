@@ -13,11 +13,13 @@ export const UpdateUrlWithCarousel = ({
   album,
   large,
   setTitle,
+  setDescription,
 }: {
-  images: { fileName: string }[];
+  images: { fileName: string; description?: string }[];
   album: string;
   large?: boolean;
   setTitle: (_val: any) => void;
+  setDescription: (_val: any) => void;
 }) => {
   const carousel = useCarousel();
   const locale = useLocale();
@@ -44,7 +46,8 @@ export const UpdateUrlWithCarousel = ({
     const title = img?.fileName.split(".jpg")[0];
     const titleLocalized = t(`images.${title}`);
     setTitle?.(titleLocalized);
-  }, [locale, album, large, carousel, images, setTitle, t]);
+    setDescription?.(img?.description);
+  }, [locale, album, large, carousel, images, setTitle, t, setDescription]);
 
   useEffect(() => {
     if (!carousel?.api) {

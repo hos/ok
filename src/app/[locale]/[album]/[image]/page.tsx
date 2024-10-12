@@ -22,6 +22,7 @@ const AlbumPage = () => {
 
   const t = useTranslations();
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const albumName = params.album.toString();
   const imageName = params.image.toString();
@@ -61,6 +62,7 @@ const AlbumPage = () => {
               album={album.path}
               large
               setTitle={setTitle}
+              setDescription={setDescription}
             />
             <CarouselContent>
               {album?.images.map((img, index) => {
@@ -89,6 +91,7 @@ const AlbumPage = () => {
               images={album?.images}
               album={album.path}
               setTitle={setTitle}
+              setDescription={setDescription}
             />
           ) : null}
           <CarouselContent className="max-h-[80vh] max-md:max-h-[50vh]">
@@ -111,8 +114,8 @@ const AlbumPage = () => {
         <div className="flex flex-row justify-center">
           <p className="text-xs pt-5">
             {title || imageNameLocalized}
-            {image.description && (
-              <span className="text-gray-600">{` - ${image.description}`}</span>
+            {(description || image.description) && (
+              <span className="text-gray-600">{` - ${description || image.description}`}</span>
             )}
           </p>
         </div>
