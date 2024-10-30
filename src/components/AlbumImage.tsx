@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "../lib/utils";
 import { CarouselItem, useCarousel } from "./ui/carousel";
+import albums from "src/data/albums.json";
 
 export const UpdateUrlWithCarousel = ({
   images,
@@ -33,7 +34,9 @@ export const UpdateUrlWithCarousel = ({
       return;
     }
 
-    const newUrl = `/${locale}/${album}/${img?.fileName.split(".jpg")[0]}${large ? "?mode=large" : ""}`;
+    const newUrl = `/${locale}/${album}/${img?.fileName.split(".jpg")[0]}${
+      large ? "?mode=large" : ""
+    }`;
 
     window.history.pushState(
       { ...window.history.state, as: newUrl, url: newUrl },
@@ -85,6 +88,11 @@ export const AlbumImage = ({
   const fileNameNoExt = image.fileName.replace(".jpg", "");
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
 
+  const album = albums.find((album) =>
+    album.images.some((img) => img.fileName === image.fileName),
+  );
+  const zoom = album?.zoom || 1;
+
   return (
     <CarouselItem className={cn("relative", className)} ref={ref}>
       <Link
@@ -100,7 +108,7 @@ export const AlbumImage = ({
           src={src}
           alt={imageNameLocalized}
           data-filename={fileNameNoExt}
-          style={{ objectFit: "contain" }}
+          style={{ objectFit: "contain", transform: `scale(${zoom})` }}
           className={imageClassName}
         />
       </Link>
