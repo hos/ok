@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef } from "react";
+import albums from "src/data/albums.json";
 
 import { cn } from "../lib/utils";
 import { CarouselItem, useCarousel } from "./ui/carousel";
-import albums from "src/data/albums.json";
 
 export const UpdateUrlWithCarousel = ({
   images,
