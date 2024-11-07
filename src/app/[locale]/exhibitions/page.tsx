@@ -29,7 +29,7 @@ const Exhibitions: React.FC<{}> = async () => {
       <div className="py-10 text-xs leading-5">
         <Paragraph>
           {" "}
-          <RedSpan> 2023 - </RedSpan> {t("icons")}{" "}
+          <RedSpan> 2024 - </RedSpan> {t("icons")}{" "}
         </Paragraph>
         <Paragraph>
           {" "}

@@ -1,33 +1,33 @@
 {
-  "vardan-azatyan-real-utopias": {
-    "author": "Vardan Azatyan",
-    "noTitle": false,
-    "year": 2006,
+  "tamar-hovsepian-icons": {
+    "author": "Tamar Hovsepian",
+    "noTitle": true,
+    "year": 2024,
     "hasLink": true
   },
-  "gohar-vardanyan-real-utopias": {
-    "author": "Gohar Vardanyan",
-    "noTitle": false,
-    "year": 2006,
-    "hasLink": true
+  "momik-vardanyan": {
+    "author": "Momik Vardanyan",
+    "noTitle": true,
+    "hasLink": true,
+    "year": 2023
   },
-  "eva-khachatryan-walls": {
-    "author": "Eva Khachatryan",
-    "noTitle": false,
-    "year": 2007,
-    "hasLink": true
-  },
-  "vardan-jaloyan-body-investments": {
+  "vardan-jaloyan-communism": {
     "author": "Vardan Jaloyan",
     "noTitle": false,
-    "year": 2008,
+    "year": 2023,
     "hasLink": true
   },
-  "elena-aydinyan-from-avant-garde-to-avant-garde": {
-    "author": "Elena Aydinyan",
+  "hrachya-galstyan-khaltura": {
+    "author": "Hrachya Galstyan",
     "noTitle": false,
-    "year": 2016,
+    "year": 2022,
     "hasLink": true
+  },
+  "armenak-grigoryan-amo": {
+    "author": "Armenak Grigoryan",
+    "noTitle": false,
+    "year": 2022,
+    "hasLink": false
   },
   "armen-yesayants-sevan": {
     "author": "Armen Yesayants",
@@ -47,34 +47,34 @@
     "year": 2021,
     "hasLink": true
   },
-  "hrachya-galstyan-khaltura": {
-    "author": "Hrachya Galstyan",
+  "elena-aydinyan-from-avant-garde-to-avant-garde": {
+    "author": "Elena Aydinyan",
     "noTitle": false,
-    "year": 2022,
+    "year": 2016,
     "hasLink": true
   },
-  "armenak-grigoryan-amo": {
-    "author": "Armenak Grigoryan",
-    "noTitle": false,
-    "year": 2022,
-    "hasLink": false
-  },
-  "momik-vardanyan": {
-    "author": "Momik Vardanyan",
-    "noTitle": true,
-    "hasLink": true,
-    "year": 2023
-  },
-  "vardan-jaloyan-communism": {
+  "vardan-jaloyan-body-investments": {
     "author": "Vardan Jaloyan",
     "noTitle": false,
-    "year": 2023,
+    "year": 2008,
     "hasLink": true
   },
-  "tamar-hovsepian-icons": {
-    "author": "Tamar Hovsepian",
-    "noTitle": true,
-    "year": 2024,
+  "eva-khachatryan-walls": {
+    "author": "Eva Khachatryan",
+    "noTitle": false,
+    "year": 2007,
+    "hasLink": true
+  },
+  "gohar-vardanyan-real-utopias": {
+    "author": "Gohar Vardanyan",
+    "noTitle": false,
+    "year": 2006,
+    "hasLink": true
+  },
+  "vardan-azatyan-real-utopias": {
+    "author": "Vardan Azatyan",
+    "noTitle": false,
+    "year": 2006,
     "hasLink": true
   }
 }
