@@ -437,6 +437,7 @@
   {
     "name": "2023 (Visions of the Death of Communism)",
     "path": "2023-visions-of-the-death-of-communism",
+    "order": 1,
     "images": [
       {
         "fileName": "visions-of-the-death-of-communism-untitled-1.jpg",

@@ -34,7 +34,9 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
   const sortedAlbums = albums.sort((a, b) => {
     const aDate = parseInt(a.name, 10);
     const bDate = parseInt(b.name, 10);
-    return bDate - aDate;
+    const absoluteOrderA = Number(`${aDate}${1000 + (a.order || 0)}`);
+    const absoluteOrderB = Number(`${bDate}${1000 + (b.order || 0)}`);
+    return absoluteOrderB - absoluteOrderA;
   });
 
   return (
