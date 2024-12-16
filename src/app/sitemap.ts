@@ -10,11 +10,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const album of albums) {
     for (const img of album.images) {
       for (const locale of locales) {
+        // As we have also png files we want to remove them too.
+        const extRemovedFileName = img.fileName.replace(/\.[^/.]+$/, "");
         urls.push({
-          url: `https://${host}/${locale}/${album.path}/${img.fileName.replace(
-            ".jpg",
-            "",
-          )}`,
+          url: `https://${host}/${locale}/${album.path}/${extRemovedFileName}`,
           changeFrequency: "yearly",
           priority: 0.7,
           lastModified: new Date().toISOString(),

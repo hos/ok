@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 
-import MainImage from "@/public/images/large/icons-of-the-future-exhibition-book-11.jpg";
+import MainImage from "@/public/images/large/icons-of-the-future-exhibition-book-11.png";
 const pageFileName = "Walls-2";
 
 const Home: NextPage = () => {

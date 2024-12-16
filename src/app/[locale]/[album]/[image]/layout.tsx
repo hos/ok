@@ -12,7 +12,9 @@ export async function generateMetadata({
 
   const album = albums.find((album) => album.path === albumName);
   const image = album?.images.find(
-    (img) => img.fileName === imageName + ".jpg",
+    (img) =>
+      img.fileName === imageName + ".jpg" ||
+      img.fileName === imageName + ".png",
   );
 
   const t = await getTranslations();

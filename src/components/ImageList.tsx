@@ -32,23 +32,21 @@ export const ImageList: React.FC<ImageListProps> = ({ className }) => {
       )}
     >
       {album.images.map((image) => {
+        const extRemovedFileName = image.fileName.replace(/\.[^/.]+$/, "");
         return (
           <Link
             key={image.fileName}
-            href={`/${locale}/${albumPath}/${image.fileName.replace(
-              ".jpg",
-              "",
-            )}`}
+            href={`/${locale}/${albumPath}/${extRemovedFileName}`}
             scroll={false}
             className="mt-1 mr-1 flex justify-center"
           >
             <Image
               width="70"
               height="70"
-              className={album.listZoom ? "object-none" : "object-contain"}
-              data-filename={image.fileName.replace(".jpg", "")}
+              className={"object-contain"}
+              data-filename={extRemovedFileName}
               src={`/images/large/${image.fileName}`}
-              alt={t(`images.${image.fileName.replace(".jpg", "")}`)}
+              alt={t(`images.${extRemovedFileName}`)}
             />
           </Link>
         );

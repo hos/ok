@@ -33,7 +33,8 @@ export const UpdateUrlWithCarousel = ({
       return;
     }
 
-    const newUrl = `/${locale}/${album}/${img?.fileName.split(".jpg")[0]}${large ? "?mode=large" : ""}`;
+    const extRemovedFileName = img.fileName.replace(/\.[^/.]+$/, "");
+    const newUrl = `/${locale}/${album}/${extRemovedFileName}${large ? "?mode=large" : ""}`;
 
     window.history.pushState(
       { ...window.history.state, as: newUrl, url: newUrl },

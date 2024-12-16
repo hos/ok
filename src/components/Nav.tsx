@@ -96,14 +96,15 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
                   )}
                 >
                   {sortedAlbums.map((album) => {
+                    const extRemovedFileName = album.images[
+                      album.default || 0
+                    ].fileName.replace(/\.[^/.]+$/, "");
                     return (
                       <li key={album.name} className="p-0 pl-[10px]">
                         <Link
                           scroll={false}
                           data-match={album.path}
-                          href={`/${locale}/${album.path}/${album.images[
-                            album.default || 0
-                          ].fileName.replace(".jpg", "")}`}
+                          href={`/${locale}/${album.path}/${extRemovedFileName}`}
                           passHref
                           className={linkClassName}
                         >

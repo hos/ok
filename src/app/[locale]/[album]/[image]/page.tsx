@@ -36,7 +36,9 @@ const AlbumPage = () => {
   }
 
   const currentImageIndex = album?.images.findIndex(
-    (img) => img.fileName === imageName + ".jpg",
+    (img) =>
+      img.fileName === imageName + ".jpg" ||
+      img.fileName === imageName + ".png",
   );
 
   const image = album?.images.at(currentImageIndex);
@@ -46,7 +48,7 @@ const AlbumPage = () => {
     notFound();
   }
 
-  const fileNameNoExt = image.fileName.replace(".jpg", "");
+  const fileNameNoExt = image.fileName.replace(/\.[^/.]+$/, "");
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
 
   return (
