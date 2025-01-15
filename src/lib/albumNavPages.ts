@@ -19,7 +19,8 @@ export const albumNavPages = (
       return null;
     }
     const idx = album.images.findIndex(
-      (img) => img.fileName === image + ".jpg",
+      (img) =>
+        img.fileName === image + ".jpg" || img.fileName === image + ".png",
     );
     return (album.images[idx + 1] || album.images[0]).fileName;
   })();
@@ -29,7 +30,8 @@ export const albumNavPages = (
       return null;
     }
     const idx = album.images.findIndex(
-      (img) => img.fileName === image + ".jpg",
+      (img) =>
+        img.fileName === image + ".jpg" || img.fileName === image + ".png",
     );
     return (album.images[idx - 1] || album.images[album.images.length - 1])
       .fileName;
@@ -37,11 +39,11 @@ export const albumNavPages = (
 
   return [
     next &&
-      `/${locale}/${album?.path}/${(next + "").replace(".jpg", "")}${
+      `/${locale}/${album?.path}/${(next + "").replace(/\.[^/.]+$/, "")}${
         queryString ? `?${queryString}` : ""
       }`,
     previous &&
-      `/${locale}/${album?.path}/${(previous + "").replace(".jpg", "")}${
+      `/${locale}/${album?.path}/${(previous + "").replace(/\.[^/.]+$/, "")}${
         queryString ? `?${queryString}` : ""
       }`,
   ];

@@ -35,7 +35,7 @@ const normalize = (route: string) => {
     if (album) {
       return (
         route +
-        `/${album.images[album.default || 0]!.fileName.replace(".jpg", "")}`
+        `/${album.images[album.default || 0]!.fileName.replace(/\.[^/.]+$/, "")}`
       );
     }
   }

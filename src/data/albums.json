@@ -497,6 +497,7 @@
     "name": "2024 (Icons of the Future)",
     "path": "2024-icons-of-the-future",
     "background": "white",
+    "zoomOut": true,
     "images": [
       {
         "fileName": "icons-of-the-future-exhibition-book-1.png",

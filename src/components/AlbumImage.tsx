@@ -44,7 +44,7 @@ export const UpdateUrlWithCarousel = ({
 
     // If we use router.push next.js will rerender the page which will cause the animation to stop,
     // so instead we use this workaround to update url and title manually...
-    const title = img?.fileName.split(".jpg")[0];
+    const title = extRemovedFileName;
     const titleLocalized = t(`images.${title}`);
     setTitle?.(titleLocalized);
     setDescription?.(img?.description);
@@ -72,10 +72,13 @@ export const AlbumImage = ({
   image,
   className,
   imageClassName,
+  zoomOut,
 }: {
+  scale?: number;
   index?: number;
   image: { fileName: string; description: string };
   className?: string;
+  zoomOut?: boolean;
   imageClassName?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -83,7 +86,7 @@ export const AlbumImage = ({
   const { api } = useCarousel();
 
   const src = `/images/large/${image.fileName}`;
-  const fileNameNoExt = image.fileName.replace(".jpg", "");
+  const fileNameNoExt = image.fileName.replace(/\.[^/.]+$/, "");
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
 
   return (
@@ -102,7 +105,7 @@ export const AlbumImage = ({
           alt={imageNameLocalized}
           data-filename={fileNameNoExt}
           style={{ objectFit: "contain" }}
-          className={imageClassName}
+          className={cn(imageClassName, zoomOut ? "scale-75" : "")}
         />
       </Link>
     </CarouselItem>

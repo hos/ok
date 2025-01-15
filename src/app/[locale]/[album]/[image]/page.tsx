@@ -47,7 +47,6 @@ const AlbumPage = () => {
   if (!image) {
     notFound();
   }
-
   const fileNameNoExt = image.fileName.replace(/\.[^/.]+$/, "");
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
 
@@ -76,6 +75,7 @@ const AlbumPage = () => {
                     image={img}
                     className="focus-album"
                     imageClassName="w-screen h-screen"
+                    zoomOut={album.zoomOut}
                   />
                 );
               })}
@@ -106,6 +106,7 @@ const AlbumPage = () => {
                   image={img}
                   className="page-album"
                   imageClassName="w-full h-full"
+                  zoomOut={album.zoomOut}
                 />
               );
             })}
