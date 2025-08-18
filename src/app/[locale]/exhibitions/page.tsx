@@ -26,7 +26,7 @@ const Exhibitions: React.FC<{}> = async () => {
         className="max-w-full h-auto object-contain object-left"
         priority
       />
-      <div className="py-10 text-xs leading-5">
+      <div className="my-12 mx-2 text-base  leading-5 flex flex-col gap-2">
         <Paragraph>
           {" "}
           <RedSpan> 2024 - </RedSpan> {t("icons")}{" "}
@@ -69,9 +69,7 @@ const Exhibitions: React.FC<{}> = async () => {
   );
 };
 
-const Paragraph: FC<PropsWithChildren> = ({ children }) => (
-  <p className="m-0 mt-0.5">{children}</p>
-);
+const Paragraph: FC<PropsWithChildren> = ({ children }) => <p>{children}</p>;
 
 const RedSpan: FC<PropsWithChildren> = ({ children }) => (
   <span className="text-red">{children}</span>
