@@ -24,8 +24,8 @@ const AlbumPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const albumName = params.album.toString();
-  const imageName = params.image.toString();
+  const albumName = decodeURIComponent(params.album.toString());
+  const imageName = decodeURIComponent(params.image.toString());
 
   const large = search.get("mode") === "large";
 
@@ -47,7 +47,9 @@ const AlbumPage = () => {
   if (!image) {
     notFound();
   }
-  const fileNameNoExt = image.fileName.replace(/\.[^/.]+$/, "");
+  const fileNameNoExt = decodeURIComponent(
+    image.fileName.replace(/\.[^/.]+$/, ""),
+  );
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
 
   return (
