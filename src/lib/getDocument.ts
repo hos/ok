@@ -12,7 +12,7 @@ export const getDocument = async (
   );
   try {
     html = (await fs.readFile(localePath)).toString();
-  } catch (err) {
+  } catch {
     // try to default to english
     if (locale !== "en") {
       const localePath = path.resolve(

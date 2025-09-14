@@ -14,7 +14,7 @@ interface OverlayProps {
 export const Overlay: FC<OverlayProps> = (props) => {
   const { background = "black" } = props;
   const [isFocusMode, setIsFocusMode] = useState(false);
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   const pathname = usePathname();
   const crossColor = background === "black" ? "white" : "black";
   const enableFocusMode = useCallback(() => {
@@ -34,7 +34,7 @@ export const Overlay: FC<OverlayProps> = (props) => {
       )}
       onMouseMove={() => enableFocusMode()}
     >
-      <div className="fixed top-[2%] right-[12%] md:landscape:right-[2%] w-6 h-6 z-20 md:[.focus_&]:opacity-0 transition-opacity duration-500">
+      <div className="fixed top-[2%] right-[12%] md:landscape:right-[2%] w-6 h-6 z-20 md:in-[.focus]:opacity-0 transition-opacity duration-500">
         <Link href={{ query: {}, pathname: pathname.split("?")?.[0] }} shallow>
           <svg height="100%" width="100%" viewBox="0 0 32 32">
             <g id="cross" stroke={crossColor} fill={crossColor} strokeWidth={2}>

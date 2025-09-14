@@ -1,3 +1,4 @@
+import { Route } from "next";
 import Link from "next/link";
 import React from "react";
 
@@ -18,7 +19,7 @@ export const LanguageBar: React.FC<LanguageBarProps> = ({ currentPath }) => {
         return (
           <Link
             key={lang.path}
-            href={`/${lang.path}/${currentPathWithoutLang}`}
+            href={`/${lang.path}/${currentPathWithoutLang}` as Route}
             locale={lang.path}
             className="text-red m-0.5 uppercase"
           >

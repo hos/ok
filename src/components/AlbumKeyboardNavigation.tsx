@@ -1,5 +1,6 @@
 "use client";
 
+import { Route } from "next";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useEffect } from "react";
@@ -24,10 +25,10 @@ export const AlbumKeyboardNavigation = ({
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft" && previous) {
-        router.push(previous);
+        router.push(previous as Route);
       }
       if (e.key === "ArrowRight" && next) {
-        router.push(next);
+        router.push(next as Route);
       }
     };
     document.addEventListener("keydown", handle);
@@ -40,7 +41,7 @@ export const AlbumKeyboardNavigation = ({
       if (e.key === "Escape" && isLargeMode) {
         const url = new URL(location.href);
         url.search = "";
-        router.push(url.toString());
+        router.push(url.toString() as Route);
       }
     };
     document.addEventListener("keydown", handle);

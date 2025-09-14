@@ -12,7 +12,7 @@ interface HamburgerProps {
 
 export const Hamburger: React.FC<HamburgerProps> = ({ onClick }) => {
   const searchParams = useSearchParams();
-  const ref = useRef<HTMLDivElement | null>();
+  const ref = useRef<HTMLDivElement | null>(null);
   const isLargeMode = searchParams?.get("mode") === "large";
 
   const toggleMenu = useCallback(() => {
@@ -46,15 +46,15 @@ export const Hamburger: React.FC<HamburgerProps> = ({ onClick }) => {
         left-0
         fixed
         duration-300
-        [.show-menu_&]:opacity-1
+        in-[.show-menu]:opacity-1
         md:hidden`,
         isLargeMode ? "hidden" : "",
       )}
     >
       <div onClick={onClick} className="h-[30px] w-[30px]">
-        <span className="transition-all bg-black duration-300 w-full h-[1.5px] [.show-menu_&]:w-3/4 absolute [.show-menu_&]:top-1/2 rounded-md top-0 [.show-menu_&]:rotate-45" />
-        <span className="transition-all bg-black duration-300 w-full h-[1.5px] [.show-menu_&]:w-3/4 absolute [.show-menu_&]:top-1/2 rounded-md [.show-menu_&]:opacity-0 top-1/3" />
-        <span className="transition-all bg-black duration-300 w-full h-[1.5px] [.show-menu_&]:w-3/4 absolute [.show-menu_&]:top-1/2 rounded-md top-2/3 [.show-menu_&]:-rotate-45" />
+        <span className="transition-all bg-black duration-300 w-full h-[1.5px] in-[.show-menu]:w-3/4 absolute in-[.show-menu]:top-1/2 rounded-md top-0 in-[.show-menu]:rotate-45" />
+        <span className="transition-all bg-black duration-300 w-full h-[1.5px] in-[.show-menu]:w-3/4 absolute in-[.show-menu]:top-1/2 rounded-md in-[.show-menu]:opacity-0 top-1/3" />
+        <span className="transition-all bg-black duration-300 w-full h-[1.5px] in-[.show-menu]:w-3/4 absolute in-[.show-menu]:top-1/2 rounded-md top-2/3 in-[.show-menu]:-rotate-45" />
       </div>
     </div>
   );

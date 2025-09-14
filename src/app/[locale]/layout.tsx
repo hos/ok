@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import { ReactNode } from "react";
 
 import AppRouterNavigation from "@/src/components/AppRouterNavigation";
 import { Hamburger } from "@/src/components/Hamburger";
@@ -22,13 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const RootLayout = async ({
-  children,
-  params: { locale },
-}: {
-  children: ReactNode;
-  params: { locale: string };
-}) => {
+const RootLayout = async ({ children, params }: LayoutProps<"/[locale]">) => {
+  const { locale } = await params;
   const messages = await getMessages();
 
   if (!locales.includes(locale as any)) notFound();

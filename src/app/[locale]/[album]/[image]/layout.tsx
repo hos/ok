@@ -7,8 +7,8 @@ export async function generateMetadata({
 }: {
   params: { image: string; album: string };
 }): Promise<Metadata> {
-  const imageName = params.image;
-  const albumName = params.album;
+  const imageName = decodeURIComponent(params.image);
+  const albumName = decodeURIComponent(params.album);
 
   const album = albums.find((album) => album.path === albumName);
   const image = album?.images.find(

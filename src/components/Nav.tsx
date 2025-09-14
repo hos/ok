@@ -1,5 +1,6 @@
 "use client";
 
+import { Route } from "next";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import albums from "src/data/albums.json";
@@ -29,7 +30,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
   const t = useTranslations();
   const locale = useLocale();
 
-  const linkClassName = `text-xs p-[1px] text-black no-underline cursor-pointer hover:bg-red hover:text-white [&.selected]:bg-black [&.selected]:text-white leading-5`;
+  const linkClassName = `text-xs p-px text-black no-underline cursor-pointer hover:bg-red hover:text-white [&.selected]:bg-black [&.selected]:text-white leading-5`;
 
   const sortedAlbums = albums.sort((a, b) => {
     const aDate = parseInt(a.name, 10);
@@ -42,7 +43,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
   return (
     <div id="nav" className={cn("grow max-md:absolute")}>
       <div
-        className="w-screen h-screen hidden max-md:[.show-menu_&]:block"
+        className="w-screen h-screen hidden max-md:in-[.show-menu]:block"
         onClick={() => {
           // When clicking outside of the menu, close it.
           document.querySelector("body")?.classList.remove("show-menu");
@@ -58,8 +59,8 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
       max-md:pt-5
       max-md:-left-96
       max-md:inset-y-0
-      max-md:[.show-menu_&]:shadow-2xl
-      max-md:[.show-menu_&]:left-0
+      max-md:in-[.show-menu]:shadow-2xl
+      max-md:in-[.show-menu]:left-0
       overflow-scroll
       scrollbar-hide
       `}
@@ -77,7 +78,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
               return (
                 <li key={label}>
                   <Link
-                    href={`/${locale}/${url}`}
+                    href={`/${locale}/${url}` as Route}
                     className={linkClassName}
                     data-match={url.replace("/", "")}
                   >
@@ -92,7 +93,7 @@ export const Nav: React.FC<NavProps> = ({ slug, pathname }) => {
                 <AppKeyboardNavigation className={linkClassName} slug={slug} />
                 <ul
                   className={cn(
-                    `m-0 p-0 list-none hidden [.show-works-menu_&]:block`,
+                    `m-0 p-0 list-none hidden in-[.show-works-menu]:block`,
                   )}
                 >
                   {sortedAlbums.map((album) => {

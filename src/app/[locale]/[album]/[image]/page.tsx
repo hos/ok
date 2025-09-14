@@ -16,8 +16,10 @@ import {
 import albums from "src/data/albums.json";
 import { cn } from "src/lib/utils";
 
+import { ParamsOf } from "@/.next/types/routes";
+
 const AlbumPage = () => {
-  const params = useParams();
+  const params = useParams<ParamsOf<"/[locale]/[album]/[image]">>();
   const search = useSearchParams();
 
   const t = useTranslations();
