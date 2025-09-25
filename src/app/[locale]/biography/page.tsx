@@ -12,10 +12,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("Biography"), description: t("description") };
 }
 
-const Biography: React.FC<{ params: { locale: string } }> = async ({
-  params,
-}) => {
-  const { locale } = params;
+const Biography = async (props: PageProps<"/[locale]/biography">) => {
+  const { locale } = await props.params;
   const t = await getTranslations();
 
   const content = await fs.readFile(
@@ -26,7 +24,7 @@ const Biography: React.FC<{ params: { locale: string } }> = async ({
   return (
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
       <Meta />
-      <h1 className="m-0 m-0 pb-5">{t("Biography")}</h1>
+      <h1 className="m-0 pb-5">{t("Biography")}</h1>
       <Image
         src={KarenOhanyan}
         alt="Karen Ohanyan Portrait"

@@ -2,11 +2,10 @@ import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import albums from "src/data/albums.json";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { image: string; album: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: LayoutProps<"/[locale]/[album]/[image]">,
+): Promise<Metadata> {
+  const params = await props.params;
   const imageName = decodeURIComponent(params.image);
   const albumName = decodeURIComponent(params.album);
 

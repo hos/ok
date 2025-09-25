@@ -4,11 +4,8 @@ import React from "react";
 import { Meta } from "src/components/Meta";
 import texts from "src/data/texts.json";
 
-export default async function TextsPage({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export default async function TextsPage(props: PageProps<"/[locale]/texts">) {
+  const params = await props.params;
   const t = await getTranslations();
   const locale = params.locale?.toString();
 

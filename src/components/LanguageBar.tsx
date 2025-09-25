@@ -20,7 +20,6 @@ export const LanguageBar: React.FC<LanguageBarProps> = ({ currentPath }) => {
           <Link
             key={lang.path}
             href={`/${lang.path}/${currentPathWithoutLang}` as Route}
-            locale={lang.path}
             className="text-red m-0.5 uppercase"
           >
             {lang.name}

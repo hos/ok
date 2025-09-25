@@ -24,5 +24,6 @@ export default withNextIntl({
   },
   images: {
     minimumCacheTTL: age,
+    qualities: [25, 50, 75, 100],
   },
 });

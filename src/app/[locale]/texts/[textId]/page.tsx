@@ -10,12 +10,10 @@ import { Meta } from "src/components/Meta";
 import { PostBody } from "src/components/PostBody";
 import texts from "src/data/texts.json";
 
-type Props = {
-  params: { textId: string };
-};
-
-export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { params } = props;
+export async function generateMetadata(
+  props: PageProps<"/[locale]/texts/[textId]">,
+): Promise<Metadata> {
+  const params = await props.params;
   const { textId } = params;
 
   const name = textId?.toString();
@@ -24,11 +22,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return { title: t(`texts.${name}`), description: t(`${name}`) };
 }
 
-interface TextProps {
-  params: { textId: string; locale: string };
-}
-
-const Text: React.FC<TextProps> = async ({ params }) => {
+const Text = async (props: PageProps<"/[locale]/texts/[textId]">) => {
+  const params = await props.params;
   const { locale, textId } = params || {};
 
   const t = await getTranslations("texts");
