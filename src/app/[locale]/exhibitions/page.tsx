@@ -29,6 +29,10 @@ const Exhibitions: React.FC<{}> = async () => {
       <div className="my-12 mx-2 text-base  leading-5 flex flex-col gap-2">
         <Paragraph>
           {" "}
+          <RedSpan> 2026 - </RedSpan> {t("charliesDream")}{" "}
+        </Paragraph>
+        <Paragraph>
+          {" "}
           <RedSpan> 2024 - </RedSpan> {t("icons")}{" "}
         </Paragraph>
         <Paragraph>
