@@ -1,4 +1,4 @@
-import "@/src/styles/globals.css";
+import "../../styles/globals.css";
 
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
