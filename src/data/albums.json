@@ -580,5 +580,77 @@
         "description": "oil on parchment, d. 39 cm"
       }
     ]
+  },
+  {
+    "name": "2020 (Charlie's Dream)",
+    "path": "2020-charlies-dream",
+    "default": 0,
+    "artform": "Drawing",
+    "images": [
+      {
+        "fileName": "charlies-dream-1.jpg",
+        "description": "Watercolor, mix media on board, 29x41cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-2.jpg",
+        "description": "Watercolor, mix media on board, 40x28cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-3.jpg",
+        "description": "Watercolor, pencil, mix media on board, 22x20cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-4.jpg",
+        "description": "Watercolor on paper, 22x20cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-5.jpg",
+        "description": "Watercolor, mix media on board, 48x29cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-6.jpg",
+        "description": "Watercolor, mix media on board, 29x41cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-7.jpg",
+        "description": "Watercolor, mix media on board, 29x41cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-8.jpg",
+        "description": "Watercolor, mix media on board, 29x41cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-9.jpg",
+        "description": "Watercolor, mix media on board, 40x28cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-10.jpg",
+        "description": "Watercolor, mix media on board, 19x22cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-11.jpg",
+        "description": "Watercolor, mix media on board, 22x20cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-12.jpg",
+        "description": "Watercolor, mix media on board, 56x46cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-13.jpg",
+        "description": "Watercolor, mix media on paper, 15x21cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-14.jpg",
+        "description": "Watercolor, mix media on paper, 15x21cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-15.jpg",
+        "description": "Watercolor, mix media on paper, 15x21cm, 2020"
+      },
+      {
+        "fileName": "charlies-dream-16.jpg",
+        "description": "Watercolor, mix media on paper, 15x21cm, 2020"
+      }
+    ]
   }
 ]
