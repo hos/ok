@@ -93,22 +93,25 @@ export const useShortcutSingle = (props: IUseShortcutProps) => {
   }, [addFilter, removeFilter, key]);
 
   useEffect(() => {
-    if (counter === clickCount) {
-      addFilter();
+    if (counter !== clickCount) {
+      return;
     }
 
-    if (counter > clickCount) {
-      setCounter(0);
+    addFilter();
+
+    // The click after the one that reached clickCount wraps the counter back to
+    // 0, and this cleanup is what takes the filter off again.
+    return () => {
       removeFilter();
-    }
-  }, [counter, setCounter, addFilter, removeFilter, clickCount]);
+    };
+  }, [counter, addFilter, removeFilter, clickCount]);
 
   useEffect(() => {
     const elements = Array.from(
       document.querySelectorAll(selector),
     ) as HTMLElement[];
 
-    const add = () => setCounter((c) => c + 1);
+    const add = () => setCounter((c) => (c >= clickCount ? 0 : c + 1));
 
     for (const element of elements) {
       element?.addEventListener("click", add);
@@ -119,7 +122,7 @@ export const useShortcutSingle = (props: IUseShortcutProps) => {
         element?.removeEventListener("click", add);
       }
     };
-  }, [selector]);
+  }, [selector, clickCount]);
 };
 
 const ShortcutConfigs: IUseShortcutProps[] = [

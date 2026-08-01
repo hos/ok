@@ -85,7 +85,22 @@ export const AppKeyboardNavigation = ({
 export const useActiveLink = ({ part }: { part: string }) => {
   const local = useLocale();
   const pathname = usePathname().replace(`/${local}`, "");
-  const [isOpen, setIsOpen] = useState(false);
+
+  // Derived from the route rather than read back off the rendered menu, so the
+  // sub-menu's open state does not depend on an effect having run first.
+  const isAlbumPath = !!(
+    part && albums.some(({ path }) => pathname.includes(path))
+  );
+
+  const [isOpen, setIsOpen] = useState(isAlbumPath);
+  const [lastPathname, setLastPathname] = useState(pathname);
+
+  // Navigating re-derives the open state; clicking "Works" is free to override
+  // it until the next navigation.
+  if (lastPathname !== pathname) {
+    setLastPathname(pathname);
+    setIsOpen(isAlbumPath);
+  }
 
   useEffect(() => {
     document.querySelector("body")?.classList.remove("show-menu");
@@ -105,13 +120,8 @@ export const useActiveLink = ({ part }: { part: string }) => {
       pathname.includes(String(a.dataset.match)),
     );
 
-    const isAlbum = !!(
-      part && albums.find(({ path }) => path === String(matched?.dataset.match))
-    );
-    setIsOpen(isAlbum);
-
     matched?.classList.add("selected");
-  }, [pathname, part]);
+  }, [pathname]);
 
   return { isOpen, setIsOpen };
 };
