@@ -1,6 +1,5 @@
 # ok — Project Instructions
 
-Project instructions are maintained in AGENTS.md (tool-agnostic) and imported here so Claude Code
-picks them up:
+Instructions live in AGENTS.md (tool-agnostic). Add new ones there, not here.
 
 @AGENTS.md
