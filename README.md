@@ -1,9 +1,16 @@
 # Karen Ohanyan
 
-Karen Ohanyan's personal website.
+Karen Ohanyan's online gallery — [karenohanyan.art](https://karenohanyan.art).
 
 <a href="https://ibb.co/ZxtKBGW"><img src="https://i.ibb.co/VTrDgJ2/Screen-Shot-2019-01-31-at-01-51-15.png" alt="Screen-Shot-2019-01-31-at-01-51-15" border="0"></a><br />
 
-Simple website for Karen Ohanyan's online gallery. Inspired by [kennethnoland.com](http://www.kennethnoland.com).
+Next.js (App Router) with TypeScript, Tailwind v4 and `next-intl`. No backend, no database — albums,
+texts and translations are JSON and HTML files in the repo.
 
-The website is built by using node.js, express.js, pug and vanilla js in front end.
+```
+export PATH="$HOME/.bun/bin:$PATH"   # bun isn't on PATH by default
+bun install
+bun run dev                          # http://localhost:3011
+```
+
+See `AGENTS.md` for the full layout, conventions and gotchas.

@@ -45,7 +45,6 @@ A text is the same shape: metadata in `src/data/texts.json`, body as
 
 ## Traps
 
-- **`README.md` is stale** — it describes an express/pug app. Don't reason from it.
 - **`src/lib/images.ts` is dead code**, a static import map nothing imports. Don't extend it when
   adding artwork; `AlbumImage` builds `/images/large/<fileName>` directly.
 - **`ru` is translated but not enabled** — absent from `locales` in `src/config.ts`, and its
