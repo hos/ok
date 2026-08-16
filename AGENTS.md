@@ -4,7 +4,26 @@ Karen Ohanyan's gallery site (karenohanyan.art). Next.js App Router, TypeScript,
 `next-intl`. Content is JSON and HTML in the repo — no backend, no database, no auth, no API routes.
 The only env var is `HOST_URL`, optional, defaulting to the public hostname.
 
-Keep this file small — it is re-read on every message.
+## Where an instruction goes — and the budget on this file
+
+This file is loaded on every message in this project, so every line here is charged to every
+message about anything.
+
+- **Hard target: under 200 lines.** Adding a line means arguing against something already in it.
+- **Replace, don't append.** A new rule names the line it supersedes, or says why it is genuinely new.
+- **The reasoning goes to `notes/`, not here.** `@path` imports don't save context — an imported
+  file loads at launch like the rest — so splitting into imports is organisation, not a size strategy.
+
+Where a new instruction belongs, in order, and the last one is the rare answer:
+
+1. *Why*, a measurement, or something tried and rejected → **`notes/`**, not loaded.
+2. A multi-step procedure → **a skill** (`.claude/skills/`), loaded only when invoked.
+3. Only matters when touching particular files → **a path-scoped rule** (`.claude/rules/*.md` with
+   `paths:` frontmatter), loaded only when a matching file is opened.
+4. Applies to every message here whatever it touches → **this file**, and only then.
+
+This project has neither rules nor skills yet — everything below is category 4. `notes/` holds the
+dependency-pin investigation.
 
 ## Commands
 
@@ -50,11 +69,10 @@ A text is the same shape: metadata in `src/data/texts.json`, body as
 - **`ru` is translated but not enabled** — absent from `locales` in `src/config.ts`, and its
   `media.json` is missing, so switching it on without that file breaks the catalogue.
 - **eslint 9.39.5 and typescript 6.0.3 are pinned deliberately.** `bun update --latest` moves both
-  and breaks the build: eslint 10 crashes inside `eslint-config-next`'s plugin chain, and TypeScript
-  7 is rejected by `next build` and typescript-eslint alike.
+  and breaks the build. See `notes/dependency-pins.md` for what breaks and why.
 - **`next-env.d.ts` flips** between a dev and a build variant — revert that churn, don't commit it.
-- The `resolutions` pins on `sharp` and `postcss` clear Dependabot advisories. Don't drop them
-  without rechecking the alerts.
+- The `resolutions` pins on `sharp` and `postcss` clear Dependabot advisories `next` re-pins
+  internally. Don't drop them without rechecking the alerts.
 - `bun update <pkg>` adds `<pkg>` as a direct dependency; to move a transitive, delete `bun.lock`
   and reinstall so the tree resolves fresh.
 
