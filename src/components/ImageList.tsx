@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 import albums from "src/data/albums.json";
 
+import { revealImageWhenLoaded } from "../lib/revealImageWhenLoaded";
 import { cn } from "../lib/utils";
 
 interface ImageListProps {
@@ -41,15 +42,16 @@ export const ImageList: React.FC<ImageListProps> = ({ className }) => {
             className="mt-1 mr-1 flex justify-center"
           >
             <Image
+              ref={revealImageWhenLoaded}
               width="70"
               height="70"
-              className="object-contain opacity-0 transition-opacity duration-500 data-[loaded=true]:opacity-100"
+              className="size-[70px] object-contain opacity-0 transition-opacity duration-500 data-[loaded=true]:opacity-100"
               data-filename={extRemovedFileName}
               src={`/images/large/${image.fileName}`}
               alt={t(`images.${extRemovedFileName}`)}
-              onLoad={(e) =>
-                e.currentTarget.setAttribute("data-loaded", "true")
-              }
+              onLoad={(event) => {
+                event.currentTarget.dataset.loaded = "true";
+              }}
             />
           </Link>
         );

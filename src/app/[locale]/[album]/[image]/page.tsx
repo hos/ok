@@ -86,6 +86,7 @@ const AlbumPageContent = () => {
                     className="focus-album"
                     imageClassName="w-screen h-screen"
                     zoomOut={album.zoomOut}
+                    priority={index === currentImageIndex}
                   />
                 );
               })}
@@ -117,6 +118,7 @@ const AlbumPageContent = () => {
                   className="page-album"
                   imageClassName="w-full h-full"
                   zoomOut={album.zoomOut}
+                  priority={index === currentImageIndex}
                 />
               );
             })}

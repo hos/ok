@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import imageDimensions from "src/data/image-dimensions.json";
 
+import { revealImageWhenLoaded } from "../lib/revealImageWhenLoaded";
 import { cn } from "../lib/utils";
 import { CarouselItem, useCarousel } from "./ui/carousel";
 
@@ -68,11 +70,11 @@ export const UpdateUrlWithCarousel = ({
 };
 
 export const AlbumImage = ({
-  index,
   image,
   className,
   imageClassName,
   zoomOut,
+  priority = false,
 }: {
   scale?: number;
   index?: number;
@@ -80,17 +82,16 @@ export const AlbumImage = ({
   className?: string;
   zoomOut?: boolean;
   imageClassName?: string;
+  priority?: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const t = useTranslations();
-  const { api } = useCarousel();
-  const [loaded, setLoaded] = useState(false);
 
   const src = `/images/large/${image.fileName}`;
   const fileNameNoExt = image.fileName.replace(/\.[^/.]+$/, "");
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
-  const isPriority = index === api?.selectedScrollSnap();
-
+  const { width, height } =
+    imageDimensions[image.fileName as keyof typeof imageDimensions];
   return (
     <CarouselItem className={cn("relative", className)} ref={ref}>
       <Link
@@ -99,23 +100,23 @@ export const AlbumImage = ({
         className={cn("cursor-pointer", className)}
       >
         <Image
-          priority={isPriority}
+          ref={revealImageWhenLoaded}
+          priority={priority}
           quality={75}
-          width="800"
-          height="500"
+          width={width}
+          height={height}
           src={src}
           alt={imageNameLocalized}
           data-filename={fileNameNoExt}
           style={{ objectFit: "contain" }}
-          onLoad={() => setLoaded(true)}
+          onLoad={(event) => {
+            event.currentTarget.dataset.loaded = "true";
+          }}
           className={cn(
             imageClassName,
             zoomOut ? "scale-75" : "",
-            !isPriority &&
-              cn(
-                "transition-opacity duration-500",
-                loaded ? "opacity-100" : "opacity-0",
-              ),
+            !priority &&
+              "opacity-0 transition-opacity duration-500 data-[loaded=true]:opacity-100",
           )}
         />
       </Link>
