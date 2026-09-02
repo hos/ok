@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "../lib/utils";
 import { CarouselItem, useCarousel } from "./ui/carousel";
@@ -84,10 +84,12 @@ export const AlbumImage = ({
   const ref = useRef<HTMLDivElement>(null);
   const t = useTranslations();
   const { api } = useCarousel();
+  const [loaded, setLoaded] = useState(false);
 
   const src = `/images/large/${image.fileName}`;
   const fileNameNoExt = image.fileName.replace(/\.[^/.]+$/, "");
   const imageNameLocalized = t(`images.${fileNameNoExt}`);
+  const isPriority = index === api?.selectedScrollSnap();
 
   return (
     <CarouselItem className={cn("relative", className)} ref={ref}>
@@ -97,15 +99,24 @@ export const AlbumImage = ({
         className={cn("cursor-pointer", className)}
       >
         <Image
-          priority={index === api?.selectedScrollSnap()}
-          quality={100}
+          priority={isPriority}
+          quality={75}
           width="800"
           height="500"
           src={src}
           alt={imageNameLocalized}
           data-filename={fileNameNoExt}
           style={{ objectFit: "contain" }}
-          className={cn(imageClassName, zoomOut ? "scale-75" : "")}
+          onLoad={() => setLoaded(true)}
+          className={cn(
+            imageClassName,
+            zoomOut ? "scale-75" : "",
+            !isPriority &&
+              cn(
+                "transition-opacity duration-500",
+                loaded ? "opacity-100" : "opacity-0",
+              ),
+          )}
         />
       </Link>
     </CarouselItem>

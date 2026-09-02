@@ -43,10 +43,13 @@ export const ImageList: React.FC<ImageListProps> = ({ className }) => {
             <Image
               width="70"
               height="70"
-              className={"object-contain"}
+              className="object-contain opacity-0 transition-opacity duration-500 data-[loaded=true]:opacity-100"
               data-filename={extRemovedFileName}
               src={`/images/large/${image.fileName}`}
               alt={t(`images.${extRemovedFileName}`)}
+              onLoad={(e) =>
+                e.currentTarget.setAttribute("data-loaded", "true")
+              }
             />
           </Link>
         );
