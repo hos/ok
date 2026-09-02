@@ -1,0 +1,18 @@
+# Karen Ohanyan
+
+> Biographical site of Karen Ohanyan, an Armenian painter — selected works, exhibitions, biography, and critical texts about him.
+
+Content is organized by album/series; each artwork has its own page. Available in English and Armenian.
+
+## Pages
+
+- [Works](https://karenohanyan.art/en): albums/series of paintings, one page per artwork
+- [Biography](https://karenohanyan.art/en/biography)
+- [Exhibitions](https://karenohanyan.art/en/exhibitions): list of solo exhibitions
+- [Texts](https://karenohanyan.art/en/texts): critical essays and reviews about the artist's work
+- [Media](https://karenohanyan.art/en/media): video interviews and coverage
+- [Contacts](https://karenohanyan.art/en/contacts)
+
+## Sitemap
+
+- [sitemap.xml](https://karenohanyan.art/sitemap.xml): full list of pages, including every artwork and text, in English and Armenian
