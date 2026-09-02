@@ -2,7 +2,7 @@
 
 import { notFound, useParams, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { AlbumImage, UpdateUrlWithCarousel } from "src/components/AlbumImage";
 import { AlbumKeyboardNavigation } from "src/components/AlbumKeyboardNavigation";
 import { ImageList } from "src/components/ImageList";
@@ -18,7 +18,13 @@ import { cn } from "src/lib/utils";
 
 import { ParamsOf } from "@/.next/types/routes";
 
-const AlbumPage = () => {
+const AlbumPage = () => (
+  <Suspense fallback={null}>
+    <AlbumPageContent />
+  </Suspense>
+);
+
+const AlbumPageContent = () => {
   const params = useParams<ParamsOf<"/[locale]/[album]/[image]">>();
   const search = useSearchParams();
 

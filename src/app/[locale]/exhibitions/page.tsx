@@ -1,10 +1,13 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import React, { FC, PropsWithChildren } from "react";
-import { Meta } from "src/components/Meta";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/exhibitions">): Promise<Metadata> {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations();
   return {
     title: t("exhibitions.Solo Exhibitions"),
@@ -12,11 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const Exhibitions: React.FC<{}> = async () => {
+const Exhibitions = async (props: PageProps<"/[locale]/exhibitions">) => {
+  const { locale } = await props.params;
+  setRequestLocale(locale);
   const t = await getTranslations("exhibitions");
   return (
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
-      <Meta />
       <h1 className="text-xl m-0 pb-5">{t("Solo Exhibitions")}</h1>
       <Image
         src="/images/exhibition.jpg"

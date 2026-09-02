@@ -1,19 +1,22 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import React from "react";
-import { Meta } from "src/components/Meta";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/contacts">): Promise<Metadata> {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations();
   return { title: t("Contacts"), description: t("description") };
 }
 
-const Contacts: React.FC<{}> = async () => {
+const Contacts = async (props: PageProps<"/[locale]/contacts">) => {
+  const { locale } = await props.params;
+  setRequestLocale(locale);
   return (
     <div className="w-full flex flex-col items-center">
-      <Meta />
-
       <Link
         className="font-width-500 text-base"
         href="mailto:karenohanyan.art@gmail.com"

@@ -1,11 +1,21 @@
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import albums from "src/data/albums.json";
+
+export function generateStaticParams() {
+  return albums.flatMap((album) =>
+    album.images.map((img) => ({
+      album: album.path,
+      image: img.fileName.replace(/\.[^/.]+$/, ""),
+    })),
+  );
+}
 
 export async function generateMetadata(
   props: LayoutProps<"/[locale]/[album]/[image]">,
 ): Promise<Metadata> {
   const params = await props.params;
+  setRequestLocale(params.locale);
   const imageName = decodeURIComponent(params.image);
   const albumName = decodeURIComponent(params.album);
 

@@ -1,4 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/media">): Promise<Metadata> {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+  return { title: t("Media"), description: t("description") };
+}
 
 const mediaItems = {
   unmeritorious:
@@ -8,7 +18,9 @@ const mediaItems = {
   cca: "https://www.youtube.com/embed/fpl1JerGkFA?si=wxPScq-m1j4LyfFv",
 };
 
-export default async function MediaPage() {
+export default async function MediaPage(props: PageProps<"/[locale]/media">) {
+  const { locale } = await props.params;
+  setRequestLocale(locale);
   const t = await getTranslations();
 
   return (

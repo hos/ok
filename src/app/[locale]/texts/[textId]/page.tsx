@@ -3,18 +3,22 @@ import path from "node:path";
 
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import React from "react";
 import { NewsArticle } from "schema-dts";
-import { Meta } from "src/components/Meta";
 import { PostBody } from "src/components/PostBody";
 import texts from "src/data/texts.json";
+
+export function generateStaticParams() {
+  return Object.keys(texts).map((textId) => ({ textId }));
+}
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/texts/[textId]">,
 ): Promise<Metadata> {
   const params = await props.params;
-  const { textId } = params;
+  const { locale, textId } = params;
+  setRequestLocale(locale);
 
   const name = textId?.toString();
   const t = await getTranslations();
@@ -25,6 +29,7 @@ export async function generateMetadata(
 const Text = async (props: PageProps<"/[locale]/texts/[textId]">) => {
   const params = await props.params;
   const { locale, textId } = params || {};
+  setRequestLocale(locale);
 
   const t = await getTranslations("texts");
 
@@ -51,7 +56,6 @@ const Text = async (props: PageProps<"/[locale]/texts/[textId]">) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       ></script>
-      <Meta />
       {meta.noTitle ? null : <h2 className="text-red">{t(`${name}`)}</h2>}
       <PostBody content={content}></PostBody>
     </div>

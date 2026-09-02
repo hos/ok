@@ -1,19 +1,23 @@
 import fs from "fs/promises";
 import { Metadata } from "next";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import React from "react";
-import { Meta } from "src/components/Meta";
 
 import KarenOhanyan from "@/public/images/Karen-Ohanyan.jpg";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/biography">): Promise<Metadata> {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations();
   return { title: t("Biography"), description: t("description") };
 }
 
 const Biography = async (props: PageProps<"/[locale]/biography">) => {
   const { locale } = await props.params;
+  setRequestLocale(locale);
   const t = await getTranslations();
 
   const content = await fs.readFile(
@@ -23,7 +27,6 @@ const Biography = async (props: PageProps<"/[locale]/biography">) => {
 
   return (
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
-      <Meta />
       <h1 className="m-0 pb-5">{t("Biography")}</h1>
       <Image
         src={KarenOhanyan}
