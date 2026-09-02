@@ -1,7 +1,20 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import React, { FC, PropsWithChildren } from "react";
+import React from "react";
+
+const exhibitions = [
+  ["2026", "charliesDream"],
+  ["2024", "icons"],
+  ["2023", "visions"],
+  ["2023", "dreamer"],
+  ["2022", "khaltura"],
+  ["2022", "champion"],
+  ["2021", "sevan"],
+  ["2016", "avantGarde"],
+  ["2009", "bodyInvestments"],
+  ["2006", "realUtopias"],
+] as const;
 
 export async function generateMetadata({
   params,
@@ -21,7 +34,9 @@ const Exhibitions = async (props: PageProps<"/[locale]/exhibitions">) => {
   const t = await getTranslations("exhibitions");
   return (
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
-      <h1 className="text-xl m-0 pb-5">{t("Solo Exhibitions")}</h1>
+      <h1 className="m-0 pb-5 text-2xl leading-tight font-normal max-md:px-5">
+        {t("Solo Exhibitions")}
+      </h1>
       <Image
         src="/images/exhibition.jpg"
         alt="Exhibitions"
@@ -30,57 +45,21 @@ const Exhibitions = async (props: PageProps<"/[locale]/exhibitions">) => {
         className="max-w-full h-auto object-contain object-left"
         priority
       />
-      <div className="my-12 mx-2 text-base  leading-5 flex flex-col gap-2">
-        <Paragraph>
-          {" "}
-          <RedSpan> 2026 - </RedSpan> {t("charliesDream")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2024 - </RedSpan> {t("icons")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2023 - </RedSpan> {t("visions")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2023 - </RedSpan> {t("dreamer")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2022 - </RedSpan> {t("khaltura")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2022 - </RedSpan> {t("champion")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2021 - </RedSpan> {t("sevan")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2016 - </RedSpan> {t("avantGarde")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2009 - </RedSpan> {t("bodyInvestments")}{" "}
-        </Paragraph>
-        <Paragraph>
-          {" "}
-          <RedSpan> 2006 - </RedSpan> {t("realUtopias")}{" "}
-        </Paragraph>
-        <p className="m-0 mt-4">{t("also")}</p>
+      <div className="my-12 w-full max-w-[481px] text-[15px] leading-[1.5] max-md:px-5 max-md:my-8">
+        <ol className="m-0 flex list-none flex-col gap-3 p-0">
+          {exhibitions.map(([year, key]) => (
+            <li className="grid grid-cols-[3rem_1fr] gap-x-3" key={key}>
+              <time className="text-red tabular-nums">{year}</time>
+              <span className="text-pretty">{t(key)}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="m-0 mt-10 max-w-[26rem] text-[13px] leading-5 italic opacity-60">
+          {t("also")}
+        </p>
       </div>
     </div>
   );
 };
-
-const Paragraph: FC<PropsWithChildren> = ({ children }) => <p>{children}</p>;
-
-const RedSpan: FC<PropsWithChildren> = ({ children }) => (
-  <span className="text-red">{children}</span>
-);
 
 export default Exhibitions;

@@ -24,10 +24,18 @@ const Biography = async (props: PageProps<"/[locale]/biography">) => {
     `${process.cwd()}/public/locales/${locale}/docs/biography.html`,
     "utf-8",
   );
+  const formattedContent = content
+    .replaceAll("</br>", "")
+    .trim()
+    .split(/\n\s*\n/)
+    .map((paragraph) => `<p>${paragraph.replaceAll("\n", " ")}</p>`)
+    .join("");
 
   return (
     <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start">
-      <h1 className="m-0 pb-5">{t("Biography")}</h1>
+      <h1 className="m-0 pb-5 text-2xl leading-tight font-normal max-md:px-5">
+        {t("Biography")}
+      </h1>
       <Image
         src={KarenOhanyan}
         alt="Karen Ohanyan Portrait"
@@ -39,10 +47,10 @@ const Biography = async (props: PageProps<"/[locale]/biography">) => {
         }}
       />
 
-      <div
-        className="py-10 max-md:px-2"
-        dangerouslySetInnerHTML={{ __html: content }}
-      ></div>
+      <article
+        className="w-full max-w-[537px] py-12 text-[15px] leading-[1.7] tracking-[-0.005em] max-md:px-5 max-md:py-8 [&_p]:mb-6 [&_p:last-child]:mb-0 [&_b]:font-medium"
+        dangerouslySetInnerHTML={{ __html: formattedContent }}
+      />
     </div>
   );
 };

@@ -51,13 +51,19 @@ const Text = async (props: PageProps<"/[locale]/texts/[textId]">) => {
   };
 
   return (
-    <div className="max-w-[600px] mx-auto flex max-md:mx-6 flex-col justify-start">
+    <div className="w-full max-w-[800px] mx-auto flex flex-col justify-start max-md:px-5">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       ></script>
-      {meta.noTitle ? null : <h2 className="text-red">{t(`${name}`)}</h2>}
-      <PostBody content={content}></PostBody>
+      {meta.noTitle ? null : (
+        <h1 className="m-0 max-w-[537px] pb-8 text-2xl leading-tight font-normal text-red">
+          {t(`${name}`)}
+        </h1>
+      )}
+      <div className="w-full max-w-[537px]">
+        <PostBody content={content} />
+      </div>
     </div>
   );
 };
