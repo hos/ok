@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import React from "react";
 
 const exhibitions = [
+  ["2026", "delicateMatter"],
   ["2026", "charliesDream"],
   ["2024", "icons"],
   ["2023", "visions"],

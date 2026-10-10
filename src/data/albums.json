@@ -652,5 +652,37 @@
         "description": "Watercolor, mix media on paper, 15x21cm, 2020"
       }
     ]
+  },
+  {
+    "name": "2026 (Delicate Matter)",
+    "path": "2026-delicate-matter",
+    "default": 0,
+    "artform": "Painting",
+    "images": [
+      {
+        "fileName": "delicate-matter-1.jpg",
+        "description": "oil on canvas, mixed media, 202x273cm"
+      },
+      {
+        "fileName": "delicate-matter-2.jpg",
+        "description": "oil on canvas, mixed media, 202x273cm"
+      },
+      {
+        "fileName": "delicate-matter-3.jpg",
+        "description": "oil on canvas, mixed media, 202x273cm"
+      },
+      {
+        "fileName": "delicate-matter-4.jpg",
+        "description": "oil on canvas, mixed media, 202x273cm"
+      },
+      {
+        "fileName": "delicate-matter-5.jpg",
+        "description": "oil on canvas, mixed media, 202x273cm"
+      },
+      {
+        "fileName": "delicate-matter-6.jpg",
+        "description": "oil on canvas, mixed media, 202x273cm"
+      }
+    ]
   }
 ]
