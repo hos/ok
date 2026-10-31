@@ -54,17 +54,16 @@ export default async function TextsPage(props: PageProps<"/[locale]/texts">) {
           }
 
           return (
-            <article className="border-black/10 border-l py-5 pl-4" key={key}>
-              <p className="m-0 text-[11px] leading-5 tracking-[0.08em] uppercase opacity-50">
-                {/* @ts-ignore */}
+            <article className="py-5" key={key}>
+              <h2 className="m-0 text-[15px] leading-6 font-medium text-red">
                 {t(`texts.${key}`)}
+              </h2>
+              <p className="m-0 mt-0.5 text-[13px] leading-5 opacity-60">
                 {/* @ts-ignore */}
-                {value.noAuthor ? null : ` — ${t(`texts.${value.author}`)}`}
+                {value.noAuthor ? null : t(`texts.${value.author}`)}
                 {"year" in value ? ` / ${value.year}` : ""}
               </p>
-              <p className="m-0 mt-2 text-[15px] leading-[1.6] italic">
-                {t(key)}
-              </p>
+              <p className="m-0 mt-2 text-[15px] leading-[1.6]">{t(key)}</p>
             </article>
           );
         })}
