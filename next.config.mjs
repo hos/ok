@@ -7,6 +7,7 @@ const age = 60 * 60 * 24 * 365;
 /** @type {import('next').NextConfig} */
 export default withNextIntl({
   typedRoutes: true,
+  agentRules: false,
   reactStrictMode: true,
   headers() {
     return [
